@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background"
+            tools:context=".MenuActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/gorpol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="60dp"
+            android:paddingTop="50dp"
+            android:src="@drawable/logo_40"/>
+
+        <Button
+            android:id="@+id/zapis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gorpol"
+            android:background="@color/background"
+            android:hint="@string/sign_up"
+            android:padding="10dp"
+            android:textSize="30dp"
+            />
+
+        <Button
+            android:id="@+id/service"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/zapis"
+            android:background="@color/background"
+            android:hint="@string/uslugi"
+            android:padding="10dp"
+            android:textSize="30dp"/>
+
+        <Button
+            android:id="@+id/specialities"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/service"
+            android:background="@color/background"
+            android:hint="@string/specialists"
+            android:padding="10dp"
+            android:textSize="30dp"/>
+
+        <Button
+            android:id="@+id/about_us"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/specialities"
+            android:background="@color/background"
+            android:hint="@string/about_clinic"
+            android:padding="10dp"
+            android:textSize="30dp"/>
+
+        <Button
+            android:id="@+id/contacts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about_us"
+            android:background="@color/background"
+            android:hint="@string/contacts"
+            android:padding="10dp"
+            android:textSize="30dp"
+
+            />
+    </RelativeLayout>
+</ScrollView>

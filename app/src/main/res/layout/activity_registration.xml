@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background"
+            tools:context=".MenuActivity">
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background2"
+        tools:context="com.android.clinic.RegistrationActivity">
+
+        <TextView
+            android:id="@+id/registration_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="@string/registration"
+            android:paddingTop="20dp"
+            android:textColorHint="@color/colorDark"
+            android:textSize="30dp"
+            />
+
+        <TextView
+            android:id="@+id/insert_login_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/insert_login"
+            android:textColorHint="@color/colorDark"
+            app:layout_constraintTop_toBottomOf="@id/registration_textView"/>
+
+        <EditText
+            android:id="@+id/insert_login_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/insert_login_textView"/>
+
+        <TextView
+            android:id="@+id/insert_password_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/insert_password"
+            android:textColorHint="@color/colorDark"
+            app:layout_constraintTop_toBottomOf="@id/insert_login_editText"/>
+
+        <EditText
+            android:id="@+id/insert_password_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/insert_password_textView"/>
+
+        <TextView
+            android:id="@+id/insert_fname_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/insert_fname"
+            android:textColorHint="@color/colorDark"
+            app:layout_constraintTop_toBottomOf="@id/insert_password_editText"/>
+
+        <EditText
+            android:id="@+id/insert_fname_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/insert_fname_textView"/>
+
+        <TextView
+            android:id="@+id/insert_lname_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/insert_lname"
+            android:textColorHint="@color/colorDark"
+            app:layout_constraintTop_toBottomOf="@id/insert_fname_editText"/>
+
+        <EditText
+            android:id="@+id/insert_lname_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/insert_lname_textView"/>
+
+        <TextView
+            android:id="@+id/insert_pname_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/insert_pname"
+            android:textColorHint="@color/colorDark"
+            app:layout_constraintTop_toBottomOf="@id/insert_lname_editText"/>
+
+        <EditText
+            android:id="@+id/insert_pname_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/insert_pname_textView"/>
+
+        <TextView
+            android:id="@+id/insert_birthday_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/insert_birthday"
+            android:textColorHint="@color/colorDark"
+            app:layout_constraintTop_toBottomOf="@id/insert_pname_editText"/>
+
+        <EditText
+            android:id="@+id/insert_birthday_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/insert_birthday_textView"/>
+
+        <TextView
+            android:id="@+id/insert_email_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/insert_email"
+            android:textColorHint="@color/colorDark"
+            app:layout_constraintTop_toBottomOf="@id/insert_birthday_editText"/>
+
+        <EditText
+            android:id="@+id/insert_email_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/insert_email_textView"/>
+
+        <TextView
+            android:id="@+id/insert_address_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/insert_address"
+            android:textColorHint="@color/colorDark"
+            app:layout_constraintTop_toBottomOf="@id/insert_email_editText"/>
+
+        <EditText
+            android:id="@+id/insert_address_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/insert_address_textView"/>
+
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            android:background="@color/color2"
+            android:hint="@string/register"
+            android:textColorHint="@color/colorDark"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/insert_address_editText"/>
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

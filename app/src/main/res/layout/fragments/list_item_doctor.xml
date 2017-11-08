@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+    android:id="@+id/list_item_doctor_id">
+
+    <TextView
+        android:id="@+id/id_doctor_title_label"
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/doctor_title_label"
+        />
+
+    <!--<TextView-->
+        <!--android:id="@+id/doctor_fio"-->
+        <!--style="?android:listSeparatorTextViewStyle"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:hint="Иванов Иван Иванович"-->
+        <!--/>-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/spec"-->
+        <!--style="?android:listSeparatorTextViewStyle"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:hint="@string/spec"-->
+        <!--/>-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/doctor_spec"-->
+        <!--style="?android:listSeparatorTextViewStyle"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:hint="терапевт"-->
+        <!--/>-->
+
+    <!--<Button-->
+        <!--android:id="@+id/id_sign_up"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:hint="@string/sign_up_1"-->
+        <!--/>-->
+</LinearLayout>

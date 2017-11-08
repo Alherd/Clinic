@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">40-я городская поликлиника</string>
+    <string name="continue1">Продолжить</string>
+    <string name="continue_guest">Продолжить гостем</string>
+    <string name="filling">Заполнение</string>
+    <string name="fname">Имя</string>
+    <string name="lname">Фамилия</string>
+    <string name="choose1">Выберите действие</string>
+    <string name="see_schedule">Смотреть расписание</string>
+    <string name="sign_up">Запись на прием</string>
+    <string name="sign_up_doctor">Записаться к врачу</string>
+    <string name="uslugi">Услуги</string>
+    <string name="specialists">Специалисты</string>
+    <string name="about_clinic">О клинике</string>
+    <string name="contacts">Контакты</string>
+    <string name="pol">10-я городская поликлиника</string>
+    <string name="usl">Записаться на услугу</string>
+    <string name="doctor_title_label">Ф.И.О. врача</string>
+    <string name="sign_up_1">Запись</string>
+    <string name="spec">Специализация</string>
+    <string name="appoint">Должность</string>
+    <string name="gor_pol_1">УЗ "40-я городская клиническая поликлиника"</string>
+    <string name="address">г. Минск, ул.Люцинская, 3</string>
+    <string name="email">e-mail: uz40gkp@tut.by</string>
+    <string name="telephon_spravochnoj">Телефон справочной</string>
+    <string name="telephon_spravochnoj_1">(+375 17) 359-16-15</string>
+    <string name="telephon_spravochnoj_2">(+375 17) 359-16-16</string>
+    <string name="telephon_registratury">Телефон регистратуры</string>
+    <string name="telephon_registratury_1">(+375 17) 359-16-18</string>
+    <string name="call_doctor">Вызов врача на дом:</string>
+    <string name="call_doctor_1">c 7:00 до 14:00</string>
+    <string name="call_doctor_number_1">(+375 17) 359-16-17</string>
+    <string name="call_doctor_2">c 14:00 до 19:30</string>
+    <string name="call_doctor_number_2">(+375 17) 359-16-18</string>
+    <string name="call_doctor_holiday">Вызов врача на дом в субботние и праздничные дни:</string>
+    <string name="call_doctor_holiday_number_1">(+375 17) 359-16-18</string>
+    <string name="call_doctor_3">с 8.30 до 17.30</string>
+    <string name="hot_line">"Горячая линия" УЗ "40 ГКП"</string>
+    <string name="hot_line_number">(+375 17) 359-16-46</string>
+    <string name="get_into_system">Вход в систему</string>
+    <string name="get_into">Войти</string>
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="hictori_poli">УЗ «40-я городская клиническая поликлиника» является учреждением первичного звена медико-санитарной помощи, подведомственным Комитету по здравоохранению Мингорисполкома.
+Официальное открытие учреждения здравоохранения «40-я городская клиническая поликлиника» состоялось 4 ноября 2016 года.
+Плановая мощность многопрофильной поликлиники рассчитана на 850 посещений в смену. Учреждение обслуживает взрослое население микрорайонов Каменная Горка - 2, 3, 4 и Масюковщина - 3, 4, 5, 6, численностью 43 тысячи человек.
+В проекте новой поликлиники предусмотрены два терапевтических, рентгеновское, травмо - хирургическое отделения, отделение общей врачебной практики, функциональной и ультразвуковой диагностики, отделение профилактики, медицинской реабилитации и физиотерапии, женская консультация, клинико-диагностическая лаборатория, а также отделение дневного пребывания на 22 койки и эндоскопический центр.
+В поликлинике   внедрены информационные комплексы и технологии, направленные на улучшение доступности оказания медицинской помощи пациентам: электронная регистратура (установлено электронное информационное табло и инфокиоск); информационно-аналитическая система “WEB-поликлиника”, которая подразумевает компьютеризацию всех рабочих мест, наличие цифрового оборудования, внедрение электронной амбулаторной карты и электронного рецепта; осуществление записи на прием и регистрации вызовов по интернету, система электронной очереди в лабораторию, процедурные кабинеты, доврачебные кабинеты, кабинет травматологии и регистратуру.
+Поликлиника оснащена современным медицинским оборудованием, позволяющим существенно расширить спектр оказываемых медицинских услуг и повысить их качество. </string>
+    <string name="registration">Регистрация</string>
+    <string name="search">поиск</string>
+    <string name="insert_fname">Имя</string>
+    <string name="insert_lname">Фамилия</string>
+    <string name="insert_pname">Отчество</string>
+    <string name="insert_birthday">День рождения</string>
+    <string name="insert_email">E-mail</string>
+    <string name="insert_address">Адрес проживания</string>
+    <string name="insert_login">Введите желаемый логин</string>
+    <string name="insert_password">Введите желаемый пароль</string>
+    <string name="register">Зарегистрироваться</string>
+</resources>
