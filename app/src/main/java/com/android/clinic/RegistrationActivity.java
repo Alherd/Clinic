@@ -46,16 +46,24 @@ public class RegistrationActivity extends AppCompatActivity {
                         lname.getText().toString(), pname.getText().toString(),
                         birthday.getText().toString(), email.getText().toString(),
                         address.getText().toString());
-                if (isInserted == 1) {
-                    Toast.makeText(RegistrationActivity.this, "Регистрация прошла успешно!", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(RegistrationActivity.this, MenuActivity.class);
-                    startActivity(intent);
-                } else if (isInserted == -1)
-                    Toast.makeText(RegistrationActivity.this, "Ошибка регистрации", Toast.LENGTH_LONG).show();
-                else if (isInserted == 0) {
-                    Toast.makeText(RegistrationActivity.this, "Есть пустые поля", Toast.LENGTH_LONG).show();
-                } else if (isInserted == 2) {
-                    Toast.makeText(RegistrationActivity.this, "Выбранный логин уже занят", Toast.LENGTH_LONG).show();
+
+                switch (isInserted) {
+                    case 1:
+                        Toast.makeText(RegistrationActivity.this, "Регистрация прошла успешно!", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(RegistrationActivity.this, MenuActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 2:
+                        Toast.makeText(RegistrationActivity.this, "Выбранный логин уже занят", Toast.LENGTH_LONG).show();
+                        break;
+                    case -1:
+                        Toast.makeText(RegistrationActivity.this, "Ошибка регистрации", Toast.LENGTH_LONG).show();
+                        break;
+                    case 0:
+                        Toast.makeText(RegistrationActivity.this, "Есть пустые поля", Toast.LENGTH_LONG).show();
+                        break;
+                    default:
+                        break;
                 }
             }
         });

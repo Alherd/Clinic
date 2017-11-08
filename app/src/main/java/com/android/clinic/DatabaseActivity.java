@@ -29,6 +29,7 @@ public class DatabaseActivity extends AppCompatActivity {
         userFilter = (EditText) findViewById(R.id.userFilter);
         button_sign_up = (Button) findViewById(R.id.id_sign_up);
         databaseHelper = new DatabaseHelper(getApplicationContext());
+        databaseHelper = new DatabaseHelper(this);
     }
 
     @Override
