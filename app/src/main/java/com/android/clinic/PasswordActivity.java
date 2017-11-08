@@ -40,8 +40,8 @@ public class PasswordActivity extends AppCompatActivity {
         into_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean check = myDb.insearch(editLogin.getText().toString(), editPassword.getText().toString());
-                if (check == true) {
+                boolean check = myDb.searchLoginPassword(editLogin.getText().toString(), editPassword.getText().toString());
+                if (check) {
                     Toast.makeText(PasswordActivity.this, "Вход выполнен", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(PasswordActivity.this, MenuActivity.class);
                     startActivity(intent);

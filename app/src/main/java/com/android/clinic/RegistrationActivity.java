@@ -41,17 +41,22 @@ public class RegistrationActivity extends AppCompatActivity {
         register_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean isInserted = myDb.insertData(login.getText().toString(),
+                int isInserted = myDb.insertData(login.getText().toString(),
                         password.getText().toString(), fname.getText().toString(),
                         lname.getText().toString(), pname.getText().toString(),
                         birthday.getText().toString(), email.getText().toString(),
                         address.getText().toString());
-                if (isInserted) {
+                if (isInserted == 1) {
                     Toast.makeText(RegistrationActivity.this, "Регистрация прошла успешно!", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(RegistrationActivity.this, MenuActivity.class);
                     startActivity(intent);
-                } else
+                } else if (isInserted == -1)
                     Toast.makeText(RegistrationActivity.this, "Ошибка регистрации", Toast.LENGTH_LONG).show();
+                else if (isInserted == 0) {
+                    Toast.makeText(RegistrationActivity.this, "Есть пустые поля", Toast.LENGTH_LONG).show();
+                } else if (isInserted == 2) {
+                    Toast.makeText(RegistrationActivity.this, "Выбранный логин уже занят", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
