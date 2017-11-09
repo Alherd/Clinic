@@ -1,5 +1,6 @@
 package com.android.clinic;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.widget.SimpleCursorAdapter;
@@ -19,6 +20,7 @@ import static com.android.clinic.database.DatabaseHelper.TABLE_DOCTORS;
 
 public class DatabaseServiceActivity extends DatabaseActivity {
     SimpleCursorAdapter userAdapter;
+    public static String arg;
 
     @Override
     public void onResume() {
@@ -70,9 +72,15 @@ public class DatabaseServiceActivity extends DatabaseActivity {
 
         userList.setAdapter(userAdapter);
         userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-
+                Doctors mDoctors = new Doctors();
+                mDoctors.setId(id);
+                arg = mDoctors.getId().toString();
+                Intent intent = new Intent(DatabaseServiceActivity.this, DescriptionDoctorsActivity.class);
+                startActivity(intent);
+                Toast.makeText(DatabaseServiceActivity.this, arg, Toast.LENGTH_LONG).show();
             }
         });
     }
