@@ -18,7 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_SPEC = "spec";
     public static final String COLUMN_SERV = "service";
 
-    public static final String TABLE_PASSWORD_DOCTORS = "doctors_password"; // название таблицы в бд
+    //public static final String TABLE_PASSWORD_DOCTORS = "doctors_password"; // название таблицы в бд
     //public static final String COLUMN_LOGIN_DOCTOR = "login";
     //public static final String COLUMN_PASSWORD_DOCTOR = "password";
 
@@ -44,9 +44,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_NAME
                 + " TEXT, " + COLUMN_SPEC + " TEXT, " + COLUMN_SERV + " TEXT);");
 
-//        db.execSQL("CREATE TABLE_PATIENTS " + TABLE_PASSWORD_DOCTORS + " (" + COLUMN_ID_DOCTOR_2
-//                + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_LOGIN_DOCTOR
-//                + " TEXT, " + COLUMN_PASSWORD_DOCTOR + " TEXT);");
 
         db.execSQL("CREATE TABLE " + TABLE_PATIENTS + " (" + COLUMN_ID_PATIENT
                 + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -184,5 +181,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             else
                 return 1;
         }
+    }
+
+    public Cursor returnDoctorName(String arg) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor b = db.rawQuery("select " + COLUMN_NAME + " from " + TABLE_DOCTORS + " where " + COLUMN_ID_DOCTOR_1 +
+                " = '" + arg + "' ;", null);
+        return b;
     }
 }
