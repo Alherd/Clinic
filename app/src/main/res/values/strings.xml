@@ -58,4 +58,9 @@
     <string name="insert_login">Введите желаемый логин</string>
     <string name="insert_password">Введите желаемый пароль</string>
     <string name="register">Зарегистрироваться</string>
+    <string name="profession">Профессия: </string>
+    <string name="special">Специализация: </string>
+    <string name="age">Возраст: </string>
+    <string name="exp">Стаж: </string>
+    <string name="sign">Записаться</string>
 </resources>

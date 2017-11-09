@@ -50,9 +50,10 @@ public class DescriptionDoctorsActivity extends AppCompatActivity {
         userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS +
                 " where " + DatabaseHelper.COLUMN_ID_DOCTOR_1 +
                 " = '" + arg + "' ;", null);
-        String[] headers1 = new String[]{DatabaseHelper.COLUMN_NAME_DOCTOR, DatabaseHelper.COLUMN_SPEC_DOCTOR, DatabaseHelper.COLUMN_SERV_DOCTOR};
+        String[] headers1 = new String[]{DatabaseHelper.COLUMN_NAME_DOCTOR, DatabaseHelper.COLUMN_SPEC_DOCTOR,
+                DatabaseHelper.COLUMN_SERV_DOCTOR, DatabaseHelper.COLUMN_AGE_DOCTOR, DatabaseHelper.COLUMN_EXPER_DOCTOR};
         userAdapter = new SimpleCursorAdapter(this, R.layout.one_line_list,
-                userCursor, headers1, new int[]{R.id.text1_1, R.id.text2_1, R.id.text3_1}, 0);
+                userCursor, headers1, new int[]{R.id.text1_1, R.id.text2_1, R.id.text3_1, R.id.text4_1, R.id.text5_1}, 0);
         userListDoctor.setAdapter(userAdapter);
         userListDoctor.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
