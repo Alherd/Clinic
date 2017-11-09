@@ -17,10 +17,6 @@ import static com.android.clinic.database.DatabaseHelper.COLUMN_NAME;
 import static com.android.clinic.database.DatabaseHelper.COLUMN_SERV;
 import static com.android.clinic.database.DatabaseHelper.TABLE_DOCTORS;
 
-/**
- * Created by Olgerd on 15.10.2017.
- */
-
 public class DatabaseServiceActivity extends DatabaseActivity {
     SimpleCursorAdapter userAdapter;
 
@@ -76,8 +72,7 @@ public class DatabaseServiceActivity extends DatabaseActivity {
         userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                Toast.makeText(DatabaseServiceActivity.this, "Выбран элемент: " + id,
-                        Toast.LENGTH_LONG).show();
+
             }
         });
     }
