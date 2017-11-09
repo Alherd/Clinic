@@ -1,6 +1,5 @@
 package com.android.clinic;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.widget.SimpleCursorAdapter;
@@ -14,8 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.clinic.database.DatabaseHelper;
-
-import java.nio.Buffer;
 
 import static com.android.clinic.DatabaseServiceActivity.arg;
 
@@ -53,7 +50,7 @@ public class DescriptionDoctorsActivity extends AppCompatActivity {
         userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS +
                 " where " + DatabaseHelper.COLUMN_ID_DOCTOR_1 +
                 " = '" + arg + "' ;", null);
-        String[] headers1 = new String[]{DatabaseHelper.COLUMN_NAME, DatabaseHelper.COLUMN_SPEC, DatabaseHelper.COLUMN_SERV};
+        String[] headers1 = new String[]{DatabaseHelper.COLUMN_NAME_DOCTOR, DatabaseHelper.COLUMN_SPEC_DOCTOR, DatabaseHelper.COLUMN_SERV_DOCTOR};
         userAdapter = new SimpleCursorAdapter(this, R.layout.one_line_list,
                 userCursor, headers1, new int[]{R.id.text1_1, R.id.text2_1, R.id.text3_1}, 0);
         userListDoctor.setAdapter(userAdapter);

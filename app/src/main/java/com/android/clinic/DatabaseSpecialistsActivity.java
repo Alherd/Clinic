@@ -21,9 +21,9 @@ public class DatabaseSpecialistsActivity extends DatabaseActivity {
         // открываем подключение
         db = databaseHelper.getReadableDatabase();
         //получаем данные из бд в виде курсора
-        userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS + " order by " + DatabaseHelper.COLUMN_NAME, null);
+        userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS + " order by " + DatabaseHelper.COLUMN_NAME_DOCTOR, null);
         // определяем, какие столбцы из курсора будут выводиться в ListView
-        String[] headers = new String[]{DatabaseHelper.COLUMN_NAME, DatabaseHelper.COLUMN_SPEC};
+        String[] headers = new String[]{DatabaseHelper.COLUMN_NAME_DOCTOR, DatabaseHelper.COLUMN_SPEC_DOCTOR};
         // создаем адаптер, передаем в него курсор
         userAdapter = new SimpleCursorAdapter(this, R.layout.two_line_list,
                 userCursor, headers, new int[]{R.id.text1, R.id.text2}, 0);
@@ -54,10 +54,10 @@ public class DatabaseSpecialistsActivity extends DatabaseActivity {
 
                 if (constraint == null || constraint.length() == 0) {
 
-                    return db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS + " order by " + DatabaseHelper.COLUMN_NAME, null);
+                    return db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS + " order by " + DatabaseHelper.COLUMN_NAME_DOCTOR, null);
                 } else {
                     return db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS + " where " +
-                            DatabaseHelper.COLUMN_NAME + " like ? order by " + DatabaseHelper.COLUMN_NAME, new String[]{"%" + constraint.toString() + "%"});
+                            DatabaseHelper.COLUMN_NAME_DOCTOR + " like ? order by " + DatabaseHelper.COLUMN_NAME_DOCTOR, new String[]{"%" + constraint.toString() + "%"});
                 }
             }
         });

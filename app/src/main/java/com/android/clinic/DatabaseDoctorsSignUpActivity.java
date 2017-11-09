@@ -6,15 +6,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FilterQueryProvider;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.clinic.database.DatabaseHelper;
 
@@ -46,9 +43,9 @@ public class DatabaseDoctorsSignUpActivity extends AppCompatActivity {
         db = mDatabaseHelper.getReadableDatabase();
         //получаем данные из бд в виде курсора
         userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS + " order by " +
-                DatabaseHelper.COLUMN_NAME, null);
+                DatabaseHelper.COLUMN_NAME_DOCTOR, null);
         // определяем, какие столбцы из курсора будут выводиться в ListView
-        String[] headers1 = new String[]{DatabaseHelper.COLUMN_NAME, DatabaseHelper.COLUMN_SPEC};
+        String[] headers1 = new String[]{DatabaseHelper.COLUMN_NAME_DOCTOR, DatabaseHelper.COLUMN_SPEC_DOCTOR};
         // создаем адаптер, передаем в него курсор
         userAdapter = new SimpleCursorAdapter(this, R.layout.two_line_button_list_item,
                 userCursor, headers1, new int[]{R.id.text1, R.id.text2}, 0);
@@ -83,10 +80,10 @@ public class DatabaseDoctorsSignUpActivity extends AppCompatActivity {
                 if (constraint == null || constraint.length() == 0) {
 
                     return db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS + " order by " +
-                            DatabaseHelper.COLUMN_NAME, null);
+                            DatabaseHelper.COLUMN_NAME_DOCTOR, null);
                 } else {
                     return db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS + " where " +
-                                    DatabaseHelper.COLUMN_NAME + " like ? order by " + DatabaseHelper.COLUMN_NAME,
+                                    DatabaseHelper.COLUMN_NAME_DOCTOR + " like ? order by " + DatabaseHelper.COLUMN_NAME_DOCTOR,
                             new String[]{"%" + constraint.toString() + "%"});
                 }
             }

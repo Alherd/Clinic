@@ -2,7 +2,6 @@ package com.android.clinic;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,10 +12,8 @@ import android.widget.Toast;
 
 import com.android.clinic.database.DatabaseHelper;
 
-import static com.android.clinic.database.DatabaseHelper.COLUMN_ID_DOCTOR_1;
-import static com.android.clinic.database.DatabaseHelper.COLUMN_NAME;
-import static com.android.clinic.database.DatabaseHelper.COLUMN_SERV;
-import static com.android.clinic.database.DatabaseHelper.TABLE_DOCTORS;
+import static com.android.clinic.database.DatabaseHelper.COLUMN_NAME_DOCTOR;
+import static com.android.clinic.database.DatabaseHelper.COLUMN_SERV_DOCTOR;
 
 public class DatabaseServiceActivity extends DatabaseActivity {
     SimpleCursorAdapter userAdapter;
@@ -28,9 +25,9 @@ public class DatabaseServiceActivity extends DatabaseActivity {
         // открываем подключение
         db = databaseHelper.getReadableDatabase();
         //получаем данные из бд в виде курсора
-        userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS + " order by " + COLUMN_SERV, null);
+        userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS + " order by " + COLUMN_SERV_DOCTOR, null);
         // определяем, какие столбцы из курсора будут выводиться в ListView
-        String[] headers = new String[]{COLUMN_SERV, COLUMN_NAME};
+        String[] headers = new String[]{COLUMN_SERV_DOCTOR, COLUMN_NAME_DOCTOR};
         // создаем адаптер, передаем в него курсор
         userAdapter = new SimpleCursorAdapter(this, R.layout.two_line_list,
                 userCursor, headers, new int[]{R.id.text1, R.id.text2}, 0);
@@ -61,11 +58,11 @@ public class DatabaseServiceActivity extends DatabaseActivity {
 
                 if (constraint == null || constraint.length() == 0) {
 
-                    return db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS + " order by " + COLUMN_SERV,
+                    return db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS + " order by " + COLUMN_SERV_DOCTOR,
                             null);
                 } else {
                     return db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS + " where " +
-                            COLUMN_SERV + " like ? order by " + COLUMN_SERV, new String[]{"%" + constraint.toString() + "%"});
+                            COLUMN_SERV_DOCTOR + " like ? order by " + COLUMN_SERV_DOCTOR, new String[]{"%" + constraint.toString() + "%"});
                 }
             }
         });

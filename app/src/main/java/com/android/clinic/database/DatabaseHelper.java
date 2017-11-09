@@ -14,9 +14,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //public static final String COLUMN_ID_DOCTOR_2 = "_id";
 
     public static final String TABLE_DOCTORS = "doctors"; // название таблицы в бд
-    public static final String COLUMN_NAME = "name";
-    public static final String COLUMN_SPEC = "spec";
-    public static final String COLUMN_SERV = "service";
+    public static final String COLUMN_NAME_DOCTOR = "name";
+    public static final String COLUMN_SPEC_DOCTOR = "spec";
+    public static final String COLUMN_SERV_DOCTOR = "service";
+    public static final String COLUMN_BIRTH_DOCTOR = "birthday";
+    public static final String COLUMN_EXPER_DOCTOR = "experience";
 
     //public static final String TABLE_PASSWORD_DOCTORS = "doctors_password"; // название таблицы в бд
     //public static final String COLUMN_LOGIN_DOCTOR = "login";
@@ -41,8 +43,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL("CREATE TABLE " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1
-                + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_NAME
-                + " TEXT, " + COLUMN_SPEC + " TEXT, " + COLUMN_SERV + " TEXT);");
+                + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_NAME_DOCTOR
+                + " TEXT, " + COLUMN_SPEC_DOCTOR + " TEXT, " + COLUMN_SERV_DOCTOR + " TEXT);");
 
 
         db.execSQL("CREATE TABLE " + TABLE_PATIENTS + " (" + COLUMN_ID_PATIENT
@@ -56,46 +58,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COLUMN_ADDRESS + " TEXT, "
                 + COLUMN_EMAIL + " TEXT);");
 
-        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME
-                + ", " + COLUMN_SPEC + ", " + COLUMN_SERV + ") VALUES ('1' , 'Иванов Сергей', 'Лор', 'Лечение лор-заболеваний');");
-        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME
-                + ", " + COLUMN_SPEC + ", " + COLUMN_SERV + ") VALUES ('2', 'Сидорова Ольга', 'Терапевт', 'Первичный прием');");
-        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME
-                + ", " + COLUMN_SPEC + ", " + COLUMN_SERV + ") VALUES ('3', 'Аверин Дмитрий', 'Анестезиолог','Анестезиология');");
-        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME
-                + ", " + COLUMN_SPEC + ", " + COLUMN_SERV + ") VALUES ('4', 'Журавлев Ростислав', 'Офтальмолог', 'Офтальмология');");
-        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME
-                + ", " + COLUMN_SPEC + ", " + COLUMN_SERV + ") VALUES ('5', 'Князев Матвей', 'Кардиолог', 'Кардиология');");
-        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME
-                + ", " + COLUMN_SPEC + ", " + COLUMN_SERV + ") VALUES ('6', 'Крылова Тамара', 'Педиатр', 'Педиатрия');");
-        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME
-                + ", " + COLUMN_SPEC + ", " + COLUMN_SERV + ") VALUES ('7', 'Матвеева Алиса', 'Гинеколог', 'Гинекология');");
-        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME
-                + ", " + COLUMN_SPEC + ", " + COLUMN_SERV + ") VALUES ('8', 'Воронцова Татьяна', 'Криотерапевт', 'Криотерапия');");
-        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME
-                + ", " + COLUMN_SPEC + ", " + COLUMN_SERV + ") VALUES ('9', 'Воронов Игорь', 'Эндокринолог', 'Эндрокринология');");
-        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME
-                + ", " + COLUMN_SPEC + ", " + COLUMN_SERV + ") VALUES ('10', 'Якубов Александр', 'Хирург', 'Хирургия');");
-        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME
-                + ", " + COLUMN_SPEC + ", " + COLUMN_SERV + ") VALUES ('11', 'Фомина Софья', 'Косметолог', 'Косметология');");
-        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME
-                + ", " + COLUMN_SPEC + ", " + COLUMN_SERV + ") VALUES ('12', 'Жданович Виктория', 'Кардиолог', 'Косметология');");
-        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME
-                + ", " + COLUMN_SPEC + ", " + COLUMN_SERV + ") VALUES ('13', 'Врублевская Анастасия', 'Процендурная медсестра', 'Терапевтия');");
-        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME
-                + ", " + COLUMN_SPEC + ", " + COLUMN_SERV + ") VALUES ('14', 'Семченко Никита', 'Лор', 'Лечение лор-заболеваний');");
-        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME
-                + ", " + COLUMN_SPEC + ", " + COLUMN_SERV + ") VALUES ('15', 'Полищук Александр', 'Терапевт', 'Терапевтия');");
-        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME
-                + ", " + COLUMN_SPEC + ", " + COLUMN_SERV + ") VALUES ('16', 'Климец Александр', 'Терапевт', 'Терапевтия');");
-        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME
-                + ", " + COLUMN_SPEC + ", " + COLUMN_SERV + ") VALUES ('17', 'Музыка Александра', 'Косметолог', 'Косметология');");
-        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME
-                + ", " + COLUMN_SPEC + ", " + COLUMN_SERV + ") VALUES ('18', 'Туболец Юлия', 'Эндокринолог', 'Эндокринология');");
-        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME
-                + ", " + COLUMN_SPEC + ", " + COLUMN_SERV + ") VALUES ('19', 'Юревич Алевтина', 'Педиатр', 'Педиатрия');");
-        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME
-                + ", " + COLUMN_SPEC + ", " + COLUMN_SERV + ") VALUES ('20', 'Иванов Стас', 'Хирург', 'Хирургия');");
+        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME_DOCTOR
+                + ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_SERV_DOCTOR + ") VALUES ('1' , 'Иванов Сергей', 'Лор', 'Лечение лор-заболеваний');");
+        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME_DOCTOR
+                + ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_SERV_DOCTOR + ") VALUES ('2', 'Сидорова Ольга', 'Терапевт', 'Первичный прием');");
+        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME_DOCTOR
+                + ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_SERV_DOCTOR + ") VALUES ('3', 'Аверин Дмитрий', 'Анестезиолог','Анестезиология');");
+        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME_DOCTOR
+                + ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_SERV_DOCTOR + ") VALUES ('4', 'Журавлев Ростислав', 'Офтальмолог', 'Офтальмология');");
+        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME_DOCTOR
+                + ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_SERV_DOCTOR + ") VALUES ('5', 'Князев Матвей', 'Кардиолог', 'Кардиология');");
+        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME_DOCTOR
+                + ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_SERV_DOCTOR + ") VALUES ('6', 'Крылова Тамара', 'Педиатр', 'Педиатрия');");
+        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME_DOCTOR
+                + ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_SERV_DOCTOR + ") VALUES ('7', 'Матвеева Алиса', 'Гинеколог', 'Гинекология');");
+        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME_DOCTOR
+                + ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_SERV_DOCTOR + ") VALUES ('8', 'Воронцова Татьяна', 'Криотерапевт', 'Криотерапия');");
+        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME_DOCTOR
+                + ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_SERV_DOCTOR + ") VALUES ('9', 'Воронов Игорь', 'Эндокринолог', 'Эндрокринология');");
+        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME_DOCTOR
+                + ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_SERV_DOCTOR + ") VALUES ('10', 'Якубов Александр', 'Хирург', 'Хирургия');");
+        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME_DOCTOR
+                + ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_SERV_DOCTOR + ") VALUES ('11', 'Фомина Софья', 'Косметолог', 'Косметология');");
+        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME_DOCTOR
+                + ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_SERV_DOCTOR + ") VALUES ('12', 'Жданович Виктория', 'Кардиолог', 'Косметология');");
+        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME_DOCTOR
+                + ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_SERV_DOCTOR + ") VALUES ('13', 'Врублевская Анастасия', 'Процендурная медсестра', 'Терапевтия');");
+        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME_DOCTOR
+                + ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_SERV_DOCTOR + ") VALUES ('14', 'Семченко Никита', 'Лор', 'Лечение лор-заболеваний');");
+        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME_DOCTOR
+                + ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_SERV_DOCTOR + ") VALUES ('15', 'Полищук Александр', 'Терапевт', 'Терапевтия');");
+        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME_DOCTOR
+                + ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_SERV_DOCTOR + ") VALUES ('16', 'Климец Александр', 'Терапевт', 'Терапевтия');");
+        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME_DOCTOR
+                + ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_SERV_DOCTOR + ") VALUES ('17', 'Музыка Александра', 'Косметолог', 'Косметология');");
+        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME_DOCTOR
+                + ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_SERV_DOCTOR + ") VALUES ('18', 'Туболец Юлия', 'Эндокринолог', 'Эндокринология');");
+        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME_DOCTOR
+                + ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_SERV_DOCTOR + ") VALUES ('19', 'Юревич Алевтина', 'Педиатр', 'Педиатрия');");
+        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR_1 + ", " + COLUMN_NAME_DOCTOR
+                + ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_SERV_DOCTOR + ") VALUES ('20', 'Иванов Стас', 'Хирург', 'Хирургия');");
 
 
         //
@@ -185,7 +187,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor returnDoctorName(String arg) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor b = db.rawQuery("select " + COLUMN_NAME + " from " + TABLE_DOCTORS + " where " + COLUMN_ID_DOCTOR_1 +
+        Cursor b = db.rawQuery("select " + COLUMN_NAME_DOCTOR + " from " + TABLE_DOCTORS + " where " + COLUMN_ID_DOCTOR_1 +
                 " = '" + arg + "' ;", null);
         return b;
     }
