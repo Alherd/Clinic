@@ -21,8 +21,7 @@
         <activity
             android:name=".ChooseActionActivity"
             android:label="@string/app_name"/>
-        <activity android:name=".MenuActivity">
-
+        <activity android:name=".MenuActivity"/>
         <activity android:name=".DatabaseDoctorsSignUpActivity"/>
         <activity android:name=".DatabaseServiceSignUpActivity"/>
         <activity android:name=".DatabaseSpecialistsActivity"/>
