@@ -119,19 +119,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_AGE_DOCTOR + ", " + COLUMN_EXPER_DOCTOR + ", " +
                 COLUMN_SERV_DOCTOR + ") VALUES ('20', 'Иванов Стас', 'Хирург', '44 года', '20 лет', 'Хирургия');");
 
-
-        //
-//        db.execSQL("INSERT INTO " + TABLE_PASSWORD_DOCTORS + " (" + COLUMN_ID_DOCTOR_2 + ", " + COLUMN_LOGIN_DOCTOR
-//                + ", " + COLUMN_PASSWORD_DOCTOR + ") VALUES ('1' , 'Сергей', '12345');");
-//        db.execSQL("INSERT INTO " + TABLE_PASSWORD_DOCTORS + " (" + COLUMN_ID_DOCTOR_2 + ", " + COLUMN_LOGIN_DOCTOR
-//                + ", " + COLUMN_PASSWORD_DOCTOR + ") VALUES ('2' , 'Ольга', '11111');");
-//        db.execSQL("INSERT INTO " + TABLE_PASSWORD_DOCTORS + " (" + COLUMN_ID_DOCTOR_2 + ", " + COLUMN_LOGIN_DOCTOR
-//                + ", " + COLUMN_PASSWORD_DOCTOR + ") VALUES ('3' , 'Дмитрий', '33333');");
-//        db.execSQL("INSERT INTO " + TABLE_PASSWORD_DOCTORS + " (" + COLUMN_ID_DOCTOR_2 + ", " + COLUMN_LOGIN_DOCTOR
-//                + ", " + COLUMN_PASSWORD_DOCTOR + ") VALUES ('4' , 'Ростислав', '44444');");
-//        db.execSQL("INSERT INTO " + TABLE_PASSWORD_DOCTORS + " (" + COLUMN_ID_DOCTOR_2 + ", " + COLUMN_LOGIN_DOCTOR
-//                + ", " + COLUMN_PASSWORD_DOCTOR + ") VALUES ('5' , 'Матвей', '55555');");
-
         db.execSQL("INSERT INTO " + TABLE_PATIENTS + " (" + COLUMN_ID_PATIENT + ", " + COLUMN_LOGIN_PATIENT
                 + ", " + COLUMN_PASSWORD_PATIENT + ", " + COLUMN_FNAME
                 + ", " + COLUMN_LNAME + ", " + COLUMN_PNAME + ", " + COLUMN_BIRTH + ", "

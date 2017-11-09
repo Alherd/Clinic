@@ -1,10 +1,14 @@
 package com.android.clinic;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.FilterQueryProvider;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 import com.android.clinic.database.DatabaseHelper;
 
@@ -19,7 +23,7 @@ public class DatabaseSpecialistsActivity extends DatabaseActivity {
     public void onResume() {
         super.onResume();
         // открываем подключение
-        db = databaseHelper.getReadableDatabase();
+        db = mDatabaseHelper.getReadableDatabase();
         //получаем данные из бд в виде курсора
         userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS + " order by " + DatabaseHelper.COLUMN_NAME_DOCTOR, null);
         // определяем, какие столбцы из курсора будут выводиться в ListView
@@ -63,5 +67,16 @@ public class DatabaseSpecialistsActivity extends DatabaseActivity {
         });
 
         userList.setAdapter(userAdapter);
+        userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Doctors mDoctors = new Doctors();
+                mDoctors.setId(id);
+                arg = mDoctors.getId().toString();
+                Intent intent = new Intent(DatabaseSpecialistsActivity.this, DescriptionDoctorsActivity.class);
+                startActivity(intent);
+                Toast.makeText(DatabaseSpecialistsActivity.this, arg, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

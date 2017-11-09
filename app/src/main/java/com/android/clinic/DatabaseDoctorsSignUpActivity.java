@@ -1,40 +1,18 @@
 package com.android.clinic;
 
+import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.Button;
-import android.widget.EditText;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.FilterQueryProvider;
-import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
+import android.support.v4.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 import com.android.clinic.database.DatabaseHelper;
 
-public class DatabaseDoctorsSignUpActivity extends AppCompatActivity {
-    SimpleCursorAdapter userAdapter;
-    ListView userList;
-    TextView header;
-    EditText userFilter;
-    DatabaseHelper mDatabaseHelper;
-    SQLiteDatabase db;
-    Button button_sign_up;
-    Cursor userCursor;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctors_database);
-        header = (TextView) findViewById(R.id.header);
-        userList = (ListView) findViewById(R.id.list);
-        userFilter = (EditText) findViewById(R.id.userFilter);
-        button_sign_up = (Button) findViewById(R.id.id_sign_up);
-        mDatabaseHelper = new DatabaseHelper(getApplicationContext());
-    }
+public class DatabaseDoctorsSignUpActivity extends DatabaseActivity {
 
     @Override
     public void onResume() {
@@ -90,14 +68,17 @@ public class DatabaseDoctorsSignUpActivity extends AppCompatActivity {
         });
 
         userList.setAdapter(userAdapter);
+        userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        // Закрываем подключение и курсор
-        db.close();
-        userCursor.close();
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Doctors mDoctors = new Doctors();
+                mDoctors.setId(id);
+                arg = mDoctors.getId().toString();
+                Intent intent = new Intent(DatabaseDoctorsSignUpActivity.this, DescriptionDoctorsActivity.class);
+                startActivity(intent);
+                Toast.makeText(DatabaseDoctorsSignUpActivity.this, arg, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

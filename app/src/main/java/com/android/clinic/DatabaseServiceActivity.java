@@ -16,14 +16,13 @@ import static com.android.clinic.database.DatabaseHelper.COLUMN_NAME_DOCTOR;
 import static com.android.clinic.database.DatabaseHelper.COLUMN_SERV_DOCTOR;
 
 public class DatabaseServiceActivity extends DatabaseActivity {
-    SimpleCursorAdapter userAdapter;
-    public static String arg;
+
 
     @Override
     public void onResume() {
         super.onResume();
         // открываем подключение
-        db = databaseHelper.getReadableDatabase();
+        db = mDatabaseHelper.getReadableDatabase();
         //получаем данные из бд в виде курсора
         userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS + " order by " + COLUMN_SERV_DOCTOR, null);
         // определяем, какие столбцы из курсора будут выводиться в ListView
@@ -69,7 +68,6 @@ public class DatabaseServiceActivity extends DatabaseActivity {
 
         userList.setAdapter(userAdapter);
         userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 Doctors mDoctors = new Doctors();

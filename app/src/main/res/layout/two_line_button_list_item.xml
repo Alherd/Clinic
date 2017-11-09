@@ -18,11 +18,4 @@
         android:layout_below="@id/text1"
         android:textSize="16sp"/>
 
-    <Button
-        android:id="@+id/id_sign_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:hint="@string/sign_up_1"/>
-
 </RelativeLayout>

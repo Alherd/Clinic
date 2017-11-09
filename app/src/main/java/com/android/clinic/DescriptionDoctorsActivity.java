@@ -14,10 +14,9 @@ import android.widget.Toast;
 
 import com.android.clinic.database.DatabaseHelper;
 
-import static com.android.clinic.DatabaseServiceActivity.arg;
+import static com.android.clinic.DatabaseActivity.arg;
 
 public class DescriptionDoctorsActivity extends AppCompatActivity {
-    TextView nameDoctors;
     DatabaseHelper mDatabaseHelper;
     SimpleCursorAdapter userAdapter;
     ListView userListDoctor;
@@ -30,7 +29,6 @@ public class DescriptionDoctorsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_description_doctors);
 
-        //   nameDoctors = (TextView) findViewById(R.id.nameDoctors);
         userListDoctor = (ListView) findViewById(R.id.list_1);
         button_1 = (Button) findViewById(R.id.button_1);
         mDatabaseHelper = new DatabaseHelper(getApplicationContext());
