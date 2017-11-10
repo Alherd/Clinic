@@ -187,10 +187,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor returnDoctorName(String arg) {
+    public String returnPatientFName(String login) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor b = db.rawQuery("select " + COLUMN_NAME_DOCTOR + " from " + TABLE_DOCTORS + " where " + COLUMN_ID_DOCTOR_1 +
-                " = '" + arg + "' ;", null);
-        return b;
+        Cursor b = db.rawQuery("select " + COLUMN_FNAME + " from " + TABLE_PATIENTS + " where " + COLUMN_LOGIN_PATIENT +
+                " = '" + login + "' ;", null);
+        b.moveToFirst();
+        String nameP = b.getString(b.getColumnIndex(COLUMN_FNAME));
+        b.close();
+        return nameP;
     }
 }

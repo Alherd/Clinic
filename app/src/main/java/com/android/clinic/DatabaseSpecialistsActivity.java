@@ -75,7 +75,6 @@ public class DatabaseSpecialistsActivity extends DatabaseActivity {
                 arg = mDoctors.getId().toString();
                 Intent intent = new Intent(DatabaseSpecialistsActivity.this, DescriptionDoctorsActivity.class);
                 startActivity(intent);
-                Toast.makeText(DatabaseSpecialistsActivity.this, arg, Toast.LENGTH_LONG).show();
             }
         });
     }

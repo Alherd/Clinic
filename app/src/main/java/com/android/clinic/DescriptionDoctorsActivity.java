@@ -6,7 +6,6 @@ import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -52,19 +51,6 @@ public class DescriptionDoctorsActivity extends AppCompatActivity {
         userAdapter = new SimpleCursorAdapter(this, R.layout.three_line_list,
                 userCursor, headers1, new int[]{R.id.text1_1, R.id.text2_1, R.id.text3_1, R.id.text4_1, R.id.text5_1}, 0);
         userListDoctor.setAdapter(userAdapter);
-        userListDoctor.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                Doctors mDoctors = new Doctors();
-                mDoctors.setId(id);
-                arg = mDoctors.getId().toString();
-                //  Intent intent = new Intent(DescriptionDoctorsActivity.this, MenuActivity.class);
-                //startActivity(intent);
-                Toast.makeText(DescriptionDoctorsActivity.this, arg, Toast.LENGTH_LONG).show();
-            }
-
-        });
     }
 
     @Override

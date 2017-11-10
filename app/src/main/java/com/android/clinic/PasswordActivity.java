@@ -17,6 +17,7 @@ public class PasswordActivity extends AppCompatActivity {
     Button into_button;
     EditText editLogin;
     EditText editPassword;
+    public static Patients mPatient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,9 @@ public class PasswordActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean check = myDb.searchLoginPassword(editLogin.getText().toString(), editPassword.getText().toString());
                 if (check) {
-                    Toast.makeText(PasswordActivity.this, "Вход выполнен", Toast.LENGTH_LONG).show();
+                    String namep = myDb.returnPatientFName(editLogin.getText().toString());
+                    //  mPatient.setPatientFNAME(myDb.returnPatientFName(editLogin.getText().toString()));
+                    Toast.makeText(PasswordActivity.this, "Здравствуйте, " + namep + "!", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(PasswordActivity.this, MenuActivity.class);
                     startActivity(intent);
                 } else

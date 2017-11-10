@@ -73,7 +73,6 @@ public class DatabaseServiceSignUpActivity extends DatabaseActivity {
                 arg = mDoctors.getId().toString();
                 Intent intent = new Intent(DatabaseServiceSignUpActivity.this, DescriptionDoctorsActivity.class);
                 startActivity(intent);
-                Toast.makeText(DatabaseServiceSignUpActivity.this, arg, Toast.LENGTH_LONG).show();
             }
         });
     }
