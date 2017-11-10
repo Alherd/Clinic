@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.clinic.database.DatabaseHelper;
@@ -50,7 +49,7 @@ public class DescriptionDoctorsActivity extends AppCompatActivity {
                 " = '" + arg + "' ;", null);
         String[] headers1 = new String[]{DatabaseHelper.COLUMN_NAME_DOCTOR, DatabaseHelper.COLUMN_SPEC_DOCTOR,
                 DatabaseHelper.COLUMN_SERV_DOCTOR, DatabaseHelper.COLUMN_AGE_DOCTOR, DatabaseHelper.COLUMN_EXPER_DOCTOR};
-        userAdapter = new SimpleCursorAdapter(this, R.layout.one_line_list,
+        userAdapter = new SimpleCursorAdapter(this, R.layout.three_line_list,
                 userCursor, headers1, new int[]{R.id.text1_1, R.id.text2_1, R.id.text3_1, R.id.text4_1, R.id.text5_1}, 0);
         userListDoctor.setAdapter(userAdapter);
         userListDoctor.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -63,11 +62,9 @@ public class DescriptionDoctorsActivity extends AppCompatActivity {
                 //  Intent intent = new Intent(DescriptionDoctorsActivity.this, MenuActivity.class);
                 //startActivity(intent);
                 Toast.makeText(DescriptionDoctorsActivity.this, arg, Toast.LENGTH_LONG).show();
-
             }
 
         });
-
     }
 
     @Override

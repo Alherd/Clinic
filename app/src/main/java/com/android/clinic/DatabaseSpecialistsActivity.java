@@ -31,7 +31,7 @@ public class DatabaseSpecialistsActivity extends DatabaseActivity {
         // создаем адаптер, передаем в него курсор
         userAdapter = new SimpleCursorAdapter(this, R.layout.two_line_list,
                 userCursor, headers, new int[]{R.id.text1, R.id.text2}, 0);
-        header.setText("Наши специалисты");
+        header.setText("Специалисты");
         if (!userFilter.getText().toString().isEmpty())
             userAdapter.getFilter().filter(userFilter.getText().toString());
 

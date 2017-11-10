@@ -27,7 +27,7 @@ public class DatabaseDoctorsSignUpActivity extends DatabaseActivity {
         // создаем адаптер, передаем в него курсор
         userAdapter = new SimpleCursorAdapter(this, R.layout.two_line_button_list_item,
                 userCursor, headers1, new int[]{R.id.text1, R.id.text2}, 0);
-        header.setText("Наши врачи");
+        header.setText("Запись к врачу");
 
         // если в текстовом поле есть текст, выполняем фильтрацию
         // данная проверка нужна при переходе от одной ориентации экрана к другой

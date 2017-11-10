@@ -10,7 +10,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final int VERSION = 1;
     public static final String DATABASE_NAME = "clinicBase.db";
 
-
     public static final String TABLE_DOCTORS = "doctors"; // название таблицы в бд
     public static final String COLUMN_ID_DOCTOR_1 = "_id";
     public static final String COLUMN_NAME_DOCTOR = "name";
@@ -18,10 +17,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_SERV_DOCTOR = "service";
     public static final String COLUMN_AGE_DOCTOR = "birthday";
     public static final String COLUMN_EXPER_DOCTOR = "experience";
-
-    //public static final String TABLE_PASSWORD_DOCTORS = "doctors_password"; // название таблицы в бд
-    //public static final String COLUMN_LOGIN_DOCTOR = "login";
-    //public static final String COLUMN_PASSWORD_DOCTOR = "password";
 
     public static final String TABLE_PATIENTS = "patients"; // название таблицы в бд
     public static final String COLUMN_ID_PATIENT = "_id_patient";
