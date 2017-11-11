@@ -17,14 +17,13 @@ import static com.android.clinic.database.DatabaseHelper.COLUMN_SERV_DOCTOR;
 
 public class DatabaseServiceActivity extends DatabaseActivity {
 
-
     @Override
     public void onResume() {
         super.onResume();
         // открываем подключение
         db = mDatabaseHelper.getReadableDatabase();
         //получаем данные из бд в виде курсора
-        userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS + " order by " + COLUMN_SERV_DOCTOR, null);
+        userCursor = db.rawQuery("select distinct * from " + DatabaseHelper.TABLE_DOCTORS + " order by " + COLUMN_SERV_DOCTOR, null);
         // определяем, какие столбцы из курсора будут выводиться в ListView
         String[] headers = new String[]{COLUMN_SERV_DOCTOR, COLUMN_NAME_DOCTOR};
         // создаем адаптер, передаем в него курсор
