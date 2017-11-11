@@ -8,22 +8,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.clinic.database.DatabaseHelper;
+import com.android.clinic.database.DatabaseHelperMethods;
 
 public class PasswordActivity extends AppCompatActivity {
-    DatabaseHelper myDb;
+    DatabaseHelperMethods myDb;
     Button guest_button;
     Button registration_button;
     Button into_button;
     EditText editLogin;
     EditText editPassword;
-    public static Patients mPatient;
+    public static String idPatient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password);
-        myDb = new DatabaseHelper(this);
+        myDb = new DatabaseHelperMethods(this);
 
         registration_button = (Button) findViewById(R.id.registration);
         into_button = (Button) findViewById(R.id.into);
@@ -43,9 +43,11 @@ public class PasswordActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean check = myDb.searchLoginPassword(editLogin.getText().toString(), editPassword.getText().toString());
                 if (check) {
-                    String namep = myDb.returnPatientFName(editLogin.getText().toString());
-                    //  mPatient.setPatientFNAME(myDb.returnPatientFName(editLogin.getText().toString()));
-                    Toast.makeText(PasswordActivity.this, "Здравствуйте, " + namep + "!", Toast.LENGTH_LONG).show();
+                    Patients mPatient = new Patients();
+                    mPatient.setPatientFNAME(myDb.returnPatientFName(editLogin.getText().toString()));
+                    idPatient = mPatient.getPatientFNAME();
+                    Toast.makeText(PasswordActivity.this, "Здравствуйте, " + mPatient.getPatientFNAME() +
+                            "!", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(PasswordActivity.this, MenuActivity.class);
                     startActivity(intent);
                 } else

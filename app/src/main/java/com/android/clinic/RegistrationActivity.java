@@ -8,10 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.clinic.database.DatabaseHelper;
+import com.android.clinic.database.DatabaseHelperMethods;
 
 public class RegistrationActivity extends AppCompatActivity {
-    DatabaseHelper myDb;
+    DatabaseHelperMethods myDb;
     Button register_button;
     EditText login;
     EditText password;
@@ -26,7 +26,7 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-        myDb = new DatabaseHelper(this);
+        myDb = new DatabaseHelperMethods(this);
 
         login = (EditText) findViewById(R.id.insert_login_editText);
         password = (EditText) findViewById(R.id.insert_password_editText);

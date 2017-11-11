@@ -1,6 +1,5 @@
 package com.android.clinic;
 
-
 public class Patients {
     private String mPatientID;
     private String mPatientLogin;
@@ -83,4 +82,5 @@ public class Patients {
     public void setPatientEmail(String patientEmail) {
         mPatientEmail = patientEmail;
     }
+
 }
