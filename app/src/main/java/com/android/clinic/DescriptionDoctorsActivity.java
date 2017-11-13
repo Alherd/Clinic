@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.android.clinic.database.DatabaseHelper;
 
 import static com.android.clinic.DatabaseActivity.arg;
+import static com.android.clinic.MainActivity.sIsSignUp;
 
 public class DescriptionDoctorsActivity extends AppCompatActivity {
     DatabaseHelper mDatabaseHelper;
@@ -34,7 +35,8 @@ public class DescriptionDoctorsActivity extends AppCompatActivity {
         button_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(DescriptionDoctorsActivity.this, arg, Toast.LENGTH_LONG).show();
+                String a = "" + sIsSignUp;
+                Toast.makeText(DescriptionDoctorsActivity.this, a, Toast.LENGTH_LONG).show();
             }
         });
     }

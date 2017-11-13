@@ -21,6 +21,16 @@ public class DatabaseHelperMethods extends DatabaseHelper {
         return nameP;
     }
 
+    public String returnPatientID(String login) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor b = db.rawQuery("select " + COLUMN_ID_PATIENT + " from " + TABLE_PATIENTS + " where " + COLUMN_LOGIN_PATIENT +
+                " = '" + login + "' ;", null);
+        b.moveToFirst();
+        String name_id = b.getString(b.getColumnIndex(COLUMN_ID_PATIENT));
+        b.close();
+        return name_id;
+    }
+
     public boolean searchLoginPassword(String login, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select fname from " + TABLE_PATIENTS + " where " + COLUMN_LOGIN_PATIENT +

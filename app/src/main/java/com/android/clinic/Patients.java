@@ -1,6 +1,7 @@
 package com.android.clinic;
 
 public class Patients {
+    private boolean mSignUp;
     private String mPatientID;
     private String mPatientLogin;
     private String mPatientPassword;
@@ -10,6 +11,14 @@ public class Patients {
     private String mPatientBirth;
     private String mPatientAddress;
     private String mPatientEmail;
+
+    public boolean isSignUp() {
+        return mSignUp;
+    }
+
+    public void setSignUp(boolean signUp) {
+        mSignUp = signUp;
+    }
 
     public String getPatientID() {
         return mPatientID;
