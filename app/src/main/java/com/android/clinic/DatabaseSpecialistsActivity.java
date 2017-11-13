@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.FilterQueryProvider;
 import android.widget.SimpleCursorAdapter;
-import android.widget.Toast;
 
 import com.android.clinic.database.DatabaseHelper;
 
@@ -72,7 +71,7 @@ public class DatabaseSpecialistsActivity extends DatabaseActivity {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 Doctors mDoctors = new Doctors();
                 mDoctors.setId(id);
-                arg = mDoctors.getId().toString();
+                KeyValues.sIdDoctor = mDoctors.getId().toString();
                 Intent intent = new Intent(DatabaseSpecialistsActivity.this, DescriptionDoctorsActivity.class);
                 startActivity(intent);
             }

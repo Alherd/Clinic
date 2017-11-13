@@ -10,9 +10,6 @@ import android.widget.Toast;
 
 import com.android.clinic.database.DatabaseHelperMethods;
 
-import static com.android.clinic.MainActivity.sIdPatient;
-import static com.android.clinic.MainActivity.sIsSignUp;
-
 public class PasswordActivity extends AppCompatActivity {
     DatabaseHelperMethods myDb;
     Button guest_button;
@@ -48,9 +45,9 @@ public class PasswordActivity extends AppCompatActivity {
                     Patients mPatient = new Patients();
                     mPatient.setPatientFNAME(myDb.returnPatientFName(editLogin.getText().toString()));
                     mPatient.setPatientID(myDb.returnPatientID(editLogin.getText().toString()));
-                    sIdPatient = mPatient.getPatientID();
                     mPatient.setSignUp(true);
-                    sIsSignUp = mPatient.isSignUp();
+                    KeyValues.sIdPatient =mPatient.getPatientID();
+                    KeyValues.sIsSignUp =mPatient.isSignUp();
                     Toast.makeText(PasswordActivity.this, "Здравствуйте, " + mPatient.getPatientFNAME() +
                             "!", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(PasswordActivity.this, MenuActivity.class);

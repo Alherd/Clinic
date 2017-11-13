@@ -10,8 +10,6 @@ import android.widget.Toast;
 
 import com.android.clinic.database.DatabaseHelperMethods;
 
-import static com.android.clinic.MainActivity.sIsSignUp;
-
 public class RegistrationActivity extends AppCompatActivity {
     DatabaseHelperMethods myDb;
     Button register_button;
@@ -53,7 +51,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     case 1:
                         Patients mPatient = new Patients();
                         mPatient.setSignUp(true);
-                        sIsSignUp = mPatient.isSignUp();
+                        KeyValues.sIsSignUp = mPatient.isSignUp();
                         Toast.makeText(RegistrationActivity.this, R.string.reg_success, Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(RegistrationActivity.this, MenuActivity.class);
                         startActivity(intent);

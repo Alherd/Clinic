@@ -18,7 +18,6 @@ public class DatabaseActivity extends AppCompatActivity {
     SQLiteDatabase db;
     Cursor userCursor;
     EditText userFilter;
-    public static String arg;
     SimpleCursorAdapter userAdapter;
 
     @Override

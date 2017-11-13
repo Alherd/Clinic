@@ -12,8 +12,6 @@ import android.widget.Toast;
 
 import com.android.clinic.database.DatabaseHelper;
 
-import static com.android.clinic.DatabaseActivity.arg;
-import static com.android.clinic.MainActivity.sIsSignUp;
 
 public class DescriptionDoctorsActivity extends AppCompatActivity {
     DatabaseHelper mDatabaseHelper;
@@ -35,7 +33,7 @@ public class DescriptionDoctorsActivity extends AppCompatActivity {
         button_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String a = "" + sIsSignUp;
+                String a = "" + KeyValues.sIsSignUp;
                 Toast.makeText(DescriptionDoctorsActivity.this, a, Toast.LENGTH_LONG).show();
             }
         });
@@ -47,7 +45,7 @@ public class DescriptionDoctorsActivity extends AppCompatActivity {
         db = mDatabaseHelper.getReadableDatabase();
         userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS +
                 " where " + DatabaseHelper.COLUMN_ID_DOCTOR_1 +
-                " = '" + arg + "' ;", null);
+                " = '" + KeyValues.sIdDoctor + "' ;", null);
         String[] headers1 = new String[]{DatabaseHelper.COLUMN_NAME_DOCTOR, DatabaseHelper.COLUMN_SPEC_DOCTOR,
                 DatabaseHelper.COLUMN_SERV_DOCTOR, DatabaseHelper.COLUMN_AGE_DOCTOR, DatabaseHelper.COLUMN_EXPER_DOCTOR};
         userAdapter = new SimpleCursorAdapter(this, R.layout.three_line_list,
