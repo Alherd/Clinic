@@ -1,5 +1,6 @@
 package com.android.clinic;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.widget.SimpleCursorAdapter;
@@ -33,8 +34,8 @@ public class DescriptionDoctorsActivity extends AppCompatActivity {
         button_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String a = "" + KeyValues.sIsSignUp;
-                Toast.makeText(DescriptionDoctorsActivity.this, a, Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(DescriptionDoctorsActivity.this, DatabaseScheduleActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -44,7 +45,7 @@ public class DescriptionDoctorsActivity extends AppCompatActivity {
         super.onResume();
         db = mDatabaseHelper.getReadableDatabase();
         userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS +
-                " where " + DatabaseHelper.COLUMN_ID_DOCTOR_1 +
+                " where " + DatabaseHelper.COLUMN_ID_DOCTOR +
                 " = '" + KeyValues.sIdDoctor + "' ;", null);
         String[] headers1 = new String[]{DatabaseHelper.COLUMN_NAME_DOCTOR, DatabaseHelper.COLUMN_SPEC_DOCTOR,
                 DatabaseHelper.COLUMN_SERV_DOCTOR, DatabaseHelper.COLUMN_AGE_DOCTOR, DatabaseHelper.COLUMN_EXPER_DOCTOR};

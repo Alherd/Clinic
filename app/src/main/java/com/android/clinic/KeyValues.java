@@ -5,4 +5,3 @@ public class KeyValues {
     public static String sIdPatient;
     public static String sIdDoctor;
 }
-

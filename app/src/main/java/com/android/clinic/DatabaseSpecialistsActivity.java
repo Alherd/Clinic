@@ -28,7 +28,7 @@ public class DatabaseSpecialistsActivity extends DatabaseActivity {
         // определяем, какие столбцы из курсора будут выводиться в ListView
         String[] headers = new String[]{DatabaseHelper.COLUMN_NAME_DOCTOR, DatabaseHelper.COLUMN_SPEC_DOCTOR};
         // создаем адаптер, передаем в него курсор
-        userAdapter = new SimpleCursorAdapter(this, R.layout.two_line_list,
+        userAdapter = new SimpleCursorAdapter(this, R.layout.two_line_button_list_item,
                 userCursor, headers, new int[]{R.id.text1, R.id.text2}, 0);
         header.setText("Специалисты");
         if (!userFilter.getText().toString().isEmpty())

@@ -38,6 +38,8 @@
         </activity>
         <activity android:name=".DescriptionDoctorsActivity">
         </activity>
+        <activity android:name=".DatabaseScheduleActivity">
+        </activity>
     </application>
 
 </manifest>

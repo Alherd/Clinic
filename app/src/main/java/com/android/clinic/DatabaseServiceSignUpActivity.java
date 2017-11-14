@@ -24,7 +24,7 @@ public class DatabaseServiceSignUpActivity extends DatabaseActivity {
         // определяем, какие столбцы из курсора будут выводиться в ListView
         String[] headers = new String[]{DatabaseHelper.COLUMN_SERV_DOCTOR, DatabaseHelper.COLUMN_NAME_DOCTOR};
         // создаем адаптер, передаем в него курсор
-        userAdapter = new SimpleCursorAdapter(this, R.layout.two_line_button_list_item,
+        userAdapter = new SimpleCursorAdapter(this, R.layout.two_line_list_item,
                 userCursor, headers, new int[]{R.id.text1, R.id.text2}, 0);
         header.setText("Запись на услугу");
         // если в текстовом поле есть текст, выполняем фильтрацию
