@@ -39,6 +39,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_SCHEDULE_DOCTORS_SATURDAY = "doctor_saturday";
     public static final String COLUMN_SCHEDULE_DOCTORS_SUNDAY = "doctor_sunday";
 
+    public static final String TABLE_MEDICAL_MAP_PATIENTS = "map_patients";
+    public static final String COLUMN_ID_MAP = "_id";
+    public static final String COLUMN_ID_PATIENT_MAP = "id_patient";
+    public static final String COLUMN_ID_DOCTOR_MAP = "id_doctor";
+    public static final String COLUMN_DATE_MAP = "date_map";
+    public static final String COLUMN_DIAGNOSIS_COD_MAP = "diagnosis_cod_map";
+    public static final String COLUMN_NOTE_DOCTOR_MAP = "note_doctor_map";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, VERSION);
@@ -81,24 +88,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COLUMN_SCHEDULE_DOCTORS_SATURDAY + " TEXT, "
                 + COLUMN_SCHEDULE_DOCTORS_SUNDAY + " TEXT);");
 
-        insertTableScheduleDoctors(1, "14:00", "14:00", "15:00",
-                "15:00", "14:00", "16:00", "16:00");
+
+        db.execSQL("CREATE TABLE " + TABLE_MEDICAL_MAP_PATIENTS
+                + " (" + COLUMN_ID_MAP + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + COLUMN_ID_PATIENT_MAP + " INTEGER, "
+                + COLUMN_ID_DOCTOR_MAP + " INTEGER, "
+                + COLUMN_DATE_MAP + " TEXT, "
+                + COLUMN_DIAGNOSIS_COD_MAP + " INTEGER, "
+                + COLUMN_NOTE_DOCTOR_MAP + " TEXT);");
+
+//        insertTableScheduleDoctors(1, "14:00", "14:00", "15:00",
+//                "15:00", "14:00", "16:00", "16:00");
 //        myDbMethod.insertTableScheduleDoctors(1, "14:10", "14:10", "15:10",
 //                "15:10", "14:10", null, null);
-
+// insertTableDoctors(1, "Фурс Галина Федоровна", "Лор-врач",
+//                "Лечение лор-заболеваний", "45 лет", "21 год", "803");
+//        insertTableDoctors(2, "Фурс Галина Федоровна", "Лор-врач",
+//                "Лечение лор-заболеваний", "45 лет", "21", "803");
         db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR + ", " + COLUMN_NAME_DOCTOR +
                 ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_AGE_DOCTOR + ", " + COLUMN_EXPER_DOCTOR + ", " +
                 COLUMN_SERV_DOCTOR + ", " + COLUMN_CABINET_DOCTOR + ") VALUES " +
                 "('1' , 'Фурс Галина Федоровна', 'Лор-врач', ' 45 лет', ' 21 год','Лечение лор-заболеваний', '803');");
-//        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR + ", " + COLUMN_NAME_DOCTOR +
-//                ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_AGE_DOCTOR + ", " + COLUMN_EXPER_DOCTOR + ", " +
-//                COLUMN_SERV_DOCTOR + ", " + COLUMN_CABINET_DOCTOR + ") VALUES " +
-//                "('2', 'Дудко Мария Александровна', 'Лор-врач', '46 лет', '23 года', 'Лечение лор-заболеваний', '803');");
-//        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR + ", " + COLUMN_NAME_DOCTOR +
-//                ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_AGE_DOCTOR + ", " + COLUMN_EXPER_DOCTOR + ", " +
-//                COLUMN_SERV_DOCTOR + ", " + COLUMN_CABINET_DOCTOR + ") VALUES " +
-//                "('3', 'Максимюк Анастасия Викторовна', 'Врач общей практики', '41 год', '12 лет'," +
-//                " 'Медпомощь на амбулаторном этапе', '451');");
+        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR + ", " + COLUMN_NAME_DOCTOR +
+                ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_AGE_DOCTOR + ", " + COLUMN_EXPER_DOCTOR + ", " +
+                COLUMN_SERV_DOCTOR + ", " + COLUMN_CABINET_DOCTOR + ") VALUES " +
+                "('2', 'Дудко Мария Александровна', 'Лор-врач', '46 лет', '23 года', 'Лечение лор-заболеваний', '803');");
+        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR + ", " + COLUMN_NAME_DOCTOR +
+                ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_AGE_DOCTOR + ", " + COLUMN_EXPER_DOCTOR + ", " +
+                COLUMN_SERV_DOCTOR + ", " + COLUMN_CABINET_DOCTOR + ") VALUES " +
+                "('3', 'Максимюк Анастасия Викторовна', 'Врач общей практики', '41 год', '12 лет'," +
+                " 'Медпомощь на амбулаторном этапе', '451');");
 //        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR + ", " + COLUMN_NAME_DOCTOR +
 //                ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_AGE_DOCTOR + ", " + COLUMN_EXPER_DOCTOR + ", " +
 //                COLUMN_SERV_DOCTOR + ", " + COLUMN_CABINET_DOCTOR + ") VALUES " +
@@ -152,25 +171,50 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COLUMN_ADDRESS + ", " + COLUMN_EMAIL + ") VALUES ('3','виктория', '333', 'Виктория', 'Левчук'," +
                 " 'Александровна','31.12.1995','ул. Налибоцкая 3,14', 'vika@rambler.ru');");
 
+
+        db.execSQL("INSERT INTO " + TABLE_MEDICAL_MAP_PATIENTS + " (" + COLUMN_ID_MAP + ", " + COLUMN_ID_PATIENT_MAP
+                + ", " + COLUMN_ID_DOCTOR_MAP + ", " + COLUMN_DATE_MAP
+                + ", " + COLUMN_DIAGNOSIS_COD_MAP + ", " + COLUMN_NOTE_DOCTOR_MAP + ") VALUES ('1','2', '2', '26.11.2017',"
+                + " '4', 'Небольшая пломба');");
     }
+
+//    public int insertTableDoctors(int _id, String name_doctor, String spec_doctor,
+//                                   String service_doctor, String age_doctor, String exp_doctor, String cab_doctor) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+////        db.execSQL("INSERT INTO " + TABLE_DOCTORS + " (" + COLUMN_ID_DOCTOR + ", " + COLUMN_NAME_DOCTOR +
+////                ", " + COLUMN_SPEC_DOCTOR + ", " + COLUMN_AGE_DOCTOR + ", " + COLUMN_EXPER_DOCTOR + ", " +
+////                COLUMN_SERV_DOCTOR + ", " + COLUMN_CABINET_DOCTOR + ") VALUES " +
+////                "('" + _id + "' , '" + name_doctor + "', '" + spec_doctor + "', '" + age_doctor + "', '" + exp_doctor + "','" + service_doctor + "', '" + cab_doctor + "');");
+//    ContentValues contentValues = new ContentValues();
+//    contentValues.put(COLUMN_ID_DOCTOR, _id);
+//    contentValues.put(COLUMN_NAME_DOCTOR, name_doctor);
+//    contentValues.put(COLUMN_SPEC_DOCTOR, spec_doctor);
+//    contentValues.put(COLUMN_SERV_DOCTOR, service_doctor);
+//    contentValues.put(COLUMN_AGE_DOCTOR, age_doctor);
+//    contentValues.put(COLUMN_EXPER_DOCTOR, exp_doctor);
+//    contentValues.put(COLUMN_CABINET_DOCTOR, cab_doctor);
+//    db.insert(TABLE_DOCTORS, null, contentValues);
+//    return 0;
+//    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onCreate(db);
     }
 
-    public void insertTableScheduleDoctors(int id, String monday, String tuesday, String wednesday,
-                                           String thursday, String friday, String saturday, String sunday) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_SCHEDULE_DOCTORS_ID, id);
-        contentValues.put(COLUMN_SCHEDULE_DOCTORS_MONDAY, monday);
-        contentValues.put(COLUMN_SCHEDULE_DOCTORS_TUESDAY, tuesday);
-        contentValues.put(COLUMN_SCHEDULE_DOCTORS_WEDNESDAY, wednesday);
-        contentValues.put(COLUMN_SCHEDULE_DOCTORS_THURSDAY, thursday);
-        contentValues.put(COLUMN_SCHEDULE_DOCTORS_FRIDAY, friday);
-        contentValues.put(COLUMN_SCHEDULE_DOCTORS_SATURDAY, saturday);
-        contentValues.put(COLUMN_SCHEDULE_DOCTORS_SUNDAY, sunday);
-        db.insert(TABLE_SCHEDULE_DOCTORS, null, contentValues);
-    }
+//    public void insertTableScheduleDoctors(int id, String monday, String tuesday, String wednesday,
+//                                           String thursday, String friday, String saturday, String sunday) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues contentValues = new ContentValues();
+//        contentValues.put(COLUMN_SCHEDULE_DOCTORS_ID, id);
+//        contentValues.put(COLUMN_SCHEDULE_DOCTORS_MONDAY, monday);
+//        contentValues.put(COLUMN_SCHEDULE_DOCTORS_TUESDAY, tuesday);
+//        contentValues.put(COLUMN_SCHEDULE_DOCTORS_WEDNESDAY, wednesday);
+//        contentValues.put(COLUMN_SCHEDULE_DOCTORS_THURSDAY, thursday);
+//        contentValues.put(COLUMN_SCHEDULE_DOCTORS_FRIDAY, friday);
+//        contentValues.put(COLUMN_SCHEDULE_DOCTORS_SATURDAY, saturday);
+//        contentValues.put(COLUMN_SCHEDULE_DOCTORS_SUNDAY, sunday);
+//        db.insert(TABLE_SCHEDULE_DOCTORS, null, contentValues);
+//    }
+
 }

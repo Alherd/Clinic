@@ -41,12 +41,12 @@
             android:textSize="30dp"/>
 
         <Button
-            android:id="@+id/specialities"
+            android:id="@+id/medicalMap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/service"
             android:background="@color/background"
-            android:hint="@string/specialists"
+            android:hint="@string/medicalcard"
             android:padding="10dp"
             android:textSize="30dp"/>
 
@@ -54,7 +54,7 @@
             android:id="@+id/about_us"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/specialities"
+            android:layout_below="@id/medicalMap"
             android:background="@color/background"
             android:hint="@string/about_clinic"
             android:padding="10dp"

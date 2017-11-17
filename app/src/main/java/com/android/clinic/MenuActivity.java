@@ -1,13 +1,10 @@
 package com.android.clinic;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-import static android.os.Build.VERSION_CODES.M;
 
 public class MenuActivity extends AppCompatActivity {
     Button signUp;
@@ -38,11 +35,11 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        special = (Button) findViewById(R.id.specialities);
+        special = (Button) findViewById(R.id.medicalMap);
         special.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MenuActivity.this, DatabaseSpecialistsActivity.class);
+                Intent i = new Intent(MenuActivity.this, DatabaseCardPatientsActivity.class);
                 startActivity(i);
             }
         });

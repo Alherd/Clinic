@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class DatabaseHelperMethods extends DatabaseHelper {
-
+//DatabaseHelper db;
     public DatabaseHelperMethods(Context context) {
         super(context);
     }
