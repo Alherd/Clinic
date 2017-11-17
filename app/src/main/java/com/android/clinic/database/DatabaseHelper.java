@@ -1,6 +1,5 @@
 package com.android.clinic.database;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -39,7 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_SCHEDULE_DOCTORS_SATURDAY = "doctor_saturday";
     public static final String COLUMN_SCHEDULE_DOCTORS_SUNDAY = "doctor_sunday";
 
-    public static final String TABLE_MEDICAL_MAP_PATIENTS = "map_patients";
+    public static final String TABLE_MEDICAL_CARD_PATIENTS = "map_patients";
     public static final String COLUMN_ID_MAP = "_id";
     public static final String COLUMN_ID_PATIENT_MAP = "id_patient";
     public static final String COLUMN_ID_DOCTOR_MAP = "id_doctor";
@@ -89,7 +88,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COLUMN_SCHEDULE_DOCTORS_SUNDAY + " TEXT);");
 
 
-        db.execSQL("CREATE TABLE " + TABLE_MEDICAL_MAP_PATIENTS
+        db.execSQL("CREATE TABLE " + TABLE_MEDICAL_CARD_PATIENTS
                 + " (" + COLUMN_ID_MAP + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_ID_PATIENT_MAP + " INTEGER, "
                 + COLUMN_ID_DOCTOR_MAP + " INTEGER, "
@@ -172,10 +171,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " 'Александровна','31.12.1995','ул. Налибоцкая 3,14', 'vika@rambler.ru');");
 
 
-        db.execSQL("INSERT INTO " + TABLE_MEDICAL_MAP_PATIENTS + " (" + COLUMN_ID_MAP + ", " + COLUMN_ID_PATIENT_MAP
+        db.execSQL("INSERT INTO " + TABLE_MEDICAL_CARD_PATIENTS + " (" + COLUMN_ID_MAP + ", " + COLUMN_ID_PATIENT_MAP
                 + ", " + COLUMN_ID_DOCTOR_MAP + ", " + COLUMN_DATE_MAP
                 + ", " + COLUMN_DIAGNOSIS_COD_MAP + ", " + COLUMN_NOTE_DOCTOR_MAP + ") VALUES ('1','2', '2', '26.11.2017',"
-                + " '4', 'Небольшая пломба');");
+                + " '4', 'Небольшая пломба в ухе');");
+
+        db.execSQL("INSERT INTO " + TABLE_MEDICAL_CARD_PATIENTS + " (" + COLUMN_ID_MAP + ", " + COLUMN_ID_PATIENT_MAP
+                + ", " + COLUMN_ID_DOCTOR_MAP + ", " + COLUMN_DATE_MAP
+                + ", " + COLUMN_DIAGNOSIS_COD_MAP + ", " + COLUMN_NOTE_DOCTOR_MAP + ") VALUES ('2','3', '1', '28.11.2017',"
+                + " '3', '');");
+
+        db.execSQL("INSERT INTO " + TABLE_MEDICAL_CARD_PATIENTS + " (" + COLUMN_ID_MAP + ", " + COLUMN_ID_PATIENT_MAP
+                + ", " + COLUMN_ID_DOCTOR_MAP + ", " + COLUMN_DATE_MAP
+                + ", " + COLUMN_DIAGNOSIS_COD_MAP + ", " + COLUMN_NOTE_DOCTOR_MAP + ") VALUES ('3','2', '3', '30.11.2017',"
+                + " '2', 'ушшная пломба');");
     }
 
 //    public int insertTableDoctors(int _id, String name_doctor, String spec_doctor,
