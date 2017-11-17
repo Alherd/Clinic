@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class DatabaseHelperMethods extends DatabaseHelper {
-//DatabaseHelper db;
+    //DatabaseHelper db;
     public DatabaseHelperMethods(Context context) {
         super(context);
     }
@@ -81,5 +81,14 @@ public class DatabaseHelperMethods extends DatabaseHelper {
         }
     }
 
+    public String returnNameDoctor(String idDoctor) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor b = db.rawQuery("select " + COLUMN_NAME_DOCTOR + " from " + TABLE_DOCTORS + " where " + COLUMN_ID_DOCTOR +
+                " = '" + idDoctor + "' ;", null);
+        b.moveToFirst();
+        String nameDoctor = b.getString(b.getColumnIndex(COLUMN_NAME_DOCTOR));
+        b.close();
+        return nameDoctor;
+    }
 
 }

@@ -39,7 +39,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_SCHEDULE_DOCTORS_SUNDAY = "doctor_sunday";
 
     public static final String TABLE_MEDICAL_CARD_PATIENTS = "map_patients";
-    public static final String COLUMN_ID_MAP = "_id";
+    public static final String COLUMN_ID_MAP = "_id1";
     public static final String COLUMN_ID_PATIENT_MAP = "id_patient";
     public static final String COLUMN_ID_DOCTOR_MAP = "id_doctor";
     public static final String COLUMN_DATE_MAP = "date_map";
@@ -184,7 +184,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO " + TABLE_MEDICAL_CARD_PATIENTS + " (" + COLUMN_ID_MAP + ", " + COLUMN_ID_PATIENT_MAP
                 + ", " + COLUMN_ID_DOCTOR_MAP + ", " + COLUMN_DATE_MAP
                 + ", " + COLUMN_DIAGNOSIS_COD_MAP + ", " + COLUMN_NOTE_DOCTOR_MAP + ") VALUES ('3','2', '3', '30.11.2017',"
-                + " '2', 'ушшная пломба');");
+                + " '2', 'ушная пломба');");
     }
 
 //    public int insertTableDoctors(int _id, String name_doctor, String spec_doctor,
