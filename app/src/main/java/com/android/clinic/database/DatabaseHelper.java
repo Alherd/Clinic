@@ -36,8 +36,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_SIGN_UP_PATIENTS = "sign_up_patients";
     public static final String COLUMN_SIGN_UP_ID = "_id";
     public static final String COLUMN_SIGN_UP_ID_PATIENTS = "_id_patients";
-    public static final String COLUMN_SIGN_UP_ID_DOCTORS = "_id_doctors";
-    public static final String COLUMN_SIGN_UP_ID_TICKETS = "_id_tickets";
+    public static final String COLUMN_SIGN_UP_NAME_DOCTORS = "_name_doctors";
+    public static final String COLUMN_SIGN_UP_DATETIME_TICKETS = "datetime_tickets";
 
     public static final String TABLE_MEDICAL_CARD_PATIENTS = "map_patients";
     public static final String COLUMN_ID_MAP = "_id_map";
@@ -86,15 +86,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE " + TABLE_SCHEDULE_DOCTORS
                 + " (" + COLUMN_SCHEDULE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + COLUMN_SCHEDULE_DOCTORS_ID + " INTEGER, "
+                + COLUMN_SCHEDULE_DOCTORS_ID + " TEXT, "
                 + COLUMN_SCHEDULE_DOCTORS_DATETIME + " DATETIME);");
 
 
         db.execSQL("CREATE TABLE " + TABLE_SIGN_UP_PATIENTS
                 + " (" + COLUMN_SIGN_UP_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_SIGN_UP_ID_PATIENTS + " INTEGER, "
-                + COLUMN_SIGN_UP_ID_DOCTORS + " INTEGER, "
-                + COLUMN_SIGN_UP_ID_TICKETS + " INTEGER);");
+                + COLUMN_SIGN_UP_NAME_DOCTORS + " INTEGER, "
+                + COLUMN_SIGN_UP_DATETIME_TICKETS + " INTEGER);");
 
 
         db.execSQL("CREATE TABLE " + TABLE_MEDICAL_CARD_PATIENTS
@@ -197,7 +197,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + ",('3','1','25 ноября  07:00');");
 
         db.execSQL("INSERT INTO " + TABLE_SIGN_UP_PATIENTS + " (" + COLUMN_SIGN_UP_ID + ", " + COLUMN_SIGN_UP_ID_PATIENTS
-                + ", " + COLUMN_SIGN_UP_ID_DOCTORS + ", " + COLUMN_SIGN_UP_ID_TICKETS + ") VALUES ('1','2','1','2');");
+                + ", " + COLUMN_SIGN_UP_NAME_DOCTORS + ", " + COLUMN_SIGN_UP_DATETIME_TICKETS + ") "
+                + " VALUES ('1','2','Фурс Галина Федоровна','25 ноября 09:30');");
 
         db.execSQL("INSERT INTO " + TABLE_MEDICAL_CARD_PATIENTS + " (" + COLUMN_ID_MAP + ", " + COLUMN_ID_PATIENT_MAP
                 + ", " + COLUMN_ID_DOCTOR_MAP + ", " + COLUMN_DATE_MAP

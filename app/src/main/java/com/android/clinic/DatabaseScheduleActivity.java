@@ -1,14 +1,19 @@
 package com.android.clinic;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.clinic.database.DatabaseHelper;
+import com.android.clinic.database.DatabaseHelperMethods;
 
 public class DatabaseScheduleActivity extends AppCompatActivity {
     ListView userList;
@@ -17,6 +22,7 @@ public class DatabaseScheduleActivity extends AppCompatActivity {
     SQLiteDatabase db;
     Cursor userCursor;
     SimpleCursorAdapter userAdapter;
+    DatabaseHelperMethods myDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +52,25 @@ public class DatabaseScheduleActivity extends AppCompatActivity {
                 userCursor, headers1, new int[]{R.id.text1_1}, 0);
         header.setText("Расписание");
         userList.setAdapter(userAdapter);
+        userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                //int datetimeTicket = myDb.returnDatetime("1");
+//                int datetimeTicket = myDb.returnDatetime(Long.toString(id));
+                String a = Long.toString(id);
+
+                Toast.makeText(DatabaseScheduleActivity.this, a, Toast.LENGTH_LONG).show();
+//                String nameDoctor = myDb.returnNameDoctor(KeyValues.sIdDoctor);
+//                boolean isSign = myDb.insertDataTicket(nameDoctor, KeyValues.sIdPatient, datetimeTicket);
+//                if (isSign) {
+//                    Toast.makeText(DatabaseScheduleActivity.this, "Талон заказан", Toast.LENGTH_LONG).show();
+//                    Intent intent = new Intent(DatabaseScheduleActivity.this, DescriptionDoctorsActivity.class);
+//                    startActivity(intent);
+//                } else
+//                    Toast.makeText(DatabaseScheduleActivity.this, "Талон не заказан", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override

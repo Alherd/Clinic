@@ -1,6 +1,5 @@
 package com.android.clinic;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -12,8 +11,8 @@ import android.widget.TextView;
 
 import com.android.clinic.database.DatabaseHelper;
 
-import static com.android.clinic.database.DatabaseHelper.COLUMN_SIGN_UP_ID_DOCTORS;
-import static com.android.clinic.database.DatabaseHelper.COLUMN_SIGN_UP_ID_TICKETS;
+import static com.android.clinic.database.DatabaseHelper.COLUMN_SIGN_UP_NAME_DOCTORS;
+import static com.android.clinic.database.DatabaseHelper.COLUMN_SIGN_UP_DATETIME_TICKETS;
 
 public class DatabaseNoteEntryActivity extends AppCompatActivity {
     ListView userList;
@@ -42,7 +41,7 @@ public class DatabaseNoteEntryActivity extends AppCompatActivity {
         userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE_SIGN_UP_PATIENTS +
                 " where " + DatabaseHelper.COLUMN_SIGN_UP_ID_PATIENTS + " = '" + KeyValues.sIdPatient + "';", null);
         // определяем, какие столбцы из курсора будут выводиться в ListView
-        String[] headers = new String[]{COLUMN_SIGN_UP_ID_DOCTORS, COLUMN_SIGN_UP_ID_TICKETS};
+        String[] headers = new String[]{COLUMN_SIGN_UP_NAME_DOCTORS, COLUMN_SIGN_UP_DATETIME_TICKETS};
         // создаем адаптер, передаем в него курсор
         userAdapter = new SimpleCursorAdapter(this, R.layout.two_line_button_list_item,
                 userCursor, headers, new int[]{R.id.text1, R.id.text2}, 0);
