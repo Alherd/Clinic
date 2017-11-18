@@ -24,8 +24,7 @@
         <activity android:name=".MenuActivity"/>
         <activity android:name=".DatabaseDoctorsSignUpActivity"/>
         <activity android:name=".DatabaseServiceSignUpActivity"/>
-        <activity android:name=".DatabaseSpecialistsActivity"/>
-        <activity android:name=".DatabaseServiceActivity"/>
+        <activity android:name=".DatabaseNoteEntryActivity"/>
         <activity android:name=".AboutClinicActivity">
         </activity>
         <activity android:name=".ContactsClinicActivity">

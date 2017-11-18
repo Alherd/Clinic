@@ -31,12 +31,12 @@
             />
 
         <Button
-            android:id="@+id/service"
+            android:id="@+id/tickets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/zapis"
             android:background="@color/background"
-            android:hint="@string/uslugi"
+            android:hint="@string/tickets"
             android:padding="10dp"
             android:textSize="30dp"/>
 
@@ -44,7 +44,7 @@
             android:id="@+id/medicalMap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/service"
+            android:layout_below="@id/tickets"
             android:background="@color/background"
             android:hint="@string/medicalcard"
             android:padding="10dp"

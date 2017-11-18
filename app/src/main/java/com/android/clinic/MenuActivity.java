@@ -28,11 +28,11 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        service = (Button) findViewById(R.id.service);
+        service = (Button) findViewById(R.id.tickets);
         service.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MenuActivity.this, DatabaseServiceActivity.class);
+                Intent i = new Intent(MenuActivity.this, DatabaseNoteEntryActivity.class);
                 startActivity(i);
             }
         });

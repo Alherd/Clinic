@@ -32,12 +32,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_SCHEDULE_ID = "_id";
     public static final String COLUMN_SCHEDULE_DOCTORS_ID = "_id_doctor";
     public static final String COLUMN_SCHEDULE_DOCTORS_DATETIME = "doctor_list_datetime";
-//    public static final String COLUMN_SCHEDULE_DOCTORS_TUESDAY = "doctor_tuesday";
-//    public static final String COLUMN_SCHEDULE_DOCTORS_WEDNESDAY = "doctor_wednesday";
-//    public static final String COLUMN_SCHEDULE_DOCTORS_THURSDAY = "doctor_thursday";
-//    public static final String COLUMN_SCHEDULE_DOCTORS_FRIDAY = "doctor_friday";
-//    public static final String COLUMN_SCHEDULE_DOCTORS_SATURDAY = "doctor_saturday";
-//    public static final String COLUMN_SCHEDULE_DOCTORS_SUNDAY = "doctor_sunday";
+
+    public static final String TABLE_SIGN_UP_PATIENTS = "sign_up_patients";
+    public static final String COLUMN_SIGN_UP_ID = "_id";
+    public static final String COLUMN_SIGN_UP_ID_PATIENTS = "_id_patients";
+    public static final String COLUMN_SIGN_UP_ID_DOCTORS = "_id_doctors";
+    public static final String COLUMN_SIGN_UP_ID_TICKETS = "_id_tickets";
 
     public static final String TABLE_MEDICAL_CARD_PATIENTS = "map_patients";
     public static final String COLUMN_ID_MAP = "_id_map";
@@ -90,6 +90,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COLUMN_SCHEDULE_DOCTORS_DATETIME + " DATETIME);");
 
 
+        db.execSQL("CREATE TABLE " + TABLE_SIGN_UP_PATIENTS
+                + " (" + COLUMN_SIGN_UP_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + COLUMN_SIGN_UP_ID_PATIENTS + " INTEGER, "
+                + COLUMN_SIGN_UP_ID_DOCTORS + " INTEGER, "
+                + COLUMN_SIGN_UP_ID_TICKETS + " INTEGER);");
+
+
         db.execSQL("CREATE TABLE " + TABLE_MEDICAL_CARD_PATIENTS
                 + " (" + COLUMN_ID_MAP + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_ID_PATIENT_MAP + " INTEGER, "
@@ -97,6 +104,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COLUMN_DATE_MAP + " TEXT, "
                 + COLUMN_DIAGNOSIS_COD_MAP + " INTEGER, "
                 + COLUMN_NOTE_DOCTOR_MAP + " TEXT);");
+
 
         db.execSQL("CREATE TABLE " + TABLE_DIAGNOSIS_PATIENTS
                 + " (" + COLUMN_ID_DIAGNOSIS + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -185,8 +193,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
         db.execSQL("INSERT INTO " + TABLE_SCHEDULE_DOCTORS + " (" + COLUMN_SCHEDULE_ID + ", " + COLUMN_SCHEDULE_DOCTORS_ID
-                + ", " + COLUMN_SCHEDULE_DOCTORS_DATETIME + ") VALUES ('1','1','2017-11-25 08:00:00'),('2','1','2017-11-25 08:10:00');");
+                + ", " + COLUMN_SCHEDULE_DOCTORS_DATETIME + ") VALUES ('1','1','24 ноября  08:00'),('2','1','25 ноября  08:10')"
+                + ",('3','1','25 ноября  07:00');");
 
+        db.execSQL("INSERT INTO " + TABLE_SIGN_UP_PATIENTS + " (" + COLUMN_SIGN_UP_ID + ", " + COLUMN_SIGN_UP_ID_PATIENTS
+                + ", " + COLUMN_SIGN_UP_ID_DOCTORS + ", " + COLUMN_SIGN_UP_ID_TICKETS + ") VALUES ('1','2','1','2');");
 
         db.execSQL("INSERT INTO " + TABLE_MEDICAL_CARD_PATIENTS + " (" + COLUMN_ID_MAP + ", " + COLUMN_ID_PATIENT_MAP
                 + ", " + COLUMN_ID_DOCTOR_MAP + ", " + COLUMN_DATE_MAP
