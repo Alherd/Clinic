@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MenuActivity extends AppCompatActivity {
     Button signUp;
@@ -39,8 +40,11 @@ public class MenuActivity extends AppCompatActivity {
         special.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MenuActivity.this, DatabaseCardPatientsActivity.class);
-                startActivity(i);
+                if (KeyValues.sIsSignUp) {
+                    Intent i = new Intent(MenuActivity.this, DatabaseCardPatientsActivity.class);
+                    startActivity(i);
+                } else
+                    Toast.makeText(MenuActivity.this, "Войдите в систему", Toast.LENGTH_LONG).show();
             }
         });
         aboutUs = (Button) findViewById(R.id.about_us);

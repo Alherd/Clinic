@@ -9,10 +9,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.clinic.database.DatabaseHelper;
-import com.android.clinic.database.DatabaseHelperMethods;
-
-import static com.android.clinic.database.DatabaseHelper.COLUMN_ID_DOCTOR_MAP;
-import static com.android.clinic.database.DatabaseHelper.TABLE_MEDICAL_CARD_PATIENTS;
 
 public class DatabaseCardPatientsActivity extends AppCompatActivity {
     ListView userList;
@@ -21,7 +17,6 @@ public class DatabaseCardPatientsActivity extends AppCompatActivity {
     SQLiteDatabase db;
     Cursor userCursor;
     SimpleCursorAdapter userAdapter;
-    DatabaseHelperMethods dhm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +35,14 @@ public class DatabaseCardPatientsActivity extends AppCompatActivity {
         db = mDatabaseHelper.getReadableDatabase();
         //получаем данные из бд в виде курсора
         userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE_MEDICAL_CARD_PATIENTS + ", "
-                + DatabaseHelper.TABLE_DOCTORS +
+                + DatabaseHelper.TABLE_DOCTORS + ", " + DatabaseHelper.TABLE_DIAGNOSIS_PATIENTS +
                 " where " + DatabaseHelper.COLUMN_ID_PATIENT_MAP + " = '" + KeyValues.sIdPatient + "' AND " +
-                DatabaseHelper.COLUMN_ID_DOCTOR_MAP + " == " + DatabaseHelper.COLUMN_ID_DOCTOR + " ;", null);
+                DatabaseHelper.COLUMN_ID_DOCTOR_MAP + " == " + DatabaseHelper.COLUMN_ID_DOCTOR +
+                " AND " + DatabaseHelper.COLUMN_DIAGNOSIS_COD_MAP + " == " + DatabaseHelper.COLUMN_ID_DIAGNOSIS +
+                " ;", null);
         // определяем, какие столбцы из курсора будут выводиться в ListView
         String[] headers1 = new String[]{DatabaseHelper.COLUMN_NAME_DOCTOR, DatabaseHelper.COLUMN_DATE_MAP,
-                DatabaseHelper.COLUMN_DIAGNOSIS_COD_MAP, DatabaseHelper.COLUMN_NOTE_DOCTOR_MAP};
+                DatabaseHelper.COLUMN_NAME_DIAGNOSIS, DatabaseHelper.COLUMN_NOTE_DOCTOR_MAP};
         // создаем адаптер, передаем в него курсор
         userAdapter = new SimpleCursorAdapter(this, R.layout.five_line_list_card,
                 userCursor, headers1, new int[]{R.id.text2_1, R.id.text3_1, R.id.text4_1, R.id.text5_1}, 0);

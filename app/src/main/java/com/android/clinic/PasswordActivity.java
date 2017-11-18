@@ -61,6 +61,9 @@ public class PasswordActivity extends AppCompatActivity {
         guest_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Patients mPatient = new Patients();
+                mPatient.setSignUp(false);
+                KeyValues.sIsSignUp = mPatient.isSignUp();
                 Intent intent = new Intent(PasswordActivity.this, MenuActivity.class);
                 startActivity(intent);
             }

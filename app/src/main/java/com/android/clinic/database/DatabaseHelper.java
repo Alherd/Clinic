@@ -39,12 +39,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_SCHEDULE_DOCTORS_SUNDAY = "doctor_sunday";
 
     public static final String TABLE_MEDICAL_CARD_PATIENTS = "map_patients";
-    public static final String COLUMN_ID_MAP = "_id1";
+    public static final String COLUMN_ID_MAP = "_id_map";
     public static final String COLUMN_ID_PATIENT_MAP = "id_patient";
     public static final String COLUMN_ID_DOCTOR_MAP = "id_doctor";
     public static final String COLUMN_DATE_MAP = "date_map";
     public static final String COLUMN_DIAGNOSIS_COD_MAP = "diagnosis_cod_map";
     public static final String COLUMN_NOTE_DOCTOR_MAP = "note_doctor_map";
+
+    public static final String TABLE_DIAGNOSIS_PATIENTS = "diagnosis_patient";
+    public static final String COLUMN_ID_DIAGNOSIS = "id_diagnosis";
+    public static final String COLUMN_NAME_DIAGNOSIS = "name_diagnosis";
+    public static final String COLUMN_TYPE_DIAGNOSIS = "type_diagnosis";
+
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, VERSION);
@@ -95,6 +101,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COLUMN_DATE_MAP + " TEXT, "
                 + COLUMN_DIAGNOSIS_COD_MAP + " INTEGER, "
                 + COLUMN_NOTE_DOCTOR_MAP + " TEXT);");
+
+        db.execSQL("CREATE TABLE " + TABLE_DIAGNOSIS_PATIENTS
+                + " (" + COLUMN_ID_DIAGNOSIS + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + COLUMN_NAME_DIAGNOSIS + " TEXT, "
+                + COLUMN_TYPE_DIAGNOSIS + " TEXT);");
 
 //        insertTableScheduleDoctors(1, "14:00", "14:00", "15:00",
 //                "15:00", "14:00", "16:00", "16:00");
@@ -171,16 +182,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " 'Александровна','31.12.1995','ул. Налибоцкая 3,14', 'vika@rambler.ru');");
 
 
+        db.execSQL("INSERT INTO " + TABLE_DIAGNOSIS_PATIENTS + " (" + COLUMN_ID_DIAGNOSIS + ", "
+                + COLUMN_NAME_DIAGNOSIS + ", " + COLUMN_TYPE_DIAGNOSIS + ") VALUES ('1','Абсцесс носовой перегородки',"
+                + " 'ЛОР-заболевание');");
+        db.execSQL("INSERT INTO " + TABLE_DIAGNOSIS_PATIENTS + " (" + COLUMN_ID_DIAGNOSIS + ", "
+                + COLUMN_NAME_DIAGNOSIS + ", " + COLUMN_TYPE_DIAGNOSIS + ") VALUES ('2','Абсцесс паратонзиллярный',"
+                + " 'ЛОР-заболевание');");
+        db.execSQL("INSERT INTO " + TABLE_DIAGNOSIS_PATIENTS + " (" + COLUMN_ID_DIAGNOSIS + ", "
+                + COLUMN_NAME_DIAGNOSIS + ", " + COLUMN_TYPE_DIAGNOSIS + ") VALUES ('3','Инфекции уха',"
+                + " 'ЛОР-заболевание');");
+
+
         db.execSQL("INSERT INTO " + TABLE_MEDICAL_CARD_PATIENTS + " (" + COLUMN_ID_MAP + ", " + COLUMN_ID_PATIENT_MAP
                 + ", " + COLUMN_ID_DOCTOR_MAP + ", " + COLUMN_DATE_MAP
                 + ", " + COLUMN_DIAGNOSIS_COD_MAP + ", " + COLUMN_NOTE_DOCTOR_MAP + ") VALUES ('1','2', '2', '26.11.2017',"
-                + " '4', 'Небольшая пломба в ухе');");
-
+                + " '1', 'Небольшая пломба в ухе');");
         db.execSQL("INSERT INTO " + TABLE_MEDICAL_CARD_PATIENTS + " (" + COLUMN_ID_MAP + ", " + COLUMN_ID_PATIENT_MAP
                 + ", " + COLUMN_ID_DOCTOR_MAP + ", " + COLUMN_DATE_MAP
                 + ", " + COLUMN_DIAGNOSIS_COD_MAP + ", " + COLUMN_NOTE_DOCTOR_MAP + ") VALUES ('2','3', '1', '28.11.2017',"
-                + " '3', '');");
-
+                + " '3', 'нет');");
         db.execSQL("INSERT INTO " + TABLE_MEDICAL_CARD_PATIENTS + " (" + COLUMN_ID_MAP + ", " + COLUMN_ID_PATIENT_MAP
                 + ", " + COLUMN_ID_DOCTOR_MAP + ", " + COLUMN_DATE_MAP
                 + ", " + COLUMN_DIAGNOSIS_COD_MAP + ", " + COLUMN_NOTE_DOCTOR_MAP + ") VALUES ('3','2', '3', '30.11.2017',"
