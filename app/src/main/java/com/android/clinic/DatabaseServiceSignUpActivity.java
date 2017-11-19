@@ -55,13 +55,14 @@ public class DatabaseServiceSignUpActivity extends DatabaseActivity {
 
                 if (constraint == null || constraint.length() == 0) {
 
-                    return db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS + " order by " + DatabaseHelper.COLUMN_SERV_DOCTOR, null);
+                    return db.rawQuery("select _id_doctor as _id, * from " + DatabaseHelper.TABLE_DOCTORS + " order by " + DatabaseHelper.COLUMN_SERV_DOCTOR, null);
                 } else {
-                    return db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS + " where " +
+                    return db.rawQuery("select _id_doctor as _id, * from " + DatabaseHelper.TABLE_DOCTORS + " where " +
                             DatabaseHelper.COLUMN_SERV_DOCTOR + " like ? order by " + DatabaseHelper.COLUMN_SERV_DOCTOR, new String[]{"%" + constraint.toString() + "%"});
                 }
             }
         });
+
         userList.setAdapter(userAdapter);
         userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
