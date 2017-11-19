@@ -9,7 +9,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "clinicBase.db";
 
     public static final String TABLE_DOCTORS = "doctors"; // название таблицы в бд
-    public static final String COLUMN_ID_DOCTOR = "_id";
+    public static final String COLUMN_ID_DOCTOR = "_id_doctor";
     public static final String COLUMN_NAME_DOCTOR = "name_doctor";
     public static final String COLUMN_SPEC_DOCTOR = "spec_doctor";
     public static final String COLUMN_SERV_DOCTOR = "service_doctor";
@@ -29,15 +29,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_EMAIL = "email";
 
     public static final String TABLE_SCHEDULE_DOCTORS = "schedule_doctors";
-    public static final String COLUMN_SCHEDULE_ID = "_id2";
-    public static final String COLUMN_SCHEDULE_DOCTORS_ID = "_id_doctor";
+    public static final String COLUMN_SCHEDULE_ID = "_id_schedule";
+    public static final String COLUMN_SCHEDULE_DOCTORS_ID = "_id_doctors";
     public static final String COLUMN_SCHEDULE_DOCTORS_DATETIME = "doctor_list_datetime";
     public static final String COLUMN_SCHEDULE_IS_ORDER = "doctor_schedule_is_order";
 
     public static final String TABLE_SIGN_UP_PATIENTS = "sign_up_patients";
-    public static final String COLUMN_SIGN_UP_ID = "_id1";
+    public static final String COLUMN_SIGN_UP_ID = "_id_sign_up";
     public static final String COLUMN_SIGN_UP_ID_PATIENTS = "_id_patients";
-    // public static final String COLUMN_SIGN_UP_ID_DOCTORS = "_id_doctors";
     public static final String COLUMN_SIGN_UP_ID_TICKET = "_id_tickets";
 
     public static final String TABLE_MEDICAL_CARD_PATIENTS = "map_patients";
@@ -182,21 +181,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COLUMN_ADDRESS + ", " + COLUMN_EMAIL + ") VALUES ('3','виктория', '333', 'Виктория', 'Левчук'," +
                 " 'Александровна','31.12.1995','ул. Налибоцкая 3,14', 'vika@rambler.ru');");
 
-
-        db.execSQL("INSERT INTO " + TABLE_DIAGNOSIS_PATIENTS + " (" + COLUMN_ID_DIAGNOSIS + ", "
-                + COLUMN_NAME_DIAGNOSIS + ", " + COLUMN_TYPE_DIAGNOSIS + ") VALUES ('1','Абсцесс носовой перегородки',"
-                + " 'ЛОР-заболевание');");
-        db.execSQL("INSERT INTO " + TABLE_DIAGNOSIS_PATIENTS + " (" + COLUMN_ID_DIAGNOSIS + ", "
-                + COLUMN_NAME_DIAGNOSIS + ", " + COLUMN_TYPE_DIAGNOSIS + ") VALUES ('2','Абсцесс паратонзиллярный',"
-                + " 'ЛОР-заболевание');");
-        db.execSQL("INSERT INTO " + TABLE_DIAGNOSIS_PATIENTS + " (" + COLUMN_ID_DIAGNOSIS + ", "
-                + COLUMN_NAME_DIAGNOSIS + ", " + COLUMN_TYPE_DIAGNOSIS + ") VALUES ('3','Инфекции уха',"
-                + " 'ЛОР-заболевание');");
+//
+//        db.execSQL("INSERT INTO " + TABLE_DIAGNOSIS_PATIENTS + " (" + COLUMN_ID_DIAGNOSIS + ", "
+//                + COLUMN_NAME_DIAGNOSIS + ", " + COLUMN_TYPE_DIAGNOSIS + ") VALUES ('1','Абсцесс носовой перегородки',"
+//                + " 'ЛОР-заболевание');");
+//        db.execSQL("INSERT INTO " + TABLE_DIAGNOSIS_PATIENTS + " (" + COLUMN_ID_DIAGNOSIS + ", "
+//                + COLUMN_NAME_DIAGNOSIS + ", " + COLUMN_TYPE_DIAGNOSIS + ") VALUES ('2','Абсцесс паратонзиллярный',"
+//                + " 'ЛОР-заболевание');");
+//        db.execSQL("INSERT INTO " + TABLE_DIAGNOSIS_PATIENTS + " (" + COLUMN_ID_DIAGNOSIS + ", "
+//                + COLUMN_NAME_DIAGNOSIS + ", " + COLUMN_TYPE_DIAGNOSIS + ") VALUES ('3','Инфекции уха',"
+//                + " 'ЛОР-заболевание');");
 
 
         db.execSQL("INSERT INTO " + TABLE_SCHEDULE_DOCTORS + " (" + COLUMN_SCHEDULE_ID + ", " + COLUMN_SCHEDULE_DOCTORS_ID
                 + ", " + COLUMN_SCHEDULE_DOCTORS_DATETIME + ", " + COLUMN_SCHEDULE_IS_ORDER + ") " +
-                "VALUES ('1','1','24 ноября 08:00','0'),('2','1','25 ноября 08:10','0')" + ",('3','1','25 ноября 07:00','0');");
+                "VALUES ('1','1','25 ноября 08:10','0'),('2','1','24 ноября 08:00','2')" + ",('3','1','25 ноября 07:00','0');");
 
 
         db.execSQL("INSERT INTO " + TABLE_SIGN_UP_PATIENTS + " (" + COLUMN_SIGN_UP_ID + ", " + COLUMN_SIGN_UP_ID_PATIENTS

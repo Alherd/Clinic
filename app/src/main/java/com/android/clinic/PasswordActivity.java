@@ -64,6 +64,7 @@ public class PasswordActivity extends AppCompatActivity {
                 Patients mPatient = new Patients();
                 mPatient.setSignUp(false);
                 KeyValues.sIsSignUp = mPatient.isSignUp();
+                //KeyValues.sIdPatient = null;
                 Intent intent = new Intent(PasswordActivity.this, MenuActivity.class);
                 startActivity(intent);
             }

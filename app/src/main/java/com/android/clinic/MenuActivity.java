@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 public class MenuActivity extends AppCompatActivity {
     Button signUp;
-    Button service;
+    Button myTickets;
     Button special;
     Button aboutUs;
     Button contacts;
@@ -28,12 +28,15 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        service = (Button) findViewById(R.id.tickets);
-        service.setOnClickListener(new View.OnClickListener() {
+        myTickets = (Button) findViewById(R.id.tickets);
+        myTickets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MenuActivity.this, DatabaseNoteEntryActivity.class);
-                startActivity(i);
+                if (KeyValues.sIsSignUp) {
+                    Intent i = new Intent(MenuActivity.this, DatabaseNoteEntryActivity.class);
+                    startActivity(i);
+                } else
+                    Toast.makeText(MenuActivity.this, "Авторизируйтесь", Toast.LENGTH_LONG).show();
             }
         });
         special = (Button) findViewById(R.id.medicalMap);
@@ -44,7 +47,7 @@ public class MenuActivity extends AppCompatActivity {
                     Intent i = new Intent(MenuActivity.this, DatabaseCardPatientsActivity.class);
                     startActivity(i);
                 } else
-                    Toast.makeText(MenuActivity.this, "Войдите в систему", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MenuActivity.this, "Авторизируйтесь", Toast.LENGTH_LONG).show();
             }
         });
         aboutUs = (Button) findViewById(R.id.about_us);

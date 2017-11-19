@@ -81,18 +81,28 @@ public class DatabaseHelperMethods extends DatabaseHelper {
         }
     }
 
-    public boolean insertDataTicket(String nameDoctor, String idPatient, String datetimeTicket) {
+    public boolean insertDataPatientTicket(String idPatient, long idTicket) {
         SQLiteDatabase db = this.getWritableDatabase();
         long m = (long) (Math.random() * Long.MAX_VALUE);
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_SIGN_UP_ID, m);
         contentValues.put(COLUMN_SIGN_UP_ID_PATIENTS, idPatient);
-        contentValues.put(COLUMN_SIGN_UP_ID_TICKET, datetimeTicket);
+        contentValues.put(COLUMN_SIGN_UP_ID_TICKET, idTicket);
         long result = db.insert(TABLE_SIGN_UP_PATIENTS, null, contentValues);
         if (result == -1)
             return false;
         else
             return true;
+    }
+
+        public void updateDataTicketPatients(long idTicket){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_SCHEDULE_IS_ORDER, "1");
+        db.update(TABLE_SCHEDULE_DOCTORS, contentValues, COLUMN_SCHEDULE_ID + " = " + idTicket,
+                null);
+//        db.execSQL("update " + TABLE_SCHEDULE_DOCTORS + " set " + COLUMN_SCHEDULE_IS_ORDER + " = '1' where "
+//                + COLUMN_SCHEDULE_ID + " == " + idTicket + " ;");
     }
 
     public String returnNameDoctor(String idDoctor) {
@@ -114,7 +124,7 @@ public class DatabaseHelperMethods extends DatabaseHelper {
 
         int a = b.getCount();
         b.close();
-      //  b.close();
+        //  b.close();
         return a;
     }
 }

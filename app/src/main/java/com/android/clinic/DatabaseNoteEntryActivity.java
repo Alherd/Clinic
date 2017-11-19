@@ -16,7 +16,7 @@ import static com.android.clinic.database.DatabaseHelper.COLUMN_NAME_DOCTOR;
 import static com.android.clinic.database.DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_DATETIME;
 import static com.android.clinic.database.DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_ID;
 import static com.android.clinic.database.DatabaseHelper.COLUMN_SCHEDULE_ID;
-import static com.android.clinic.database.DatabaseHelper.COLUMN_SIGN_UP_ID_PATIENTS;
+import static com.android.clinic.database.DatabaseHelper.COLUMN_SIGN_UP_ID;
 import static com.android.clinic.database.DatabaseHelper.COLUMN_SIGN_UP_ID_TICKET;
 
 public class DatabaseNoteEntryActivity extends AppCompatActivity {
@@ -43,11 +43,12 @@ public class DatabaseNoteEntryActivity extends AppCompatActivity {
         // открываем подключение
         db = mDatabaseHelper.getReadableDatabase();
         //получаем данные из бд в виде курсора
-        userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE_SIGN_UP_PATIENTS + ", "
-                + DatabaseHelper.TABLE_SCHEDULE_DOCTORS +  ", "
+        userCursor = db.rawQuery("select _id_sign_up as _id, * from " + DatabaseHelper.TABLE_SIGN_UP_PATIENTS + ", "
+                + DatabaseHelper.TABLE_SCHEDULE_DOCTORS + ", "
                 + DatabaseHelper.TABLE_DOCTORS + " where " + DatabaseHelper.COLUMN_SIGN_UP_ID_PATIENTS
-                + " == '" + KeyValues.sIdPatient + "' AND " + COLUMN_SIGN_UP_ID_TICKET + " == " + COLUMN_SCHEDULE_ID +" AND "
-                + COLUMN_SCHEDULE_DOCTORS_ID + " == " + COLUMN_ID_DOCTOR + " ;", null);
+                + " == '" + KeyValues.sIdPatient + "' AND " + COLUMN_SIGN_UP_ID_TICKET + " == " + COLUMN_SCHEDULE_ID + " AND "
+                + COLUMN_SCHEDULE_DOCTORS_ID + " == " + COLUMN_ID_DOCTOR + " order by " +
+                DatabaseHelper.COLUMN_NAME_DOCTOR + " ;", null);
         // определяем, какие столбцы из курсора будут выводиться в ListView
         String[] headers = new String[]{COLUMN_SCHEDULE_DOCTORS_DATETIME, COLUMN_NAME_DOCTOR};
         // создаем адаптер, передаем в него курсор

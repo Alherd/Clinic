@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.android.clinic.database.DatabaseHelper;
 import com.android.clinic.database.DatabaseHelperMethods;
 
+import static com.android.clinic.database.DatabaseHelper.COLUMN_SCHEDULE_IS_ORDER;
+
 public class DatabaseScheduleActivity extends AppCompatActivity {
     ListView userList;
     TextView header;
@@ -42,35 +44,32 @@ public class DatabaseScheduleActivity extends AppCompatActivity {
         // открываем подключение
         db = mDatabaseHelper.getReadableDatabase();
         //получаем данные из бд в виде курсора
-        userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE_SCHEDULE_DOCTORS + ", " + DatabaseHelper.TABLE_DOCTORS +
-                " where " + DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_ID +
-                " == '" + KeyValues.sIdDoctor + "' AND " + DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_ID + " == "
-                + DatabaseHelper.COLUMN_ID_DOCTOR + " order by " +
+        userCursor = db.rawQuery("select _id_schedule as _id, * from " + DatabaseHelper.TABLE_SCHEDULE_DOCTORS
+                + " where " + DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_ID +
+                " == '" + KeyValues.sIdDoctor + "' AND " + COLUMN_SCHEDULE_IS_ORDER + " == '0' order by " +
                 DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_DATETIME, null);
         // определяем, какие столбцы из курсора будут выводиться в ListView
         String[] headers1 = new String[]{DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_DATETIME};
         // создаем адаптер, передаем в него курсор
         userAdapter = new SimpleCursorAdapter(this, R.layout.one_line_list_item,
-                userCursor, headers1, new int[]{R.id.text1_1}, 0);
+                userCursor, headers1, new int[]{R.id.text1_1_1}, 0);
         header.setText("Расписание");
         userList.setAdapter(userAdapter);
         userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-
-                int datetimeTicket = myDb.returnDatetime(Long.toString(id));
-                String a = Long.toString(id);
-                String b = Integer.toString(datetimeTicket);
-                Toast.makeText(DatabaseScheduleActivity.this, b, Toast.LENGTH_LONG).show();
-//                String nameDoctor = myDb.returnNameDoctor(KeyValues.sIdDoctor);
-//                boolean isSign = myDb.insertDataTicket(nameDoctor, KeyValues.sIdPatient, datetimeTicket);
-//                if (isSign) {
-//                    Toast.makeText(DatabaseScheduleActivity.this, "Талон заказан", Toast.LENGTH_LONG).show();
-//                    Intent intent = new Intent(DatabaseScheduleActivity.this, DescriptionDoctorsActivity.class);
-//                    startActivity(intent);
-//                } else
-//                    Toast.makeText(DatabaseScheduleActivity.this, "Талон не заказан", Toast.LENGTH_LONG).show();
+                if (KeyValues.sIsSignUp) {
+                    boolean orderTicket = myDb.insertDataPatientTicket(KeyValues.sIdPatient, id);
+                    if (orderTicket) {
+                        Toast.makeText(DatabaseScheduleActivity.this, "Талон заказан", Toast.LENGTH_LONG).show();
+                        myDb.updateDataTicketPatients(id);
+                        Intent intent = new Intent(DatabaseScheduleActivity.this, MenuActivity.class);
+                        startActivity(intent);
+                    } else
+                        Toast.makeText(DatabaseScheduleActivity.this, "Талон не заказан", Toast.LENGTH_LONG).show();
+                } else
+                    Toast.makeText(DatabaseScheduleActivity.this, "Авторизируйтесь для заказа талона", Toast.LENGTH_LONG).show();
             }
         });
     }

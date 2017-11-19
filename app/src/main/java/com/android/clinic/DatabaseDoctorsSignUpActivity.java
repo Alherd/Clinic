@@ -19,7 +19,7 @@ public class DatabaseDoctorsSignUpActivity extends DatabaseActivity {
         // открываем подключение
         db = mDatabaseHelper.getReadableDatabase();
         //получаем данные из бд в виде курсора
-        userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS + " order by " +
+        userCursor = db.rawQuery("select _id_doctor as _id, * from " + DatabaseHelper.TABLE_DOCTORS + " order by " +
                 DatabaseHelper.COLUMN_NAME_DOCTOR, null);
         // определяем, какие столбцы из курсора будут выводиться в ListView
         String[] headers1 = new String[]{DatabaseHelper.COLUMN_NAME_DOCTOR, DatabaseHelper.COLUMN_SPEC_DOCTOR};

@@ -43,7 +43,7 @@ public class DescriptionDoctorsActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         db = mDatabaseHelper.getReadableDatabase();
-        userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE_DOCTORS +
+        userCursor = db.rawQuery("select _id_doctor as _id, * from " + DatabaseHelper.TABLE_DOCTORS +
                 " where " + DatabaseHelper.COLUMN_ID_DOCTOR +
                 " = '" + KeyValues.sIdDoctor + "' ;", null);
         String[] headers1 = new String[]{DatabaseHelper.COLUMN_NAME_DOCTOR, DatabaseHelper.COLUMN_SPEC_DOCTOR,
