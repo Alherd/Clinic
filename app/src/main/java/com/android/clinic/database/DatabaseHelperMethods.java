@@ -87,8 +87,7 @@ public class DatabaseHelperMethods extends DatabaseHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_SIGN_UP_ID, m);
         contentValues.put(COLUMN_SIGN_UP_ID_PATIENTS, idPatient);
-        contentValues.put(COLUMN_SIGN_UP_NAME_DOCTORS, nameDoctor);
-        contentValues.put(COLUMN_SIGN_UP_DATETIME_TICKETS, datetimeTicket);
+        contentValues.put(COLUMN_SIGN_UP_ID_TICKET, datetimeTicket);
         long result = db.insert(TABLE_SIGN_UP_PATIENTS, null, contentValues);
         if (result == -1)
             return false;
@@ -106,15 +105,16 @@ public class DatabaseHelperMethods extends DatabaseHelper {
         return nameDoctor;
     }
 
-    public int returnDatetime(String id1) {
+    public int returnDatetime(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor b = db.rawQuery("select * from " + TABLE_SCHEDULE_DOCTORS +
-                " where " + COLUMN_SCHEDULE_DOCTORS_ID + " = '" + id1 + "' ;", null);
+                " where " + COLUMN_SCHEDULE_ID + " = '" + id + "' ;", null);
 //        b.moveToFirst();
 //        String datetimeTicket = b.getString(b.getColumnIndex(COLUMN_SCHEDULE_DOCTORS_DATETIME));
-//        b.close();
+
         int a = b.getCount();
         b.close();
+      //  b.close();
         return a;
     }
 }

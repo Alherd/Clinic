@@ -33,6 +33,7 @@ public class DatabaseScheduleActivity extends AppCompatActivity {
         userList = (ListView) findViewById(R.id.list_1);
         mDatabaseHelper = new DatabaseHelper(getApplicationContext());
         mDatabaseHelper = new DatabaseHelper(this);
+        myDb = new DatabaseHelperMethods(this);
     }
 
     @Override
@@ -41,9 +42,10 @@ public class DatabaseScheduleActivity extends AppCompatActivity {
         // открываем подключение
         db = mDatabaseHelper.getReadableDatabase();
         //получаем данные из бд в виде курсора
-        userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE_SCHEDULE_DOCTORS +
+        userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE_SCHEDULE_DOCTORS + ", " + DatabaseHelper.TABLE_DOCTORS +
                 " where " + DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_ID +
-                " == '" + KeyValues.sIdDoctor + "' order by " +
+                " == '" + KeyValues.sIdDoctor + "' AND " + DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_ID + " == "
+                + DatabaseHelper.COLUMN_ID_DOCTOR + " order by " +
                 DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_DATETIME, null);
         // определяем, какие столбцы из курсора будут выводиться в ListView
         String[] headers1 = new String[]{DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_DATETIME};
@@ -56,11 +58,11 @@ public class DatabaseScheduleActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                //int datetimeTicket = myDb.returnDatetime("1");
-//                int datetimeTicket = myDb.returnDatetime(Long.toString(id));
-                String a = Long.toString(id);
 
-                Toast.makeText(DatabaseScheduleActivity.this, a, Toast.LENGTH_LONG).show();
+                int datetimeTicket = myDb.returnDatetime(Long.toString(id));
+                String a = Long.toString(id);
+                String b = Integer.toString(datetimeTicket);
+                Toast.makeText(DatabaseScheduleActivity.this, b, Toast.LENGTH_LONG).show();
 //                String nameDoctor = myDb.returnNameDoctor(KeyValues.sIdDoctor);
 //                boolean isSign = myDb.insertDataTicket(nameDoctor, KeyValues.sIdPatient, datetimeTicket);
 //                if (isSign) {

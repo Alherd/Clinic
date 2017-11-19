@@ -29,15 +29,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_EMAIL = "email";
 
     public static final String TABLE_SCHEDULE_DOCTORS = "schedule_doctors";
-    public static final String COLUMN_SCHEDULE_ID = "_id";
+    public static final String COLUMN_SCHEDULE_ID = "_id2";
     public static final String COLUMN_SCHEDULE_DOCTORS_ID = "_id_doctor";
     public static final String COLUMN_SCHEDULE_DOCTORS_DATETIME = "doctor_list_datetime";
+    public static final String COLUMN_SCHEDULE_IS_ORDER = "doctor_schedule_is_order";
 
     public static final String TABLE_SIGN_UP_PATIENTS = "sign_up_patients";
-    public static final String COLUMN_SIGN_UP_ID = "_id";
+    public static final String COLUMN_SIGN_UP_ID = "_id1";
     public static final String COLUMN_SIGN_UP_ID_PATIENTS = "_id_patients";
-    public static final String COLUMN_SIGN_UP_NAME_DOCTORS = "_name_doctors";
-    public static final String COLUMN_SIGN_UP_DATETIME_TICKETS = "datetime_tickets";
+    // public static final String COLUMN_SIGN_UP_ID_DOCTORS = "_id_doctors";
+    public static final String COLUMN_SIGN_UP_ID_TICKET = "_id_tickets";
 
     public static final String TABLE_MEDICAL_CARD_PATIENTS = "map_patients";
     public static final String COLUMN_ID_MAP = "_id_map";
@@ -86,15 +87,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE " + TABLE_SCHEDULE_DOCTORS
                 + " (" + COLUMN_SCHEDULE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + COLUMN_SCHEDULE_DOCTORS_ID + " TEXT, "
-                + COLUMN_SCHEDULE_DOCTORS_DATETIME + " DATETIME);");
+                + COLUMN_SCHEDULE_DOCTORS_ID + " INTEGER, "
+                + COLUMN_SCHEDULE_DOCTORS_DATETIME + " DATETIME, "
+                + COLUMN_SCHEDULE_IS_ORDER + " INTEGER);");
 
 
         db.execSQL("CREATE TABLE " + TABLE_SIGN_UP_PATIENTS
                 + " (" + COLUMN_SIGN_UP_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_SIGN_UP_ID_PATIENTS + " INTEGER, "
-                + COLUMN_SIGN_UP_NAME_DOCTORS + " INTEGER, "
-                + COLUMN_SIGN_UP_DATETIME_TICKETS + " INTEGER);");
+                //  + COLUMN_SIGN_UP_ID_DOCTORS + " INTEGER, "
+                + COLUMN_SIGN_UP_ID_TICKET + " INTEGER);");
 
 
         db.execSQL("CREATE TABLE " + TABLE_MEDICAL_CARD_PATIENTS
@@ -193,12 +195,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
         db.execSQL("INSERT INTO " + TABLE_SCHEDULE_DOCTORS + " (" + COLUMN_SCHEDULE_ID + ", " + COLUMN_SCHEDULE_DOCTORS_ID
-                + ", " + COLUMN_SCHEDULE_DOCTORS_DATETIME + ") VALUES ('1','1','24 ноября  08:00'),('2','1','25 ноября  08:10')"
-                + ",('3','1','25 ноября  07:00');");
+                + ", " + COLUMN_SCHEDULE_DOCTORS_DATETIME + ", " + COLUMN_SCHEDULE_IS_ORDER + ") " +
+                "VALUES ('1','1','24 ноября 08:00','0'),('2','1','25 ноября 08:10','0')" + ",('3','1','25 ноября 07:00','0');");
+
 
         db.execSQL("INSERT INTO " + TABLE_SIGN_UP_PATIENTS + " (" + COLUMN_SIGN_UP_ID + ", " + COLUMN_SIGN_UP_ID_PATIENTS
-                + ", " + COLUMN_SIGN_UP_NAME_DOCTORS + ", " + COLUMN_SIGN_UP_DATETIME_TICKETS + ") "
-                + " VALUES ('1','2','Фурс Галина Федоровна','25 ноября 09:30');");
+                + ", " + COLUMN_SIGN_UP_ID_TICKET + ") "
+                + " VALUES ('1','2','2');");
+
 
         db.execSQL("INSERT INTO " + TABLE_MEDICAL_CARD_PATIENTS + " (" + COLUMN_ID_MAP + ", " + COLUMN_ID_PATIENT_MAP
                 + ", " + COLUMN_ID_DOCTOR_MAP + ", " + COLUMN_DATE_MAP
@@ -219,20 +223,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onCreate(db);
     }
-
-//    public void insertTableScheduleDoctors(int id, String monday, String tuesday, String wednesday,
-//                                           String thursday, String friday, String saturday, String sunday) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues contentValues = new ContentValues();
-//        contentValues.put(COLUMN_SCHEDULE_DOCTORS_ID, id);
-//        contentValues.put(COLUMN_SCHEDULE_DOCTORS_MONDAY, monday);
-//        contentValues.put(COLUMN_SCHEDULE_DOCTORS_TUESDAY, tuesday);
-//        contentValues.put(COLUMN_SCHEDULE_DOCTORS_WEDNESDAY, wednesday);
-//        contentValues.put(COLUMN_SCHEDULE_DOCTORS_THURSDAY, thursday);
-//        contentValues.put(COLUMN_SCHEDULE_DOCTORS_FRIDAY, friday);
-//        contentValues.put(COLUMN_SCHEDULE_DOCTORS_SATURDAY, saturday);
-//        contentValues.put(COLUMN_SCHEDULE_DOCTORS_SUNDAY, sunday);
-//        db.insert(TABLE_SCHEDULE_DOCTORS, null, contentValues);
-//    }
 
 }

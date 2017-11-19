@@ -11,8 +11,13 @@ import android.widget.TextView;
 
 import com.android.clinic.database.DatabaseHelper;
 
-import static com.android.clinic.database.DatabaseHelper.COLUMN_SIGN_UP_NAME_DOCTORS;
-import static com.android.clinic.database.DatabaseHelper.COLUMN_SIGN_UP_DATETIME_TICKETS;
+import static com.android.clinic.database.DatabaseHelper.COLUMN_ID_DOCTOR;
+import static com.android.clinic.database.DatabaseHelper.COLUMN_NAME_DOCTOR;
+import static com.android.clinic.database.DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_DATETIME;
+import static com.android.clinic.database.DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_ID;
+import static com.android.clinic.database.DatabaseHelper.COLUMN_SCHEDULE_ID;
+import static com.android.clinic.database.DatabaseHelper.COLUMN_SIGN_UP_ID_PATIENTS;
+import static com.android.clinic.database.DatabaseHelper.COLUMN_SIGN_UP_ID_TICKET;
 
 public class DatabaseNoteEntryActivity extends AppCompatActivity {
     ListView userList;
@@ -38,10 +43,13 @@ public class DatabaseNoteEntryActivity extends AppCompatActivity {
         // открываем подключение
         db = mDatabaseHelper.getReadableDatabase();
         //получаем данные из бд в виде курсора
-        userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE_SIGN_UP_PATIENTS +
-                " where " + DatabaseHelper.COLUMN_SIGN_UP_ID_PATIENTS + " = '" + KeyValues.sIdPatient + "';", null);
+        userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE_SIGN_UP_PATIENTS + ", "
+                + DatabaseHelper.TABLE_SCHEDULE_DOCTORS +  ", "
+                + DatabaseHelper.TABLE_DOCTORS + " where " + DatabaseHelper.COLUMN_SIGN_UP_ID_PATIENTS
+                + " == '" + KeyValues.sIdPatient + "' AND " + COLUMN_SIGN_UP_ID_TICKET + " == " + COLUMN_SCHEDULE_ID +" AND "
+                + COLUMN_SCHEDULE_DOCTORS_ID + " == " + COLUMN_ID_DOCTOR + " ;", null);
         // определяем, какие столбцы из курсора будут выводиться в ListView
-        String[] headers = new String[]{COLUMN_SIGN_UP_NAME_DOCTORS, COLUMN_SIGN_UP_DATETIME_TICKETS};
+        String[] headers = new String[]{COLUMN_SCHEDULE_DOCTORS_DATETIME, COLUMN_NAME_DOCTOR};
         // создаем адаптер, передаем в него курсор
         userAdapter = new SimpleCursorAdapter(this, R.layout.two_line_button_list_item,
                 userCursor, headers, new int[]{R.id.text1, R.id.text2}, 0);
