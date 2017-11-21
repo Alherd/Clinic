@@ -36,12 +36,14 @@ public class DatabaseCardPatientsActivity extends AppCompatActivity {
         //получаем данные из бд в виде курсора
         userCursor = db.rawQuery("select _id_card as _id, * from " + DatabaseHelper.TABLE_MEDICAL_CARD_PATIENTS + ", "
                 + DatabaseHelper.TABLE_SIGN_UP_PATIENTS + ", " + DatabaseHelper.TABLE_DIAGNOSIS_PATIENTS + ", "
-                + DatabaseHelper.TABLE_DOCTORS + ", " + DatabaseHelper.TABLE_SCHEDULE_DOCTORS + " where "
+                + DatabaseHelper.TABLE_DOCTORS
+                + ", " + DatabaseHelper.TABLE_SCHEDULE_DOCTORS + " where "
                 + DatabaseHelper.COLUMN_SIGN_ID_CARD + " == " + DatabaseHelper.COLUMN_SIGN_UP_ID
                 + " AND " + DatabaseHelper.COLUMN_DIAGNOSIS_COD_CARD + " == " + DatabaseHelper.COLUMN_ID_DIAGNOSIS
                 + " AND " + DatabaseHelper.COLUMN_SIGN_UP_ID_TICKET + " == " + DatabaseHelper.COLUMN_SCHEDULE_ID
                 + " AND " + DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_ID + " == " + DatabaseHelper.COLUMN_ID_DOCTOR
-                + " ;", null);
+                + " AND " + DatabaseHelper.COLUMN_SIGN_UP_ID_PATIENTS + " == '" + KeyValues.sIdPatient
+                + "' ;", null);
         // определяем, какие столбцы из курсора будут выводиться в ListView
         String[] headers1 = new String[]{DatabaseHelper.COLUMN_NAME_DOCTOR, DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_DATETIME,
                 DatabaseHelper.COLUMN_NAME_DIAGNOSIS, DatabaseHelper.COLUMN_NOTE_DOCTOR_CARD};

@@ -1,6 +1,8 @@
 package com.android.clinic;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -70,5 +72,12 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        // super.onBackPressed();
+        //openQuitDialog();
+        Intent intent = new Intent(MenuActivity.this, PasswordActivity.class);
+        startActivity(intent);
     }
 }

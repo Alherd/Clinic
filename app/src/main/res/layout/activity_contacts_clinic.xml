@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#8CCED9"
+        android:paddingBottom="10dp"
         tools:context="com.android.clinic.ContactsClinicActivity">
 
         <TextView
@@ -169,6 +170,21 @@
             android:layout_height="wrap_content"
             android:hint="@string/hot_line_number"
             app:layout_constraintTop_toBottomOf="@+id/hot_line"
+            />
+
+        <Button
+            android:id="@+id/official_site"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:background="@color/color2"
+            android:gravity="center"
+            android:hint="@string/ofcite"
+            android:textColorHint="@color/colorDark"
+            android:textSize="20dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hot_line_number"
             />
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

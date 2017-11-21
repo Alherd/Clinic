@@ -48,7 +48,7 @@ public class DatabaseNoteEntryActivity extends AppCompatActivity {
                 + DatabaseHelper.TABLE_DOCTORS + " where " + DatabaseHelper.COLUMN_SIGN_UP_ID_PATIENTS
                 + " == '" + KeyValues.sIdPatient + "' AND " + COLUMN_SIGN_UP_ID_TICKET + " == " + COLUMN_SCHEDULE_ID + " AND "
                 + COLUMN_SCHEDULE_DOCTORS_ID + " == " + COLUMN_ID_DOCTOR + " order by " +
-                DatabaseHelper.COLUMN_NAME_DOCTOR + " ;", null);
+                DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_DATETIME + " ;", null);
         // определяем, какие столбцы из курсора будут выводиться в ListView
         String[] headers = new String[]{COLUMN_SCHEDULE_DOCTORS_DATETIME, COLUMN_NAME_DOCTOR};
         // создаем адаптер, передаем в него курсор

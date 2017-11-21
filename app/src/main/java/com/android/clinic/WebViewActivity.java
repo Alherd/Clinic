@@ -16,7 +16,7 @@ public class WebViewActivity extends AppCompatActivity {
         // включаем поддержку JavaScript
         mWebView.getSettings().setJavaScriptEnabled(true);
         // указываем страницу загрузки
-        mWebView.loadUrl("http://40gkp.medtalon.by/talon#/talons");
+        mWebView.loadUrl("http://40gkp.medtalon.by");
         //определим экземпляр MyWebViewClient
         mWebView.setWebViewClient(new MyWebViewClient());
     }
