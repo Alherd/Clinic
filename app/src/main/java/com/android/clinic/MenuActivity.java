@@ -73,10 +73,9 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public void onBackPressed() {
-        // super.onBackPressed();
-        //openQuitDialog();
         Intent intent = new Intent(MenuActivity.this, PasswordActivity.class);
         startActivity(intent);
     }

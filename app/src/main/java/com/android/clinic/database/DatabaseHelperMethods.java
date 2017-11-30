@@ -95,14 +95,12 @@ public class DatabaseHelperMethods extends DatabaseHelper {
             return true;
     }
 
-        public void updateDataTicketPatients(long idTicket){
+    public void updateDataTicketPatients(long idTicket) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_SCHEDULE_IS_ORDER, "1");
         db.update(TABLE_SCHEDULE_DOCTORS, contentValues, COLUMN_SCHEDULE_ID + " = " + idTicket,
                 null);
-//        db.execSQL("update " + TABLE_SCHEDULE_DOCTORS + " set " + COLUMN_SCHEDULE_IS_ORDER + " = '1' where "
-//                + COLUMN_SCHEDULE_ID + " == " + idTicket + " ;");
     }
 
     public String returnNameDoctor(String idDoctor) {
@@ -119,12 +117,19 @@ public class DatabaseHelperMethods extends DatabaseHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor b = db.rawQuery("select * from " + TABLE_SCHEDULE_DOCTORS +
                 " where " + COLUMN_SCHEDULE_ID + " = '" + id + "' ;", null);
-//        b.moveToFirst();
-//        String datetimeTicket = b.getString(b.getColumnIndex(COLUMN_SCHEDULE_DOCTORS_DATETIME));
 
         int a = b.getCount();
         b.close();
-        //  b.close();
         return a;
+    }
+
+    public String getImage(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor b = db.rawQuery("select * from " + TABLE_DOCTORS +
+                " where " + COLUMN_ID_DOCTOR + " = '" + id + "' ;", null);
+        b.moveToFirst();
+        String photoDoctor = b.getString(b.getColumnIndex(COLUMN_PHOTO_DOCTOR));
+        b.close();
+        return photoDoctor;
     }
 }
