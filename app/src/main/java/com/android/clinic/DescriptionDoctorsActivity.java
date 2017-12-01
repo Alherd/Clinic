@@ -5,8 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,11 +42,9 @@ public class DescriptionDoctorsActivity extends AppCompatActivity {
         mDatabaseHelper = new DatabaseHelper(this);
         mDatabaseHelperMethods = new DatabaseHelperMethods(getApplicationContext());
         mDatabaseHelperMethods = new DatabaseHelperMethods(this);
-        String a = mDatabaseHelperMethods.getImage(KeyValues.sIdDoctor);
-        InputStream is = getClass().getClassLoader().getResourceAsStream(a);
+        InputStream is = getClass().getClassLoader().getResourceAsStream(mDatabaseHelperMethods.getImage(KeyValues.sIdDoctor));
         Bitmap bm = BitmapFactory.decodeStream(is);
         photoDoctor.setImageBitmap(bm);
-        //photoDoctor.setImageResource(getResources().getIdentifier(a, mDatabaseHelperMethods.getImage(KeyValues.sIdDoctor), getPackageName()));
 
         button_1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +63,7 @@ public class DescriptionDoctorsActivity extends AppCompatActivity {
                 " where " + DatabaseHelper.COLUMN_ID_DOCTOR +
                 " = '" + KeyValues.sIdDoctor + "' ;", null);
         String[] headers1 = new String[]{DatabaseHelper.COLUMN_NAME_DOCTOR, DatabaseHelper.COLUMN_SPEC_DOCTOR,
-                DatabaseHelper.COLUMN_SERV_DOCTOR, DatabaseHelper.COLUMN_AGE_DOCTOR, DatabaseHelper.COLUMN_EXPER_DOCTOR};
+                DatabaseHelper.COLUMN_SERV_DOCTOR, DatabaseHelper.COLUMN_TIME_DOCTOR, DatabaseHelper.COLUMN_EXPER_DOCTOR};
         userAdapter = new SimpleCursorAdapter(this, R.layout.three_line_list,
                 userCursor, headers1, new int[]{R.id.text1_1, R.id.text2_1, R.id.text3_1, R.id.text4_1, R.id.text5_1}, 0);
         userListDoctor.setAdapter(userAdapter);

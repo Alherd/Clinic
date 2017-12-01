@@ -103,28 +103,13 @@
             app:layout_constraintTop_toBottomOf="@id/insert_pname_textView"/>
 
         <TextView
-            android:id="@+id/insert_birthday_textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="@string/insert_birthday"
-            android:textColorHint="@color/colorDark"
-            app:layout_constraintTop_toBottomOf="@id/insert_pname_editText"/>
-
-        <EditText
-            android:id="@+id/insert_birthday_editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/insert_birthday_textView"/>
-
-        <TextView
             android:id="@+id/insert_email_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="@string/insert_email"
             android:textColorHint="@color/colorDark"
-            app:layout_constraintTop_toBottomOf="@id/insert_birthday_editText"/>
+            app:layout_constraintTop_toBottomOf="@id/insert_pname_editText"/>
 
         <EditText
             android:id="@+id/insert_email_editText"

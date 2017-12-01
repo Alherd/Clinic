@@ -54,9 +54,9 @@ public class DatabaseHelperMethods extends DatabaseHelper {
     }
 
     public int insertData(String login, String password, String fname, String lname,
-                          String pname, String birthday, String email, String address) {
+                          String pname, String email, String address) {
         if ((login.isEmpty()) || (password.isEmpty()) || (fname.isEmpty()) || (lname.isEmpty()) || (pname.isEmpty())
-                || (birthday.isEmpty()) || (email.isEmpty()) || (address.isEmpty())) {
+                 || (email.isEmpty()) || (address.isEmpty())) {
             return 0;
         } else if (searchLogin(login)) {
             return 2;
@@ -70,7 +70,6 @@ public class DatabaseHelperMethods extends DatabaseHelper {
             contentValues.put(COLUMN_FNAME, fname);
             contentValues.put(COLUMN_LNAME, lname);
             contentValues.put(COLUMN_PNAME, pname);
-            contentValues.put(COLUMN_BIRTH, birthday);
             contentValues.put(COLUMN_EMAIL, email);
             contentValues.put(COLUMN_ADDRESS, address);
             long result = db.insert(TABLE_PATIENTS, null, contentValues);

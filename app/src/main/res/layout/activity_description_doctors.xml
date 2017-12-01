@@ -16,7 +16,7 @@
         <ImageView
             android:id="@+id/photo_doctor"
             android:layout_width="300dp"
-            android:layout_height="100dp"
+            android:layout_height="150dp"
             android:layout_gravity="center"
             />
 

@@ -18,7 +18,6 @@ public class RegistrationActivity extends AppCompatActivity {
     EditText fname;
     EditText lname;
     EditText pname;
-    EditText birthday;
     EditText email;
     EditText address;
 
@@ -33,7 +32,6 @@ public class RegistrationActivity extends AppCompatActivity {
         fname = (EditText) findViewById(R.id.insert_fname_editText);
         lname = (EditText) findViewById(R.id.insert_lname_editText);
         pname = (EditText) findViewById(R.id.insert_pname_editText);
-        birthday = (EditText) findViewById(R.id.insert_birthday_editText);
         email = (EditText) findViewById(R.id.insert_email_editText);
         address = (EditText) findViewById(R.id.insert_address_editText);
 
@@ -44,8 +42,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 int isInserted = myDb.insertData(login.getText().toString(),
                         password.getText().toString(), fname.getText().toString(),
                         lname.getText().toString(), pname.getText().toString(),
-                        birthday.getText().toString(), email.getText().toString(),
-                        address.getText().toString());
+                        email.getText().toString(), address.getText().toString());
 
                 switch (isInserted) {
                     case 1:
