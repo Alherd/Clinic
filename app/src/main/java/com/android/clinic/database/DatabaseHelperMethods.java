@@ -36,8 +36,10 @@ public class DatabaseHelperMethods extends DatabaseHelper {
         Cursor res = db.rawQuery("select fname from " + TABLE_PATIENTS + " where " + COLUMN_LOGIN_PATIENT +
                 " = '" + login + "' and " + COLUMN_PASSWORD_PATIENT + " = '" + password + "';", null);
         if (res.getCount() != 1) {
+            res.close();
             return false;
         } else {
+            res.close();
             return true;
         }
     }
@@ -47,8 +49,10 @@ public class DatabaseHelperMethods extends DatabaseHelper {
         Cursor res = db.rawQuery("select fname from " + TABLE_PATIENTS + " where " + COLUMN_LOGIN_PATIENT +
                 " = '" + login + "';", null);
         if (res.getCount() != 1) {
+            res.close();
             return false;
         } else {
+            res.close();
             return true;
         }
     }
@@ -56,7 +60,7 @@ public class DatabaseHelperMethods extends DatabaseHelper {
     public int insertData(String login, String password, String fname, String lname,
                           String pname, String email, String address) {
         if ((login.isEmpty()) || (password.isEmpty()) || (fname.isEmpty()) || (lname.isEmpty()) || (pname.isEmpty())
-                 || (email.isEmpty()) || (address.isEmpty())) {
+                || (email.isEmpty()) || (address.isEmpty())) {
             return 0;
         } else if (searchLogin(login)) {
             return 2;
@@ -94,11 +98,33 @@ public class DatabaseHelperMethods extends DatabaseHelper {
             return true;
     }
 
-    public void updateDataTicketPatients(long idTicket) {
+    public void removeDataPatientTicket(String idPatient, long idTicket) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+//        db.rawQuery("delete from " + TABLE_SIGN_UP_PATIENTS + " where " + COLUMN_SIGN_UP_ID_TICKET +
+//                " = '" + idTicket + "' and " + COLUMN_SIGN_UP_ID_PATIENTS + " = '" + idPatient + "';", null);
+        db.delete(TABLE_SIGN_UP_PATIENTS, COLUMN_SIGN_UP_ID + " = '" + idTicket +
+                "' AND " + COLUMN_SIGN_UP_ID_PATIENTS + " = '" + idPatient + "'", null);
+    }
+
+    public void updateDataTicketPatientsOff(long idTicket) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_SCHEDULE_IS_ORDER, "1");
         db.update(TABLE_SCHEDULE_DOCTORS, contentValues, COLUMN_SCHEDULE_ID + " = " + idTicket,
+                null);
+    }
+
+    public void updateDataTicketPatientsOn(long idTicket) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select " + COLUMN_SIGN_UP_ID_TICKET + " from " + TABLE_SIGN_UP_PATIENTS + " where " + COLUMN_SIGN_UP_ID +
+                " = '" + idTicket + "' ;", null);
+        res.moveToFirst();
+        String ticket_id = res.getString(res.getColumnIndex(COLUMN_SIGN_UP_ID_TICKET));
+        res.close();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_SCHEDULE_IS_ORDER, "0");
+        db.update(TABLE_SCHEDULE_DOCTORS, contentValues, COLUMN_SCHEDULE_ID + " = '" + ticket_id + "'",
                 null);
     }
 

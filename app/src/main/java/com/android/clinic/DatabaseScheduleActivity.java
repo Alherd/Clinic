@@ -63,7 +63,7 @@ public class DatabaseScheduleActivity extends AppCompatActivity {
                     boolean orderTicket = myDb.insertDataPatientTicket(KeyValues.sIdPatient, id);
                     if (orderTicket) {
                         Toast.makeText(DatabaseScheduleActivity.this, "Талон заказан", Toast.LENGTH_LONG).show();
-                        myDb.updateDataTicketPatients(id);
+                        myDb.updateDataTicketPatientsOff(id);
                         Intent intent = new Intent(DatabaseScheduleActivity.this, MenuActivity.class);
                         startActivity(intent);
                     } else
@@ -72,6 +72,8 @@ public class DatabaseScheduleActivity extends AppCompatActivity {
                     Toast.makeText(DatabaseScheduleActivity.this, "Авторизируйтесь для заказа талона", Toast.LENGTH_LONG).show();
             }
         });
+
+
     }
 
     @Override
@@ -81,4 +83,10 @@ public class DatabaseScheduleActivity extends AppCompatActivity {
         db.close();
         userCursor.close();
     }
+
+
+//    @Override
+//    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//        return false;
+//    }
 }
