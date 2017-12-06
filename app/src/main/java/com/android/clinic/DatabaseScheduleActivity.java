@@ -1,9 +1,12 @@
 package com.android.clinic;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +28,8 @@ public class DatabaseScheduleActivity extends AppCompatActivity {
     Cursor userCursor;
     SimpleCursorAdapter userAdapter;
     DatabaseHelperMethods myDb;
+    AlertDialog.Builder ad;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,8 @@ public class DatabaseScheduleActivity extends AppCompatActivity {
         mDatabaseHelper = new DatabaseHelper(getApplicationContext());
         mDatabaseHelper = new DatabaseHelper(this);
         myDb = new DatabaseHelperMethods(this);
+        context = DatabaseScheduleActivity.this;
+
     }
 
     @Override
@@ -58,18 +65,44 @@ public class DatabaseScheduleActivity extends AppCompatActivity {
         userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                if (KeyValues.sIsSignUp) {
-                    boolean orderTicket = myDb.insertDataPatientTicket(KeyValues.sIdPatient, id);
-                    if (orderTicket) {
-                        Toast.makeText(DatabaseScheduleActivity.this, "Талон заказан", Toast.LENGTH_LONG).show();
-                        myDb.updateDataTicketPatientsOff(id);
-                        Intent intent = new Intent(DatabaseScheduleActivity.this, MenuActivity.class);
-                        startActivity(intent);
-                    } else
-                        Toast.makeText(DatabaseScheduleActivity.this, "Талон не заказан", Toast.LENGTH_LONG).show();
-                } else
-                    Toast.makeText(DatabaseScheduleActivity.this, "Авторизируйтесь для заказа талона", Toast.LENGTH_LONG).show();
+            public void onItemClick(AdapterView<?> parent, View v, int position, final long id) {
+                String title = myDb.getDateTime(id);
+                String message = "Заказать талон?";
+                String button1String = "нет";
+                String button2String = "да";
+
+                ad = new AlertDialog.Builder(context);
+                ad.setTitle(title);
+                ad.setMessage(message);
+
+                ad.setPositiveButton(button2String, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int arg1) {
+                        if (KeyValues.sIsSignUp) {
+                            boolean orderTicket = myDb.insertDataPatientTicket(KeyValues.sIdPatient, id);
+                            if (orderTicket) {
+                                Toast.makeText(DatabaseScheduleActivity.this, "Талон заказан", Toast.LENGTH_LONG).show();
+                                myDb.updateDataTicketPatientsOff(id);
+                                Intent intent = new Intent(DatabaseScheduleActivity.this, MenuActivity.class);
+                                startActivity(intent);
+                            } else
+                                Toast.makeText(DatabaseScheduleActivity.this, "Талон не заказан", Toast.LENGTH_LONG).show();
+                        } else
+                            Toast.makeText(DatabaseScheduleActivity.this, "Авторизируйтесь для заказа талона", Toast.LENGTH_LONG).show();
+                    }
+                });
+                ad.setNegativeButton(button1String, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int arg1) {
+
+                    }
+                });
+                ad.setCancelable(true);
+                ad.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    public void onCancel(DialogInterface dialog) {
+
+                    }
+                });
+
+                ad.show();
             }
         });
 

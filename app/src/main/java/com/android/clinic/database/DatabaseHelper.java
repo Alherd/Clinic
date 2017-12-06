@@ -114,7 +114,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " + TABLE_SIGN_UP_PATIENTS
                 + " (" + COLUMN_SIGN_UP_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_SIGN_UP_ID_PATIENTS + " INTEGER, "
-                //  + COLUMN_SIGN_UP_ID_DOCTORS + " INTEGER, "
                 + COLUMN_SIGN_UP_ID_TICKET + " INTEGER);");
 
 
@@ -187,12 +186,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "'Николаевна','ул. Неманская 25, 51', 'angelina@gmail.com');");
         db.execSQL("INSERT INTO " + TABLE_PATIENTS + " (" + COLUMN_ID_PATIENT + ", " + COLUMN_LOGIN_PATIENT
                 + ", " + COLUMN_PASSWORD_PATIENT + ", " + COLUMN_FNAME
-                + ", " + COLUMN_LNAME + ", " + COLUMN_PNAME +  ", "
+                + ", " + COLUMN_LNAME + ", " + COLUMN_PNAME + ", "
                 + COLUMN_ADDRESS + ", " + COLUMN_EMAIL + ") VALUES ('2', 'pavel', '222', 'Павел', 'Жданович'," +
                 " 'Константинович','ул. Колесникова 8,23', 'pavel@tut.by');");
         db.execSQL("INSERT INTO " + TABLE_PATIENTS + " (" + COLUMN_ID_PATIENT + ", " + COLUMN_LOGIN_PATIENT
                 + ", " + COLUMN_PASSWORD_PATIENT + ", " + COLUMN_FNAME
-                + ", " + COLUMN_LNAME + ", " + COLUMN_PNAME +  ", "
+                + ", " + COLUMN_LNAME + ", " + COLUMN_PNAME + ", "
                 + COLUMN_ADDRESS + ", " + COLUMN_EMAIL + ") VALUES ('3','victoria', '333', 'Виктория', 'Левчук'," +
                 " 'Александровна','ул. Налибоцкая 3,14', 'vika@rambler.ru');");
 
@@ -218,7 +217,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ",('2','25 ноября 08:10','0'),('2','25 ноября 08:40','1'),('2','25 ноября 09:30','0')" +
                 ",('2','25 ноября 10:00','0'),('2','25 ноября 10:40','0'),('2','26 ноября 11:10','0')" +
                 ",('2','26 ноября 10:10','0'),('2','27 ноября 09:00','0'),('2','28 ноября 08:20','0')" +
-                ",('2','29 ноября 09:50','0'),('3','25 ноября 09:10','0'),('3','25 ноября 11:40','0')" +
+                ",('2','29 ноября 09:50','0'),('3','25 ноября 09:10','1'),('3','25 ноября 11:40','0')" +
                 ",('3','26 ноября 08:10','0'),('3','26 ноября 10:20','0'),('3','27 ноября 08:10','0')" +
                 ",('3','28 ноября 08:50','0'),('4','25 ноября 09:40','0'),('4','26 ноября 10:50','0')" +
                 ",('4','27 ноября 09:10','0'),('4','28 ноября 08:00','0'),('4','25 ноября 10:40','0')" +
@@ -263,7 +262,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         /*Зполнение таблицы TABLE_SIGN_UP_PATIENTS*/
         db.execSQL("INSERT INTO " + TABLE_SIGN_UP_PATIENTS + " (" + COLUMN_SIGN_UP_ID + ", " + COLUMN_SIGN_UP_ID_PATIENTS
-                + ", " + COLUMN_SIGN_UP_ID_TICKET + ") " + " VALUES ('1','2','11'),('2','2','1'), ('3','3','3');");
+                + ", " + COLUMN_SIGN_UP_ID_TICKET + ") " + " VALUES ('1','2','11'),('2','2','1'), ('3','2','20'),('4','3','3');");
 
 
         /*Создание таблицы TABLE_MEDICAL_CARD_PATIENTS*/

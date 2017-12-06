@@ -1,10 +1,13 @@
 package com.android.clinic;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
 import android.view.View;
@@ -21,7 +24,6 @@ import static com.android.clinic.database.DatabaseHelper.COLUMN_NAME_DOCTOR;
 import static com.android.clinic.database.DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_DATETIME;
 import static com.android.clinic.database.DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_ID;
 import static com.android.clinic.database.DatabaseHelper.COLUMN_SCHEDULE_ID;
-import static com.android.clinic.database.DatabaseHelper.COLUMN_SIGN_UP_ID;
 import static com.android.clinic.database.DatabaseHelper.COLUMN_SIGN_UP_ID_TICKET;
 
 public class DatabaseNoteEntryActivity extends AppCompatActivity {
@@ -32,6 +34,8 @@ public class DatabaseNoteEntryActivity extends AppCompatActivity {
     Cursor userCursor;
     SimpleCursorAdapter userAdapter;
     DatabaseHelperMethods myDb;
+    AlertDialog.Builder ad;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,7 @@ public class DatabaseNoteEntryActivity extends AppCompatActivity {
         mDatabaseHelper = new DatabaseHelper(this);
         myDb = new DatabaseHelperMethods(getApplicationContext());
         myDb = new DatabaseHelperMethods(this);
+        context = DatabaseNoteEntryActivity.this;
     }
 
     @Override
@@ -67,12 +72,34 @@ public class DatabaseNoteEntryActivity extends AppCompatActivity {
 
         userList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                myDb.updateDataTicketPatientsOn(id);
-                myDb.removeDataPatientTicket(KeyValues.sIdPatient, id);
-                Toast.makeText(DatabaseNoteEntryActivity.this, "Талон удален", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(DatabaseNoteEntryActivity.this, MenuActivity.class);
-                startActivity(intent);
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, final long id) {
+                String title = myDb.getDateTimeSign(id);
+                String message = "Удалить талон?";
+                String button1String = "нет";
+                String button2String = "да";
+
+                ad = new AlertDialog.Builder(context);
+                ad.setTitle(title);
+                ad.setMessage(message);
+                ad.setPositiveButton(button2String, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int arg1) {
+                        myDb.updateDataTicketPatientsOn(id);
+                        myDb.removeDataPatientTicket(KeyValues.sIdPatient, id);
+                        Toast.makeText(DatabaseNoteEntryActivity.this, "Талон удален", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(DatabaseNoteEntryActivity.this, MenuActivity.class);
+                        startActivity(intent);
+                    }
+                });
+                ad.setNegativeButton(button1String, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int arg1) {
+                    }
+                });
+                ad.setCancelable(true);
+                ad.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    public void onCancel(DialogInterface dialog) {
+                    }
+                });
+                ad.show();
                 return true;
             }
         });

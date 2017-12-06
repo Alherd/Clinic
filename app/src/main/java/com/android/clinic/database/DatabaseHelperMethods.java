@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class DatabaseHelperMethods extends DatabaseHelper {
-    //DatabaseHelper db;
     public DatabaseHelperMethods(Context context) {
         super(context);
     }
@@ -138,14 +137,14 @@ public class DatabaseHelperMethods extends DatabaseHelper {
         return nameDoctor;
     }
 
-    public int returnDatetime(String id) {
+    public String getDateTime(long id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor b = db.rawQuery("select * from " + TABLE_SCHEDULE_DOCTORS +
                 " where " + COLUMN_SCHEDULE_ID + " = '" + id + "' ;", null);
-
-        int a = b.getCount();
+        b.moveToFirst();
+        String dateTime = b.getString(b.getColumnIndex(COLUMN_SCHEDULE_DOCTORS_DATETIME));
         b.close();
-        return a;
+        return dateTime;
     }
 
     public String getImage(String id) {
@@ -156,5 +155,14 @@ public class DatabaseHelperMethods extends DatabaseHelper {
         String photoDoctor = b.getString(b.getColumnIndex(COLUMN_PHOTO_DOCTOR));
         b.close();
         return photoDoctor;
+    }
+    public String getDateTimeSign(long id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor b  = db.rawQuery("select * from " + TABLE_SIGN_UP_PATIENTS + ", " + TABLE_SCHEDULE_DOCTORS + " where " +
+        COLUMN_SIGN_UP_ID + " = '" + id + "' and " + COLUMN_SIGN_UP_ID_TICKET + " = " + COLUMN_SCHEDULE_ID +";", null);
+        b.moveToFirst();
+        String dateTimeSign = b.getString(b.getColumnIndex(COLUMN_SCHEDULE_DOCTORS_DATETIME));
+        b.close();
+        return dateTimeSign;
     }
 }

@@ -18,29 +18,19 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ChooseActionActivity"
-            android:label="@string/app_name"/>
+        <activity android:name=".ChooseActionActivity"/>
         <activity android:name=".MenuActivity"/>
         <activity android:name=".DatabaseDoctorsSignUpActivity"/>
         <activity android:name=".DatabaseServiceSignUpActivity"/>
         <activity android:name=".DatabaseNoteEntryActivity"/>
-        <activity android:name=".AboutClinicActivity">
-        </activity>
-        <activity android:name=".ContactsClinicActivity">
-        </activity>
-        <activity android:name=".WebViewActivity">
-        </activity>
-        <activity android:name=".PasswordActivity">
-        </activity>
-        <activity android:name=".RegistrationActivity">
-        </activity>
-        <activity android:name=".DescriptionDoctorsActivity">
-        </activity>
-        <activity android:name=".DatabaseScheduleActivity">
-        </activity>
-        <activity android:name=".DatabaseCardPatientsActivity">
-        </activity>
+        <activity android:name=".AboutClinicActivity"/>
+        <activity android:name=".ContactsClinicActivity"/>
+        <activity android:name=".WebViewActivity"/>
+        <activity android:name=".PasswordActivity"/>
+        <activity android:name=".RegistrationActivity"/>
+        <activity android:name=".DescriptionDoctorsActivity"/>
+        <activity android:name=".DatabaseScheduleActivity"/>
+        <activity android:name=".DatabaseCardPatientsActivity"/>
     </application>
 
 </manifest>
