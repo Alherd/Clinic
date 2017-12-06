@@ -24,7 +24,7 @@ Button webSiteButtom;
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
 //                Intent intent = new Intent(Intent.ACTION_SENDTO);
-//                intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+//                intent.setData(Uri.parse("mailto:")); // only phone apps should handle this
 //                intent.putExtra(Intent.EXTRA_SUBJECT,
 //                        getString(R.string.app_name));
 //         intent.putExtra(Intent.EXTRA_TEXT, a);

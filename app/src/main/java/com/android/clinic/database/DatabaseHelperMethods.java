@@ -32,7 +32,7 @@ public class DatabaseHelperMethods extends DatabaseHelper {
 
     public boolean searchLoginPassword(String login, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select fname from " + TABLE_PATIENTS + " where " + COLUMN_LOGIN_PATIENT +
+        Cursor res = db.rawQuery("select " + COLUMN_FNAME + " from " + TABLE_PATIENTS + " where " + COLUMN_LOGIN_PATIENT +
                 " = '" + login + "' and " + COLUMN_PASSWORD_PATIENT + " = '" + password + "';", null);
         if (res.getCount() != 1) {
             res.close();
@@ -73,7 +73,7 @@ public class DatabaseHelperMethods extends DatabaseHelper {
             contentValues.put(COLUMN_FNAME, fname);
             contentValues.put(COLUMN_LNAME, lname);
             contentValues.put(COLUMN_PNAME, pname);
-            contentValues.put(COLUMN_EMAIL, email);
+            contentValues.put(COLUMN_PHONE, email);
             contentValues.put(COLUMN_ADDRESS, address);
             long result = db.insert(TABLE_PATIENTS, null, contentValues);
             if (result == -1)
@@ -156,10 +156,11 @@ public class DatabaseHelperMethods extends DatabaseHelper {
         b.close();
         return photoDoctor;
     }
-    public String getDateTimeSign(long id){
+
+    public String getDateTimeSign(long id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor b  = db.rawQuery("select * from " + TABLE_SIGN_UP_PATIENTS + ", " + TABLE_SCHEDULE_DOCTORS + " where " +
-        COLUMN_SIGN_UP_ID + " = '" + id + "' and " + COLUMN_SIGN_UP_ID_TICKET + " = " + COLUMN_SCHEDULE_ID +";", null);
+        Cursor b = db.rawQuery("select * from " + TABLE_SIGN_UP_PATIENTS + ", " + TABLE_SCHEDULE_DOCTORS + " where " +
+                COLUMN_SIGN_UP_ID + " = '" + id + "' and " + COLUMN_SIGN_UP_ID_TICKET + " = " + COLUMN_SCHEDULE_ID + ";", null);
         b.moveToFirst();
         String dateTimeSign = b.getString(b.getColumnIndex(COLUMN_SCHEDULE_DOCTORS_DATETIME));
         b.close();

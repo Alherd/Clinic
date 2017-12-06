@@ -103,19 +103,19 @@
             app:layout_constraintTop_toBottomOf="@id/insert_pname_textView"/>
 
         <TextView
-            android:id="@+id/insert_email_textView"
+            android:id="@+id/insert_phone_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="@string/insert_email"
+            android:hint="@string/insert_phone"
             android:textColorHint="@color/colorDark"
             app:layout_constraintTop_toBottomOf="@id/insert_pname_editText"/>
 
         <EditText
-            android:id="@+id/insert_email_editText"
+            android:id="@+id/insert_phone_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/insert_email_textView"/>
+            app:layout_constraintTop_toBottomOf="@id/insert_phone_textView"/>
 
         <TextView
             android:id="@+id/insert_address_textView"
@@ -124,7 +124,7 @@
             android:layout_marginTop="10dp"
             android:hint="@string/insert_address"
             android:textColorHint="@color/colorDark"
-            app:layout_constraintTop_toBottomOf="@id/insert_email_editText"/>
+            app:layout_constraintTop_toBottomOf="@id/insert_phone_editText"/>
 
         <EditText
             android:id="@+id/insert_address_editText"

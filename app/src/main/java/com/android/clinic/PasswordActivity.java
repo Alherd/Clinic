@@ -3,8 +3,6 @@ package com.android.clinic;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
@@ -18,25 +16,10 @@ public class PasswordActivity extends AppCompatActivity {
     Button guest_button;
     Button registration_button;
     Button into_button;
+    Button forgetData;
     EditText editLogin;
     EditText editPassword;
 
-    private class CustomTextWatcher implements TextWatcher {
-        private EditText mEditText;
-
-        public CustomTextWatcher(EditText e) {
-            mEditText = e;
-        }
-
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-        }
-
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-        }
-
-        public void afterTextChanged(Editable s) {
-        }
-    }
     public class AsteriskPasswordTransformationMethod extends PasswordTransformationMethod {
         @Override
         public CharSequence getTransformation(CharSequence source, View view) {
@@ -45,20 +28,27 @@ public class PasswordActivity extends AppCompatActivity {
 
         private class PasswordCharSequence implements CharSequence {
             private CharSequence mSource;
+
             public PasswordCharSequence(CharSequence source) {
                 mSource = source; // Store char sequence
             }
+
             public char charAt(int index) {
                 return '*'; // This is the important part
             }
+
             public int length() {
                 return mSource.length(); // Return default
             }
+
             public CharSequence subSequence(int start, int end) {
                 return mSource.subSequence(start, end); // Return default
             }
         }
-    };
+    }
+
+    ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +57,7 @@ public class PasswordActivity extends AppCompatActivity {
 
         registration_button = (Button) findViewById(R.id.registration);
         into_button = (Button) findViewById(R.id.into);
+
         editLogin = (EditText) findViewById(R.id.login);
         editPassword = (EditText) findViewById(R.id.password);
         editPassword.setTransformationMethod(new AsteriskPasswordTransformationMethod());
@@ -107,6 +98,15 @@ public class PasswordActivity extends AppCompatActivity {
                 KeyValues.sIsSignUp = mPatient.isSignUp();
                 //KeyValues.sIdPatient = null;
                 Intent intent = new Intent(PasswordActivity.this, MenuActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        forgetData = (Button) findViewById(R.id.if_forget_password);
+        forgetData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PasswordActivity.this, GetPrivateDataActivity.class);
                 startActivity(intent);
             }
         });

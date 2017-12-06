@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">40-я поликлиника</string>
     <string name="continue1">Продолжить</string>
-    <string name="continue_guest">Продолжить гостем</string>
+    <string name="continue_guest">Зайти гостем</string>
     <string name="filling">Заполнение</string>
     <string name="fname">Имя</string>
     <string name="lname">Фамилия</string>
@@ -47,7 +47,7 @@
     <string name="insert_lname">Фамилия</string>
     <string name="insert_pname">Отчество</string>
     <string name="insert_birthday">День рождения</string>
-    <string name="insert_email">E-mail</string>
+    <string name="insert_phone">Телефон</string>
     <string name="insert_address">Адрес проживания</string>
     <string name="insert_login">Введите желаемый логин</string>
     <string name="insert_password">Введите желаемый пароль</string>
@@ -68,6 +68,10 @@
     <string name="tickets">Мои талоны</string>
     <string name="ofcite">Перейти на оф. сайт</string>
     <string name="forget">Забыли логин или пароль?</string>
+    <string name="enter_phone">Введите номер вашего телефона</string>
+    <string name="your_login">Ваш логин</string>
+    <string name="your_password">Ваш пароль</string>
+    <string name="myData">Мои данные</string>
     <string name="hictori_poli">УЗ «40-я городская клиническая поликлиника» является учреждением первичного звена медико-санитарной помощи, подведомственным Комитету по здравоохранению Мингорисполкома.
 Официальное открытие учреждения здравоохранения «40-я городская клиническая поликлиника» состоялось 4 ноября 2016 года.
 Плановая мощность многопрофильной поликлиники рассчитана на 850 посещений в смену. Учреждение обслуживает взрослое население микрорайонов Каменная Горка - 2, 3, 4 и Масюковщина - 3, 4, 5, 6, численностью 43 тысячи человек.

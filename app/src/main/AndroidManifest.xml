@@ -31,6 +31,8 @@
         <activity android:name=".DescriptionDoctorsActivity"/>
         <activity android:name=".DatabaseScheduleActivity"/>
         <activity android:name=".DatabaseCardPatientsActivity"/>
+        <activity android:name=".GetPrivateDataActivity"/>
+
     </application>
 
 </manifest>

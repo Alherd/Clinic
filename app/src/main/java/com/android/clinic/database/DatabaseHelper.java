@@ -26,13 +26,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      */
     public static final String TABLE_PATIENTS = "patients"; // название таблицы в бд
     public static final String COLUMN_ID_PATIENT = "_id_patient";
-    public static final String COLUMN_LOGIN_PATIENT = "login";
-    public static final String COLUMN_PASSWORD_PATIENT = "password";
-    public static final String COLUMN_FNAME = "fname";
-    public static final String COLUMN_LNAME = "lname";
-    public static final String COLUMN_PNAME = "patronymic";
-    public static final String COLUMN_ADDRESS = "address";
-    public static final String COLUMN_EMAIL = "email";
+    public static final String COLUMN_LOGIN_PATIENT = "login_patient";
+    public static final String COLUMN_PASSWORD_PATIENT = "password_patient";
+    public static final String COLUMN_FNAME = "fname_patient";
+    public static final String COLUMN_LNAME = "lname_patient";
+    public static final String COLUMN_PNAME = "patronymic_patient";
+    public static final String COLUMN_ADDRESS = "address_patient";
+    public static final String COLUMN_PHONE = "phone_patient";
 
     /**
      * Таблица TABLE_SCHEDULE_DOCTORS
@@ -99,7 +99,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COLUMN_LNAME + " TEXT, "
                 + COLUMN_PNAME + " TEXT, "
                 + COLUMN_ADDRESS + " TEXT, "
-                + COLUMN_EMAIL + " TEXT);");
+                + COLUMN_PHONE + " TEXT);");
 
 
         /*Создание таблицы TABLE_SCHEDULE_DOCTORS*/
@@ -182,18 +182,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO " + TABLE_PATIENTS + " (" + COLUMN_ID_PATIENT + ", " + COLUMN_LOGIN_PATIENT
                 + ", " + COLUMN_PASSWORD_PATIENT + ", " + COLUMN_FNAME
                 + ", " + COLUMN_LNAME + ", " + COLUMN_PNAME + /*", " + COLUMN_BIRTH +*/ ", "
-                + COLUMN_ADDRESS + ", " + COLUMN_EMAIL + ") VALUES ('1', 'angelina', '111', 'Ангелина', 'Бобришёва', " +
-                "'Николаевна','ул. Неманская 25, 51', 'angelina@gmail.com');");
+                + COLUMN_ADDRESS + ", " + COLUMN_PHONE + ") VALUES ('1', 'angelina', '111', 'Ангелина', 'Бобришёва', " +
+                "'Николаевна','ул. Неманская 25, 51', '+375448107253');");
         db.execSQL("INSERT INTO " + TABLE_PATIENTS + " (" + COLUMN_ID_PATIENT + ", " + COLUMN_LOGIN_PATIENT
                 + ", " + COLUMN_PASSWORD_PATIENT + ", " + COLUMN_FNAME
                 + ", " + COLUMN_LNAME + ", " + COLUMN_PNAME + ", "
-                + COLUMN_ADDRESS + ", " + COLUMN_EMAIL + ") VALUES ('2', 'pavel', '222', 'Павел', 'Жданович'," +
-                " 'Константинович','ул. Колесникова 8,23', 'pavel@tut.by');");
+                + COLUMN_ADDRESS + ", " + COLUMN_PHONE + ") VALUES ('2', 'pavel', '222', 'Павел', 'Жданович'," +
+                " 'Константинович','ул. Колесникова 8,23', '+375294671197');");
         db.execSQL("INSERT INTO " + TABLE_PATIENTS + " (" + COLUMN_ID_PATIENT + ", " + COLUMN_LOGIN_PATIENT
                 + ", " + COLUMN_PASSWORD_PATIENT + ", " + COLUMN_FNAME
                 + ", " + COLUMN_LNAME + ", " + COLUMN_PNAME + ", "
-                + COLUMN_ADDRESS + ", " + COLUMN_EMAIL + ") VALUES ('3','victoria', '333', 'Виктория', 'Левчук'," +
-                " 'Александровна','ул. Налибоцкая 3,14', 'vika@rambler.ru');");
+                + COLUMN_ADDRESS + ", " + COLUMN_PHONE + ") VALUES ('3','victoria', '333', 'Виктория', 'Левчук'," +
+                " 'Александровна','ул. Налибоцкая 3,14', '+375256113492');");
 
 
         /*Заполнение таблицы TABLE_DIAGNOSIS_PATIENTS*/
