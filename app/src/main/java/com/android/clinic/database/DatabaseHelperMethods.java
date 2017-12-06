@@ -4,6 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
+
+import com.android.clinic.DatabaseScheduleActivity;
 
 public class DatabaseHelperMethods extends DatabaseHelper {
     public DatabaseHelperMethods(Context context) {
@@ -165,5 +168,35 @@ public class DatabaseHelperMethods extends DatabaseHelper {
         String dateTimeSign = b.getString(b.getColumnIndex(COLUMN_SCHEDULE_DOCTORS_DATETIME));
         b.close();
         return dateTimeSign;
+    }
+
+    public String getLoginFromPhone(String phone) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor b = db.rawQuery("select * from " + TABLE_PATIENTS + " where " + COLUMN_PHONE + " == '" +
+                phone + "' ;", null);
+        if (b.getCount() == 1) {
+            b.moveToFirst();
+            String login = b.getString(b.getColumnIndex(COLUMN_LOGIN_PATIENT));
+            b.close();
+            return login;
+        } else {
+            b.close();
+            return "";
+        }
+    }
+
+    public String getPasswordFromPhone(String phone) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor b = db.rawQuery("select * from " + TABLE_PATIENTS + " where " + COLUMN_PHONE + " == '" +
+                phone + "' ;", null);
+        if (b.getCount() == 1) {
+            b.moveToFirst();
+            String login = b.getString(b.getColumnIndex(COLUMN_PASSWORD_PATIENT));
+            b.close();
+            return login;
+        } else {
+            b.close();
+            return "";
+        }
     }
 }
