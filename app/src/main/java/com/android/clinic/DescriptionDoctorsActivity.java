@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -67,6 +68,12 @@ public class DescriptionDoctorsActivity extends AppCompatActivity {
         userAdapter = new SimpleCursorAdapter(this, R.layout.three_line_list,
                 userCursor, headers1, new int[]{R.id.text1_1, R.id.text2_1, R.id.text3_1, R.id.text4_1, R.id.text5_1}, 0);
         userListDoctor.setAdapter(userAdapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
     }
 
     @Override

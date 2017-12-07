@@ -3,12 +3,14 @@ package com.android.clinic;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 
 public class ChooseActionActivity extends AppCompatActivity {
-private ImageView scheduleImageButton;
+    private ImageView scheduleImageButton;
     private ImageView signUpDoctorImBut;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,5 +32,11 @@ private ImageView scheduleImageButton;
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
     }
 }

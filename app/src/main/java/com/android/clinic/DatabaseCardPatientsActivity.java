@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -55,10 +56,17 @@ public class DatabaseCardPatientsActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         // Закрываем подключение и курсор
         db.close();
         userCursor.close();
     }
+
 }

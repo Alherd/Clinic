@@ -197,17 +197,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
         /*Заполнение таблицы TABLE_DIAGNOSIS_PATIENTS*/
-        db.execSQL("INSERT INTO " + TABLE_DIAGNOSIS_PATIENTS + " (" + COLUMN_ID_DIAGNOSIS + ", "
-                + COLUMN_NAME_DIAGNOSIS + ", " + COLUMN_TYPE_DIAGNOSIS + ") VALUES ('1','Абсцесс носовой перегородки',"
-                + " 'ЛОР-заболевание');");
-        db.execSQL("INSERT INTO " + TABLE_DIAGNOSIS_PATIENTS + " (" + COLUMN_ID_DIAGNOSIS + ", "
-                + COLUMN_NAME_DIAGNOSIS + ", " + COLUMN_TYPE_DIAGNOSIS + ") VALUES ('2','Абсцесс паратонзиллярный',"
-                + " 'ЛОР-заболевание');");
-        db.execSQL("INSERT INTO " + TABLE_DIAGNOSIS_PATIENTS + " (" + COLUMN_ID_DIAGNOSIS + ", "
-                + COLUMN_NAME_DIAGNOSIS + ", " + COLUMN_TYPE_DIAGNOSIS + ") VALUES ('3','Инфекции уха',"
-                + " 'ЛОР-заболевание');");
+        db.execSQL("INSERT INTO " + TABLE_DIAGNOSIS_PATIENTS + " (" + COLUMN_NAME_DIAGNOSIS + ", " +
+                COLUMN_TYPE_DIAGNOSIS + ") VALUES ('Абсцесс носовой перегородки','ЛОР-заболевание')," +
+                "('Абсцесс паратонзиллярный','ЛОР-заболевание'),('Инфекции уха','ЛОР-заболевание')," +
+                "('Акромегалия','Нейроэндокринное заболевание'),('Акромегалия','Нейроэндокринное заболевание')," +
+                "('Актиномикоз','Экзогенная инфекция'),('Ангина','Стрептококковая инфекция');");
 
-
+//http://www.eurolab.ua/diseases/%D0%93/
         /*Заполнение таблицы TABLE_SCHEDULE_DOCTORS*/
         db.execSQL("INSERT INTO " + TABLE_SCHEDULE_DOCTORS + " (" + COLUMN_SCHEDULE_DOCTORS_ID
                 + ", " + COLUMN_SCHEDULE_DOCTORS_DATETIME + ", " + COLUMN_SCHEDULE_IS_ORDER + ") " +
