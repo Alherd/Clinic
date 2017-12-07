@@ -31,7 +31,7 @@
             />
 
         <Button
-            android:id="@+id/tickets"
+            android:id="@+id/shankTickets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/signUp"
@@ -44,7 +44,7 @@
             android:id="@+id/medicalMap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tickets"
+            android:layout_below="@id/shankTickets"
             android:background="@color/background"
             android:hint="@string/medicalcard"
             android:padding="10dp"

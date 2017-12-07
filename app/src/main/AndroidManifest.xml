@@ -33,6 +33,12 @@
         <activity android:name=".DatabaseCardPatientsActivity"/>
         <activity android:name=".GetPrivateDataActivity"/>
         <activity android:name=".MenuDoctorsActivity"/>
+        <activity android:name=".SignToDoctorsActivity">
+        </activity>
+        <activity android:name=".TicketsToDoctorActivity">
+        </activity>
+        <activity android:name=".ResultDiagnosisActivity">
+        </activity>
     </application>
 
 </manifest>

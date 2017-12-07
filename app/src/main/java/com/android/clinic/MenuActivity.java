@@ -29,7 +29,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        myTickets = (Button) findViewById(R.id.tickets);
+        myTickets = (Button) findViewById(R.id.shankTickets);
         myTickets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

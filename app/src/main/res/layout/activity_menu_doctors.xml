@@ -31,7 +31,7 @@
             />
 
         <Button
-            android:id="@+id/tickets"
+            android:id="@+id/shankTickets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/signUp"
@@ -41,10 +41,10 @@
             android:textSize="30dp"/>
 
         <Button
-            android:id="@+id/tickets1"
+            android:id="@+id/resultDiagnosis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tickets"
+            android:layout_below="@id/shankTickets"
             android:background="@color/background"
             android:hint="@string/diagnosis_by_me"
             android:padding="10dp"
