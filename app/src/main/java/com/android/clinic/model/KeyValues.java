@@ -1,4 +1,4 @@
-package com.android.clinic;
+package com.android.clinic.model;
 
 public class KeyValues {
     public static boolean sIsSignUp;

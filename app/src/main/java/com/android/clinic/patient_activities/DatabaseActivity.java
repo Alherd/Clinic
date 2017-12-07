@@ -1,4 +1,4 @@
-package com.android.clinic;
+package com.android.clinic.patient_activities;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.clinic.R;
 import com.android.clinic.database.DatabaseHelper;
 
 public class DatabaseActivity extends AppCompatActivity {

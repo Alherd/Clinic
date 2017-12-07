@@ -1,8 +1,10 @@
-package com.android.clinic;
+package com.android.clinic.patient_activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
+
+import com.android.clinic.R;
 
 public class AboutClinicActivity extends AppCompatActivity {
     @Override

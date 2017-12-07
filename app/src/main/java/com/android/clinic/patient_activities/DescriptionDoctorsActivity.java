@@ -1,4 +1,4 @@
-package com.android.clinic;
+package com.android.clinic.patient_activities;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.android.clinic.model.KeyValues;
+import com.android.clinic.R;
 import com.android.clinic.database.DatabaseHelper;
 import com.android.clinic.database.DatabaseHelperMethods;
 

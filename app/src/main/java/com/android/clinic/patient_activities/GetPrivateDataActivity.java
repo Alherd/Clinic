@@ -1,4 +1,4 @@
-package com.android.clinic;
+package com.android.clinic.patient_activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.clinic.R;
 import com.android.clinic.database.DatabaseHelperMethods;
 
 public class GetPrivateDataActivity extends AppCompatActivity {

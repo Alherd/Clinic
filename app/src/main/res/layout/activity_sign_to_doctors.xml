@@ -5,6 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.android.clinic.SignToDoctorsActivity">
+    tools:context="com.android.clinic.doctor_activities.SignToDoctorsActivity">
 
 </android.support.constraint.ConstraintLayout>

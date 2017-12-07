@@ -1,4 +1,4 @@
-package com.android.clinic;
+package com.android.clinic.model;
 
 /**
  * Created by Olgerd on 09.11.2017.

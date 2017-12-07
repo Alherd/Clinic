@@ -1,4 +1,4 @@
-package com.android.clinic;
+package com.android.clinic.patient_activities;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -17,6 +17,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.clinic.model.KeyValues;
+import com.android.clinic.R;
 import com.android.clinic.database.DatabaseHelper;
 import com.android.clinic.database.DatabaseHelperMethods;
 

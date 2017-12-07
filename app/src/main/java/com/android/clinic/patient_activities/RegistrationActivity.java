@@ -1,4 +1,4 @@
-package com.android.clinic;
+package com.android.clinic.patient_activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.clinic.model.KeyValues;
+import com.android.clinic.model.Patients;
+import com.android.clinic.R;
 import com.android.clinic.database.DatabaseHelperMethods;
 
 public class RegistrationActivity extends AppCompatActivity {

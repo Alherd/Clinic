@@ -1,10 +1,12 @@
-package com.android.clinic;
+package com.android.clinic.doctor_activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.android.clinic.R;
 
 public class MenuDoctorsActivity extends AppCompatActivity {
 

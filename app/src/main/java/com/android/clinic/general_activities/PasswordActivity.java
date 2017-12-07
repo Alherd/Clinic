@@ -1,4 +1,4 @@
-package com.android.clinic;
+package com.android.clinic.general_activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +10,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.clinic.patient_activities.MenuActivity;
+import com.android.clinic.doctor_activities.MenuDoctorsActivity;
+import com.android.clinic.R;
 import com.android.clinic.database.DatabaseHelperMethods;
+import com.android.clinic.model.KeyValues;
+import com.android.clinic.model.Patients;
+import com.android.clinic.patient_activities.GetPrivateDataActivity;
+import com.android.clinic.patient_activities.RegistrationActivity;
 
 public class PasswordActivity extends AppCompatActivity {
     DatabaseHelperMethods myDb;

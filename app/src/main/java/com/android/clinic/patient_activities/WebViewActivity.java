@@ -1,9 +1,11 @@
-package com.android.clinic;
+package com.android.clinic.patient_activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.android.clinic.R;
 
 public class WebViewActivity extends AppCompatActivity {
     public WebView mWebView;

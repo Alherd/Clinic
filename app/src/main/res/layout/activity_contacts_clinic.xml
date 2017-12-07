@@ -5,7 +5,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#8CCED9"
-            tools:context=".ContactsClinicActivity">
+            tools:context=".patient_activities.ContactsClinicActivity">
 
     <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:background="#8CCED9"
         android:paddingBottom="10dp"
-        tools:context="com.android.clinic.ContactsClinicActivity">
+        tools:context="com.android.clinic.patient_activities.ContactsClinicActivity">
 
         <TextView
             android:id="@+id/address"

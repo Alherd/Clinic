@@ -1,4 +1,4 @@
-package com.android.clinic;
+package com.android.clinic.patient_activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,10 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.android.clinic.R;
+import com.android.clinic.general_activities.PasswordActivity;
+import com.android.clinic.model.KeyValues;
 
 public class MenuActivity extends AppCompatActivity {
     Button signUp;

@@ -11,33 +11,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".general_activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ChooseActionActivity"/>
-        <activity android:name=".MenuActivity"/>
-        <activity android:name=".DatabaseDoctorsSignUpActivity"/>
-        <activity android:name=".DatabaseServiceSignUpActivity"/>
-        <activity android:name=".DatabaseNoteEntryActivity"/>
-        <activity android:name=".AboutClinicActivity"/>
-        <activity android:name=".ContactsClinicActivity"/>
-        <activity android:name=".WebViewActivity"/>
-        <activity android:name=".PasswordActivity"/>
-        <activity android:name=".RegistrationActivity"/>
-        <activity android:name=".DescriptionDoctorsActivity"/>
-        <activity android:name=".DatabaseScheduleActivity"/>
-        <activity android:name=".DatabaseCardPatientsActivity"/>
-        <activity android:name=".GetPrivateDataActivity"/>
-        <activity android:name=".MenuDoctorsActivity"/>
-        <activity android:name=".SignToDoctorsActivity">
+        <activity android:name=".patient_activities.ChooseActionActivity"/>
+        <activity android:name=".patient_activities.MenuActivity"/>
+        <activity android:name=".patient_activities.DatabaseDoctorsSignUpActivity"/>
+        <activity android:name=".patient_activities.DatabaseServiceSignUpActivity"/>
+        <activity android:name=".patient_activities.DatabaseNoteEntryActivity"/>
+        <activity android:name=".patient_activities.AboutClinicActivity"/>
+        <activity android:name=".patient_activities.ContactsClinicActivity"/>
+        <activity android:name=".patient_activities.WebViewActivity"/>
+        <activity android:name=".general_activities.PasswordActivity"/>
+        <activity android:name=".patient_activities.RegistrationActivity"/>
+        <activity android:name=".patient_activities.DescriptionDoctorsActivity"/>
+        <activity android:name=".patient_activities.DatabaseScheduleActivity"/>
+        <activity android:name=".patient_activities.DatabaseCardPatientsActivity"/>
+        <activity android:name=".patient_activities.GetPrivateDataActivity"/>
+        <activity android:name=".doctor_activities.MenuDoctorsActivity"/>
+        <activity android:name=".doctor_activities.SignToDoctorsActivity">
         </activity>
-        <activity android:name=".TicketsToDoctorActivity">
+        <activity android:name=".doctor_activities.TicketsToDoctorActivity">
         </activity>
-        <activity android:name=".ResultDiagnosisActivity">
+        <activity android:name=".doctor_activities.ResultDiagnosisActivity">
         </activity>
     </application>
 
