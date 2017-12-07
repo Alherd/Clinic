@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.android.clinic.general_activities.DatabaseScheduleActivity;
 import com.android.clinic.model.KeyValues;
 import com.android.clinic.R;
 import com.android.clinic.database.DatabaseHelper;

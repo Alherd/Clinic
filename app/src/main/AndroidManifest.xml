@@ -29,13 +29,11 @@
         <activity android:name=".general_activities.PasswordActivity"/>
         <activity android:name=".patient_activities.RegistrationActivity"/>
         <activity android:name=".patient_activities.DescriptionDoctorsActivity"/>
-        <activity android:name=".patient_activities.DatabaseScheduleActivity"/>
+        <activity android:name=".general_activities.DatabaseScheduleActivity"/>
         <activity android:name=".patient_activities.DatabaseCardPatientsActivity"/>
         <activity android:name=".patient_activities.GetPrivateDataActivity"/>
         <activity android:name=".doctor_activities.MenuDoctorsActivity"/>
         <activity android:name=".doctor_activities.SignToDoctorsActivity">
-        </activity>
-        <activity android:name=".doctor_activities.TicketsToDoctorActivity">
         </activity>
         <activity android:name=".doctor_activities.ResultDiagnosisActivity">
         </activity>

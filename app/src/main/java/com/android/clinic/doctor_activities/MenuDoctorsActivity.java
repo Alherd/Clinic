@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.android.clinic.R;
+import com.android.clinic.general_activities.DatabaseScheduleActivity;
 
 public class MenuDoctorsActivity extends AppCompatActivity {
 
@@ -31,7 +32,7 @@ public class MenuDoctorsActivity extends AppCompatActivity {
         shankTickets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuDoctorsActivity.this, TicketsToDoctorActivity.class);
+                Intent intent = new Intent(MenuDoctorsActivity.this, DatabaseScheduleActivity.class);
                 startActivity(intent);
             }
         });

@@ -87,12 +87,16 @@ public class PasswordActivity extends AppCompatActivity {
                     mPatient.setSignUp(true);
                     KeyValues.sIdPatient = mPatient.getPatientID();
                     KeyValues.sIsSignUp = mPatient.isSignUp();
+                    KeyValues.enterLikePatient = true;
+                    KeyValues.enterLikeDoctor = false;
                     Toast.makeText(PasswordActivity.this, "Здравствуйте, " + mPatient.getPatientFNAME() +
                             "!", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(PasswordActivity.this, MenuActivity.class);
                     startActivity(intent);
                 } else if ((idPerson < 100) && (idPerson > 0)) {
                     KeyValues.sIdDoctor = Long.toString(idPerson);
+                    KeyValues.enterLikePatient = false;
+                    KeyValues.enterLikeDoctor = true;
                     Intent intent = new Intent(PasswordActivity.this, MenuDoctorsActivity.class);
                     startActivity(intent);
                 } else

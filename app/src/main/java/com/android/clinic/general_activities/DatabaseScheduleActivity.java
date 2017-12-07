@@ -1,4 +1,4 @@
-package com.android.clinic.patient_activities;
+package com.android.clinic.general_activities;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -20,6 +20,7 @@ import com.android.clinic.model.KeyValues;
 import com.android.clinic.R;
 import com.android.clinic.database.DatabaseHelper;
 import com.android.clinic.database.DatabaseHelperMethods;
+import com.android.clinic.patient_activities.MenuActivity;
 
 import static com.android.clinic.database.DatabaseHelper.COLUMN_SCHEDULE_IS_ORDER;
 
@@ -69,43 +70,45 @@ public class DatabaseScheduleActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, final long id) {
-                String title = myDb.getDateTime(id);
-                String message = "Заказать талон?";
-                String button1String = "нет";
-                String button2String = "да";
+                if (KeyValues.enterLikePatient) {
+                    String title = myDb.getDateTime(id);
+                    String message = "Заказать талон?";
+                    String button1String = "нет";
+                    String button2String = "да";
 
-                ad = new AlertDialog.Builder(context);
-                ad.setTitle(title);
-                ad.setMessage(message);
+                    ad = new AlertDialog.Builder(context);
+                    ad.setTitle(title);
+                    ad.setMessage(message);
 
-                ad.setPositiveButton(button2String, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int arg1) {
-                        if (KeyValues.sIsSignUp) {
-                            boolean orderTicket = myDb.insertDataPatientTicket(KeyValues.sIdPatient, id);
-                            if (orderTicket) {
-                                Toast.makeText(DatabaseScheduleActivity.this, "Талон заказан", Toast.LENGTH_LONG).show();
-                                myDb.updateDataTicketPatientsOff(id);
-                                Intent intent = new Intent(DatabaseScheduleActivity.this, MenuActivity.class);
-                                startActivity(intent);
+                    ad.setPositiveButton(button2String, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int arg1) {
+                            if (KeyValues.sIsSignUp) {
+                                boolean orderTicket = myDb.insertDataPatientTicket(KeyValues.sIdPatient, id);
+                                if (orderTicket) {
+                                    Toast.makeText(DatabaseScheduleActivity.this, "Талон заказан", Toast.LENGTH_LONG).show();
+                                    myDb.updateDataTicketPatientsOff(id);
+                                    Intent intent = new Intent(DatabaseScheduleActivity.this, MenuActivity.class);
+                                    startActivity(intent);
+                                } else
+                                    Toast.makeText(DatabaseScheduleActivity.this, "Талон не заказан", Toast.LENGTH_LONG).show();
                             } else
-                                Toast.makeText(DatabaseScheduleActivity.this, "Талон не заказан", Toast.LENGTH_LONG).show();
-                        } else
-                            Toast.makeText(DatabaseScheduleActivity.this, "Авторизируйтесь для заказа талона", Toast.LENGTH_LONG).show();
-                    }
-                });
-                ad.setNegativeButton(button1String, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int arg1) {
+                                Toast.makeText(DatabaseScheduleActivity.this, "Авторизируйтесь для заказа талона", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                    ad.setNegativeButton(button1String, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int arg1) {
 
-                    }
-                });
-                ad.setCancelable(true);
-                ad.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                    public void onCancel(DialogInterface dialog) {
+                        }
+                    });
+                    ad.setCancelable(true);
+                    ad.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                        public void onCancel(DialogInterface dialog) {
 
-                    }
-                });
+                        }
+                    });
 
-                ad.show();
+                    ad.show();
+                }
             }
         });
 
