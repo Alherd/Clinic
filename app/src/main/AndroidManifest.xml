@@ -32,7 +32,7 @@
         <activity android:name=".DatabaseScheduleActivity"/>
         <activity android:name=".DatabaseCardPatientsActivity"/>
         <activity android:name=".GetPrivateDataActivity"/>
-
+        <activity android:name=".MenuDoctorsActivity"/>
     </application>
 
 </manifest>

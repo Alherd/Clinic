@@ -1,8 +1,6 @@
 package com.android.clinic;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -22,7 +20,7 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        signUp = (Button) findViewById(R.id.zapis);
+        signUp = (Button) findViewById(R.id.signUp);
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

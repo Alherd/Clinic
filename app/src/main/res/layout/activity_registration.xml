@@ -40,6 +40,7 @@
             android:id="@+id/insert_login_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:singleLine="true"
             app:layout_constraintTop_toBottomOf="@id/insert_login_textView"/>
 
         <TextView
@@ -55,6 +56,7 @@
             android:id="@+id/insert_password_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:singleLine="true"
             app:layout_constraintTop_toBottomOf="@id/insert_password_textView"/>
 
         <TextView
@@ -70,6 +72,7 @@
             android:id="@+id/insert_fname_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:singleLine="true"
             app:layout_constraintTop_toBottomOf="@id/insert_fname_textView"/>
 
         <TextView
@@ -85,6 +88,7 @@
             android:id="@+id/insert_lname_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:singleLine="true"
             app:layout_constraintTop_toBottomOf="@id/insert_lname_textView"/>
 
         <TextView
@@ -100,6 +104,7 @@
             android:id="@+id/insert_pname_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:singleLine="true"
             app:layout_constraintTop_toBottomOf="@id/insert_pname_textView"/>
 
         <TextView
@@ -115,6 +120,7 @@
             android:id="@+id/insert_phone_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:singleLine="true"
             app:layout_constraintTop_toBottomOf="@id/insert_phone_textView"/>
 
         <TextView
@@ -130,6 +136,7 @@
             android:id="@+id/insert_address_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:singleLine="true"
             app:layout_constraintTop_toBottomOf="@id/insert_address_textView"/>
 
         <Button

@@ -48,8 +48,6 @@ public class PasswordActivity extends AppCompatActivity {
         }
     }
 
-    ;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,8 +71,9 @@ public class PasswordActivity extends AppCompatActivity {
         into_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean check = myDb.searchLoginPassword(editLogin.getText().toString(), editPassword.getText().toString());
-                if (check) {
+                String check = myDb.searchLoginPassword(editLogin.getText().toString(), editPassword.getText().toString());
+                long idPerson = Long.parseLong(check);
+                if (idPerson > 100) {
                     Patients mPatient = new Patients();
                     mPatient.setPatientFNAME(myDb.returnPatientFName(editLogin.getText().toString()));
                     mPatient.setPatientID(myDb.returnPatientID(editLogin.getText().toString()));
@@ -84,6 +83,10 @@ public class PasswordActivity extends AppCompatActivity {
                     Toast.makeText(PasswordActivity.this, "Здравствуйте, " + mPatient.getPatientFNAME() +
                             "!", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(PasswordActivity.this, MenuActivity.class);
+                    startActivity(intent);
+                } else if ((idPerson < 100) && (idPerson > 0)) {
+                    KeyValues.sIdDoctor = Long.toString(idPerson);
+                    Intent intent = new Intent(PasswordActivity.this, MenuDoctorsActivity.class);
                     startActivity(intent);
                 } else
                     Toast.makeText(PasswordActivity.this, "Неверный логин или пароль", Toast.LENGTH_LONG).show();

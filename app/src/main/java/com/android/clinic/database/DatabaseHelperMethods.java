@@ -4,9 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.Toast;
-
-import com.android.clinic.DatabaseScheduleActivity;
 
 public class DatabaseHelperMethods extends DatabaseHelper {
     public DatabaseHelperMethods(Context context) {
@@ -15,10 +12,10 @@ public class DatabaseHelperMethods extends DatabaseHelper {
 
     public String returnPatientFName(String login) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor b = db.rawQuery("select " + COLUMN_FNAME + " from " + TABLE_PATIENTS + " where " + COLUMN_LOGIN_PATIENT +
+        Cursor b = db.rawQuery("select " + COLUMN_FNAME_PATIENT + " from " + TABLE_PATIENTS + " where " + COLUMN_LOGIN_PATIENT +
                 " = '" + login + "' ;", null);
         b.moveToFirst();
-        String nameP = b.getString(b.getColumnIndex(COLUMN_FNAME));
+        String nameP = b.getString(b.getColumnIndex(COLUMN_FNAME_PATIENT));
         b.close();
         return nameP;
     }
@@ -33,28 +30,44 @@ public class DatabaseHelperMethods extends DatabaseHelper {
         return name_id;
     }
 
-    public boolean searchLoginPassword(String login, String password) {
+    public String searchLoginPassword(String login, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select " + COLUMN_FNAME + " from " + TABLE_PATIENTS + " where " + COLUMN_LOGIN_PATIENT +
+        Cursor resPatient = db.rawQuery("select * from " + TABLE_PATIENTS + " where " + COLUMN_LOGIN_PATIENT +
                 " = '" + login + "' and " + COLUMN_PASSWORD_PATIENT + " = '" + password + "';", null);
-        if (res.getCount() != 1) {
-            res.close();
-            return false;
+        Cursor resDoctor = db.rawQuery("select * from " + TABLE_DOCTORS + " where " + COLUMN_LOGIN_DOCTOR +
+                " = '" + login + "' and " + COLUMN_PASSWORD_DOCTOR + " = '" + password + "';", null);
+        if (resPatient.getCount() == 1) {
+            resPatient.moveToFirst();
+            String idPat = resPatient.getString(resPatient.getColumnIndex(COLUMN_ID_PATIENT));
+            resPatient.close();
+            resDoctor.close();
+            return idPat;
+        } else if (resDoctor.getCount() == 1) {
+            resDoctor.moveToFirst();
+            String idDoc = resDoctor.getString(resDoctor.getColumnIndex(COLUMN_ID_DOCTOR));
+            resPatient.close();
+            resDoctor.close();
+            return idDoc;
         } else {
-            res.close();
-            return true;
+            resPatient.close();
+            resDoctor.close();
+            return "-1";
         }
     }
 
     public boolean searchLogin(String login) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select fname from " + TABLE_PATIENTS + " where " + COLUMN_LOGIN_PATIENT +
-                " = '" + login + "';", null);
-        if (res.getCount() != 1) {
-            res.close();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor resPat = db.rawQuery("select * from " + TABLE_PATIENTS + " where " + COLUMN_LOGIN_PATIENT +
+                " = '" + login + "' ;", null);
+        Cursor resDoc = db.rawQuery("select * from " + TABLE_DOCTORS + " where " + COLUMN_LOGIN_DOCTOR +
+                " = '" + login + "' ;", null);
+        if (resPat.getCount() + resDoc.getCount() == 0) {
+            resDoc.close();
+            resPat.close();
             return false;
         } else {
-            res.close();
+            resDoc.close();
+            resPat.close();
             return true;
         }
     }
@@ -73,7 +86,7 @@ public class DatabaseHelperMethods extends DatabaseHelper {
             contentValues.put(COLUMN_ID_PATIENT, m);
             contentValues.put(COLUMN_LOGIN_PATIENT, login);
             contentValues.put(COLUMN_PASSWORD_PATIENT, password);
-            contentValues.put(COLUMN_FNAME, fname);
+            contentValues.put(COLUMN_FNAME_PATIENT, fname);
             contentValues.put(COLUMN_LNAME, lname);
             contentValues.put(COLUMN_PNAME, pname);
             contentValues.put(COLUMN_PHONE, email);
