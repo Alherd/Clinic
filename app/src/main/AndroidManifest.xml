@@ -37,6 +37,10 @@
         </activity>
         <activity android:name=".doctor_activities.ResultDiagnosisActivity">
         </activity>
+        <activity android:name=".doctor_activities.DiagnosisActivity">
+        </activity>
+        <activity android:name=".doctor_activities.FillPatientCardActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.android.clinic.R;
 import com.android.clinic.general_activities.DatabaseScheduleActivity;
+import com.android.clinic.general_activities.PasswordActivity;
 
 public class MenuDoctorsActivity extends AppCompatActivity {
 
@@ -45,5 +46,11 @@ public class MenuDoctorsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(MenuDoctorsActivity.this, PasswordActivity.class);
+        startActivity(intent);
     }
 }

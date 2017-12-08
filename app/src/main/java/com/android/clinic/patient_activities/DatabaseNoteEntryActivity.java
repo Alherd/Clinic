@@ -27,7 +27,9 @@ import static com.android.clinic.database.DatabaseHelper.COLUMN_NAME_DOCTOR;
 import static com.android.clinic.database.DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_DATETIME;
 import static com.android.clinic.database.DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_ID;
 import static com.android.clinic.database.DatabaseHelper.COLUMN_SCHEDULE_ID;
+import static com.android.clinic.database.DatabaseHelper.COLUMN_SCHEDULE_IS_ORDER;
 import static com.android.clinic.database.DatabaseHelper.COLUMN_SIGN_UP_ID_TICKET;
+import static com.android.clinic.database.DatabaseHelper.COLUMN_SIGN_UP_IS_OVER;
 
 public class DatabaseNoteEntryActivity extends AppCompatActivity {
     ListView userList;
@@ -63,8 +65,8 @@ public class DatabaseNoteEntryActivity extends AppCompatActivity {
                 + DatabaseHelper.TABLE_SCHEDULE_DOCTORS + ", "
                 + DatabaseHelper.TABLE_DOCTORS + " where " + DatabaseHelper.COLUMN_SIGN_UP_ID_PATIENTS
                 + " == '" + KeyValues.sIdPatient + "' AND " + COLUMN_SIGN_UP_ID_TICKET + " == " + COLUMN_SCHEDULE_ID + " AND "
-                + COLUMN_SCHEDULE_DOCTORS_ID + " == " + COLUMN_ID_DOCTOR + " order by " +
-                DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_DATETIME + " ;", null);
+                + COLUMN_SCHEDULE_DOCTORS_ID + " == " + COLUMN_ID_DOCTOR + " AND " + COLUMN_SIGN_UP_IS_OVER +
+                " == '0' order by " + DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_DATETIME + " ;", null);
         // определяем, какие столбцы из курсора будут выводиться в ListView
         String[] headers = new String[]{COLUMN_SCHEDULE_DOCTORS_DATETIME, COLUMN_NAME_DOCTOR};
         // создаем адаптер, передаем в него курсор

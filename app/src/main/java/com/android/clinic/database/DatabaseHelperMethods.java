@@ -106,6 +106,7 @@ public class DatabaseHelperMethods extends DatabaseHelper {
         contentValues.put(COLUMN_SIGN_UP_ID, m);
         contentValues.put(COLUMN_SIGN_UP_ID_PATIENTS, idPatient);
         contentValues.put(COLUMN_SIGN_UP_ID_TICKET, idTicket);
+        contentValues.put(COLUMN_SIGN_UP_IS_OVER, "0");
         long result = db.insert(TABLE_SIGN_UP_PATIENTS, null, contentValues);
         if (result == -1)
             return false;
@@ -122,14 +123,6 @@ public class DatabaseHelperMethods extends DatabaseHelper {
                 "' AND " + COLUMN_SIGN_UP_ID_PATIENTS + " = '" + idPatient + "'", null);
     }
 
-    public void updateDataTicketPatientsOff(long idTicket) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_SCHEDULE_IS_ORDER, "1");
-        db.update(TABLE_SCHEDULE_DOCTORS, contentValues, COLUMN_SCHEDULE_ID + " = " + idTicket,
-                null);
-    }
-
     public void updateDataTicketPatientsOn(long idTicket) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select " + COLUMN_SIGN_UP_ID_TICKET + " from " + TABLE_SIGN_UP_PATIENTS + " where " + COLUMN_SIGN_UP_ID +
@@ -140,6 +133,22 @@ public class DatabaseHelperMethods extends DatabaseHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_SCHEDULE_IS_ORDER, "0");
         db.update(TABLE_SCHEDULE_DOCTORS, contentValues, COLUMN_SCHEDULE_ID + " = '" + ticket_id + "'",
+                null);
+    }
+
+    public void updateDataTicketPatientsOff(long idTicket) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_SCHEDULE_IS_ORDER, "1");
+        db.update(TABLE_SCHEDULE_DOCTORS, contentValues, COLUMN_SCHEDULE_ID + " = " + idTicket,
+                null);
+    }
+
+    public void updateDataTicketFinal(long idTicket) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_SIGN_UP_IS_OVER, "1");
+        db.update(TABLE_SIGN_UP_PATIENTS, contentValues, COLUMN_SIGN_UP_ID + " = " + idTicket,
                 null);
     }
 
@@ -212,4 +221,66 @@ public class DatabaseHelperMethods extends DatabaseHelper {
             return "";
         }
     }
+
+    public String getDiagnosisName(long id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor b = db.rawQuery("select * from " + TABLE_DIAGNOSIS_PATIENTS + " where " +
+                COLUMN_ID_DIAGNOSIS + " == '" + id + "';", null);
+        b.moveToFirst();
+        String diagnosis = b.getString(b.getColumnIndex(COLUMN_NAME_DIAGNOSIS));
+        b.close();
+        return diagnosis;
+    }
+
+    public String getFnamePatient(String idTicket) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor b = db.rawQuery("select * from " + TABLE_SIGN_UP_PATIENTS + ", " + TABLE_PATIENTS + " where " +
+                COLUMN_SIGN_UP_ID + " == '" + idTicket + "' and " + COLUMN_SIGN_UP_ID_PATIENTS + " == " + COLUMN_ID_PATIENT +
+                " ;", null);
+        b.moveToFirst();
+        String lName = b.getString(b.getColumnIndex(COLUMN_LNAME));
+        b.close();
+        return lName;
+    }
+
+    public String getTimeVisit(String idTicket) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor b = db.rawQuery("select * from " + TABLE_SIGN_UP_PATIENTS + ", " + TABLE_SCHEDULE_DOCTORS + " where " +
+                COLUMN_SIGN_UP_ID + " == '" + idTicket + "' and " + COLUMN_SIGN_UP_ID_TICKET + " == " + COLUMN_SCHEDULE_ID +
+                " ;", null);
+        b.moveToFirst();
+        String dateTime = b.getString(b.getColumnIndex(COLUMN_SCHEDULE_DOCTORS_DATETIME));
+        b.close();
+        return dateTime;
+    }
+
+    public String getIdPatient(long id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor b = db.rawQuery("select * from " + TABLE_SIGN_UP_PATIENTS + ", " + TABLE_SCHEDULE_DOCTORS + ", " +
+                TABLE_PATIENTS + " where " + COLUMN_SIGN_UP_ID + " == '" + id + "' and " + COLUMN_SIGN_UP_ID_PATIENTS +
+                " == " + COLUMN_ID_PATIENT + " ;", null);
+        b.moveToFirst();
+        String dateTime = b.getString(b.getColumnIndex(COLUMN_ID_PATIENT));
+        b.close();
+        return dateTime;
+    }
+
+    public boolean setDataToCard(String idTicket, String idDiagnosis, String note) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        if ((idTicket.equals("")) || (idDiagnosis.equals(""))) {
+            return false;
+        } else {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(COLUMN_SIGN_ID_CARD, idTicket);
+            contentValues.put(COLUMN_DIAGNOSIS_COD_CARD, idDiagnosis);
+            contentValues.put(COLUMN_NOTE_DOCTOR_CARD, note);
+            long result = db.insert(TABLE_MEDICAL_CARD_PATIENTS, null, contentValues);
+            if (result == -1)
+                return false;
+            else
+
+                return true;
+        }
+    }
 }
+

@@ -52,6 +52,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_SIGN_UP_ID = "_id_sign_up";
     public static final String COLUMN_SIGN_UP_ID_PATIENTS = "_id_patients";
     public static final String COLUMN_SIGN_UP_ID_TICKET = "_id_tickets";
+    public static final String COLUMN_SIGN_UP_IS_OVER = "_is_over";
 
     /**
      * Таблица TABLE_MEDICAL_CARD_PATIENTS
@@ -66,7 +67,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * Таблица TABLE_DIAGNOSIS_PATIENTS
      */
     public static final String TABLE_DIAGNOSIS_PATIENTS = "diagnosis_patient";
-    public static final String COLUMN_ID_DIAGNOSIS = "id_diagnosis";
+    public static final String COLUMN_ID_DIAGNOSIS = "_id_diagnosis";
     public static final String COLUMN_NAME_DIAGNOSIS = "name_diagnosis";
     public static final String COLUMN_TYPE_DIAGNOSIS = "type_diagnosis";
 
@@ -118,7 +119,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " + TABLE_SIGN_UP_PATIENTS
                 + " (" + COLUMN_SIGN_UP_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_SIGN_UP_ID_PATIENTS + " INTEGER, "
-                + COLUMN_SIGN_UP_ID_TICKET + " INTEGER);");
+                + COLUMN_SIGN_UP_ID_TICKET + " INTEGER, "
+                + COLUMN_SIGN_UP_IS_OVER + " INTEGER);");
 
 
         /*Создание таблицы TABLE_MEDICAL_CARD_PATIENTS*/
@@ -263,13 +265,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         /*Зполнение таблицы TABLE_SIGN_UP_PATIENTS*/
         db.execSQL("INSERT INTO " + TABLE_SIGN_UP_PATIENTS + " (" + COLUMN_SIGN_UP_ID + ", " + COLUMN_SIGN_UP_ID_PATIENTS
-                + ", " + COLUMN_SIGN_UP_ID_TICKET + ") " + " VALUES ('1','102','11'),('2','102','1'), ('3','102','20'),('4','103','3');");
+                + ", " + COLUMN_SIGN_UP_ID_TICKET + ", " + COLUMN_SIGN_UP_IS_OVER + ") " + " VALUES ('1','102','11','1'),('2','102','1','1'), ('3','102','20','1'),('4','103','3','0');");
 
 
         /*Создание таблицы TABLE_MEDICAL_CARD_PATIENTS*/
-        db.execSQL("INSERT INTO " + TABLE_MEDICAL_CARD_PATIENTS + " (" + COLUMN_ID_CARD + ", " + COLUMN_SIGN_ID_CARD
+        db.execSQL("INSERT INTO " + TABLE_MEDICAL_CARD_PATIENTS + " (" + COLUMN_SIGN_ID_CARD
                 + ", " + COLUMN_DIAGNOSIS_COD_CARD + ", " + COLUMN_NOTE_DOCTOR_CARD + ") "
-                + "VALUES ('1','1','1','Необходимо принять лекарство Назонекс'),('2','2','3',''), ('3','3','2','');");
+                + "VALUES ('1','1','Необходимо принять лекарство Назонекс'),('2','3',''), ('3','2','');");
     }
 
 

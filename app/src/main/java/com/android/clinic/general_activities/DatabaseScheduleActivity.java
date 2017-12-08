@@ -70,7 +70,7 @@ public class DatabaseScheduleActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, final long id) {
-                if (KeyValues.enterLikePatient) {
+                if (!KeyValues.enterLikeDoctor) {
                     String title = myDb.getDateTime(id);
                     String message = "Заказать талон?";
                     String button1String = "нет";
@@ -111,8 +111,6 @@ public class DatabaseScheduleActivity extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 
     @Override
@@ -128,6 +126,4 @@ public class DatabaseScheduleActivity extends AppCompatActivity {
         db.close();
         userCursor.close();
     }
-
-
 }
