@@ -40,14 +40,5 @@
             android:padding="10dp"
             android:textSize="30dp"/>
 
-        <Button
-            android:id="@+id/resultDiagnosis"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/shankTickets"
-            android:background="@color/background"
-            android:hint="@string/diagnosis_by_me"
-            android:padding="10dp"
-            android:textSize="30dp"/>
     </RelativeLayout>
 </ScrollView>

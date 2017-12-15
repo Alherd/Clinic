@@ -22,12 +22,13 @@ import com.android.clinic.R;
 import com.android.clinic.database.DatabaseHelper;
 import com.android.clinic.database.DatabaseHelperMethods;
 
+import static com.android.clinic.database.DatabaseHelper.COLUMN_CABINET_DOCTOR;
 import static com.android.clinic.database.DatabaseHelper.COLUMN_ID_DOCTOR;
 import static com.android.clinic.database.DatabaseHelper.COLUMN_NAME_DOCTOR;
-import static com.android.clinic.database.DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_DATETIME;
-import static com.android.clinic.database.DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_ID;
-import static com.android.clinic.database.DatabaseHelper.COLUMN_SCHEDULE_ID;
-import static com.android.clinic.database.DatabaseHelper.COLUMN_SCHEDULE_IS_ORDER;
+import static com.android.clinic.database.DatabaseHelper.COLUMN_SPEC_DOCTOR;
+import static com.android.clinic.database.DatabaseHelper.COLUMN_TICKET_DOCTORS_DATETIME;
+import static com.android.clinic.database.DatabaseHelper.COLUMN_TICKET_DOCTORS_ID;
+import static com.android.clinic.database.DatabaseHelper.COLUMN_TICKET_ID;
 import static com.android.clinic.database.DatabaseHelper.COLUMN_SIGN_UP_ID_TICKET;
 import static com.android.clinic.database.DatabaseHelper.COLUMN_SIGN_UP_IS_OVER;
 
@@ -62,16 +63,16 @@ public class DatabaseNoteEntryActivity extends AppCompatActivity {
         db = mDatabaseHelper.getReadableDatabase();
         //получаем данные из бд в виде курсора
         userCursor = db.rawQuery("select _id_sign_up as _id, * from " + DatabaseHelper.TABLE_SIGN_UP_PATIENTS + ", "
-                + DatabaseHelper.TABLE_SCHEDULE_DOCTORS + ", "
+                + DatabaseHelper.TABLE_TICKETS_DOCTORS + ", "
                 + DatabaseHelper.TABLE_DOCTORS + " where " + DatabaseHelper.COLUMN_SIGN_UP_ID_PATIENTS
-                + " == '" + KeyValues.sIdPatient + "' AND " + COLUMN_SIGN_UP_ID_TICKET + " == " + COLUMN_SCHEDULE_ID + " AND "
-                + COLUMN_SCHEDULE_DOCTORS_ID + " == " + COLUMN_ID_DOCTOR + " AND " + COLUMN_SIGN_UP_IS_OVER +
-                " == '0' order by " + DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_DATETIME + " ;", null);
+                + " == '" + KeyValues.sIdPatient + "' AND " + COLUMN_SIGN_UP_ID_TICKET + " == " + COLUMN_TICKET_ID + " AND "
+                + COLUMN_TICKET_DOCTORS_ID + " == " + COLUMN_ID_DOCTOR + " AND " + COLUMN_SIGN_UP_IS_OVER +
+                " == '0' order by " + DatabaseHelper.COLUMN_TICKET_DOCTORS_DATETIME + " ;", null);
         // определяем, какие столбцы из курсора будут выводиться в ListView
-        String[] headers = new String[]{COLUMN_SCHEDULE_DOCTORS_DATETIME, COLUMN_NAME_DOCTOR};
+        String[] headers = new String[]{COLUMN_TICKET_DOCTORS_DATETIME, COLUMN_SPEC_DOCTOR, COLUMN_CABINET_DOCTOR};
         // создаем адаптер, передаем в него курсор
-        userAdapter = new SimpleCursorAdapter(this, R.layout.two_line_button_list_item,
-                userCursor, headers, new int[]{R.id.text1, R.id.text2}, 0);
+        userAdapter = new SimpleCursorAdapter(this, R.layout.three_line_list_item,
+                userCursor, headers, new int[]{R.id.text1, R.id.text2, R.id.text3}, 0);
         header.setText("Мои талоны");
         userList.setAdapter(userAdapter);
 

@@ -19,8 +19,7 @@ import com.android.clinic.database.DatabaseHelperMethods;
 import com.android.clinic.model.KeyValues;
 
 import static com.android.clinic.database.DatabaseHelper.COLUMN_ID_PATIENT;
-import static com.android.clinic.database.DatabaseHelper.COLUMN_SCHEDULE_ID;
-import static com.android.clinic.database.DatabaseHelper.COLUMN_SCHEDULE_IS_ORDER;
+import static com.android.clinic.database.DatabaseHelper.COLUMN_TICKET_ID;
 import static com.android.clinic.database.DatabaseHelper.COLUMN_SIGN_UP_ID_PATIENTS;
 import static com.android.clinic.database.DatabaseHelper.COLUMN_SIGN_UP_ID_TICKET;
 import static com.android.clinic.database.DatabaseHelper.COLUMN_SIGN_UP_IS_OVER;
@@ -52,14 +51,14 @@ public class SignToDoctorsActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         db = mDatabaseHelper.getReadableDatabase();
-        userCursor = db.rawQuery("select _id_sign_up as _id, * from " + DatabaseHelper.TABLE_SCHEDULE_DOCTORS + ", " +
+        userCursor = db.rawQuery("select _id_sign_up as _id, * from " + DatabaseHelper.TABLE_TICKETS_DOCTORS + ", " +
                 DatabaseHelper.TABLE_SIGN_UP_PATIENTS + ", " + DatabaseHelper.TABLE_PATIENTS + " where " +
-                DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_ID + " == '" + KeyValues.sIdDoctor
-                + "' and " + COLUMN_SIGN_UP_ID_TICKET + " == " + COLUMN_SCHEDULE_ID +
+                DatabaseHelper.COLUMN_TICKET_DOCTORS_ID + " == '" + KeyValues.sIdDoctor
+                + "' and " + COLUMN_SIGN_UP_ID_TICKET + " == " + COLUMN_TICKET_ID +
                 " and " + COLUMN_SIGN_UP_ID_PATIENTS + " == " + COLUMN_ID_PATIENT +
                 " and " + COLUMN_SIGN_UP_IS_OVER + " == '0' order by " +
-                DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_DATETIME + ";", null);
-        String[] headers1 = new String[]{DatabaseHelper.COLUMN_SCHEDULE_DOCTORS_DATETIME, DatabaseHelper.COLUMN_LNAME};
+                DatabaseHelper.COLUMN_TICKET_DOCTORS_DATETIME + ";", null);
+        String[] headers1 = new String[]{DatabaseHelper.COLUMN_TICKET_DOCTORS_DATETIME, DatabaseHelper.COLUMN_LNAME_PATIENT};
         userAdapter = new SimpleCursorAdapter(this, R.layout.two_line_list_item,
                 userCursor, headers1, new int[]{R.id.text1, R.id.text2}, 0);
         userList.setAdapter(userAdapter);

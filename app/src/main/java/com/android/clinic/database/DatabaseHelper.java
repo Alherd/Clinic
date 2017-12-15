@@ -31,19 +31,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_LOGIN_PATIENT = "login_patient";
     public static final String COLUMN_PASSWORD_PATIENT = "password_patient";
     public static final String COLUMN_FNAME_PATIENT = "fname_patient";
-    public static final String COLUMN_LNAME = "lname_patient";
-    public static final String COLUMN_PNAME = "patronymic_patient";
-    public static final String COLUMN_ADDRESS = "address_patient";
-    public static final String COLUMN_PHONE = "phone_patient";
+    public static final String COLUMN_LNAME_PATIENT = "lname_patient";
+    public static final String COLUMN_PNAME_PATIENT = "patronymic_patient";
+    public static final String COLUMN_ADDRESS_PATIENT = "address_patient";
+    public static final String COLUMN_PHONE_PATIENT = "phone_patient";
 
     /**
-     * Таблица TABLE_SCHEDULE_DOCTORS
+     * Таблица TABLE_TICKETS_DOCTORS
      */
-    public static final String TABLE_SCHEDULE_DOCTORS = "schedule_doctors";
-    public static final String COLUMN_SCHEDULE_ID = "_id_schedule";
-    public static final String COLUMN_SCHEDULE_DOCTORS_ID = "_id_doctors";
-    public static final String COLUMN_SCHEDULE_DOCTORS_DATETIME = "doctor_list_datetime";
-    public static final String COLUMN_SCHEDULE_IS_ORDER = "doctor_schedule_is_order";
+    public static final String TABLE_TICKETS_DOCTORS = "tickets_doctors";
+    public static final String COLUMN_TICKET_ID = "_id_ticket";
+    public static final String COLUMN_TICKET_DOCTORS_ID = "_id_doctors_ticket";
+    public static final String COLUMN_TICKET_DOCTORS_DATETIME = "doctors_ticket_datetime";
+    public static final String COLUMN_TICKET_IS_ORDER = "doctors_ticket_is_order";
 
     /**
      * Таблица TABLE_SIGN_UP_PATIENTS
@@ -101,18 +101,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COLUMN_LOGIN_PATIENT + " TEXT, "
                 + COLUMN_PASSWORD_PATIENT + " TEXT, "
                 + COLUMN_FNAME_PATIENT + " TEXT, "
-                + COLUMN_LNAME + " TEXT, "
-                + COLUMN_PNAME + " TEXT, "
-                + COLUMN_ADDRESS + " TEXT, "
-                + COLUMN_PHONE + " TEXT);");
+                + COLUMN_LNAME_PATIENT + " TEXT, "
+                + COLUMN_PNAME_PATIENT + " TEXT, "
+                + COLUMN_ADDRESS_PATIENT + " TEXT, "
+                + COLUMN_PHONE_PATIENT + " TEXT);");
 
 
-        /*Создание таблицы TABLE_SCHEDULE_DOCTORS*/
-        db.execSQL("CREATE TABLE " + TABLE_SCHEDULE_DOCTORS
-                + " (" + COLUMN_SCHEDULE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + COLUMN_SCHEDULE_DOCTORS_ID + " INTEGER, "
-                + COLUMN_SCHEDULE_DOCTORS_DATETIME + " DATETIME, "
-                + COLUMN_SCHEDULE_IS_ORDER + " INTEGER);");
+        /*Создание таблицы TABLE_TICKETS_DOCTORS*/
+        db.execSQL("CREATE TABLE " + TABLE_TICKETS_DOCTORS
+                + " (" + COLUMN_TICKET_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + COLUMN_TICKET_DOCTORS_ID + " INTEGER, "
+                + COLUMN_TICKET_DOCTORS_DATETIME + " DATETIME, "
+                + COLUMN_TICKET_IS_ORDER + " INTEGER);");
 
 
         /*Создание таблицы TABLE_SIGN_UP_PATIENTS*/
@@ -188,18 +188,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         /*Заполнение таблицы TABLE_PATIENTS*/
         db.execSQL("INSERT INTO " + TABLE_PATIENTS + " (" + COLUMN_ID_PATIENT + ", " + COLUMN_LOGIN_PATIENT
                 + ", " + COLUMN_PASSWORD_PATIENT + ", " + COLUMN_FNAME_PATIENT
-                + ", " + COLUMN_LNAME + ", " + COLUMN_PNAME + /*", " + COLUMN_BIRTH +*/ ", "
-                + COLUMN_ADDRESS + ", " + COLUMN_PHONE + ") VALUES ('101', 'angelina', '111', 'Ангелина', 'Бобришёва', " +
+                + ", " + COLUMN_LNAME_PATIENT + ", " + COLUMN_PNAME_PATIENT + /*", " + COLUMN_BIRTH +*/ ", "
+                + COLUMN_ADDRESS_PATIENT + ", " + COLUMN_PHONE_PATIENT + ") VALUES ('101', 'angelina', '111', 'Ангелина', 'Бобришёва', " +
                 "'Николаевна','ул. Неманская 25, 51', '+375448107253');");
         db.execSQL("INSERT INTO " + TABLE_PATIENTS + " (" + COLUMN_ID_PATIENT + ", " + COLUMN_LOGIN_PATIENT
                 + ", " + COLUMN_PASSWORD_PATIENT + ", " + COLUMN_FNAME_PATIENT
-                + ", " + COLUMN_LNAME + ", " + COLUMN_PNAME + ", "
-                + COLUMN_ADDRESS + ", " + COLUMN_PHONE + ") VALUES ('102', 'pavel', '222', 'Павел', 'Жданович'," +
+                + ", " + COLUMN_LNAME_PATIENT + ", " + COLUMN_PNAME_PATIENT + ", "
+                + COLUMN_ADDRESS_PATIENT + ", " + COLUMN_PHONE_PATIENT + ") VALUES ('102', 'pavel', '222', 'Павел', 'Жданович'," +
                 " 'Константинович','ул. Колесникова 8,23', '+375294671197');");
         db.execSQL("INSERT INTO " + TABLE_PATIENTS + " (" + COLUMN_ID_PATIENT + ", " + COLUMN_LOGIN_PATIENT
                 + ", " + COLUMN_PASSWORD_PATIENT + ", " + COLUMN_FNAME_PATIENT
-                + ", " + COLUMN_LNAME + ", " + COLUMN_PNAME + ", "
-                + COLUMN_ADDRESS + ", " + COLUMN_PHONE + ") VALUES ('103','victoria', '333', 'Виктория', 'Левчук'," +
+                + ", " + COLUMN_LNAME_PATIENT + ", " + COLUMN_PNAME_PATIENT + ", "
+                + COLUMN_ADDRESS_PATIENT + ", " + COLUMN_PHONE_PATIENT + ") VALUES ('103','victoria', '333', 'Виктория', 'Левчук'," +
                 " 'Александровна','ул. Налибоцкая 3,14', '+375256113492');");
 
 
@@ -211,9 +211,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "('Актиномикоз','Экзогенная инфекция'),('Ангина','Стрептококковая инфекция');");
 
 //http://www.eurolab.ua/diseases/%D0%93/
-        /*Заполнение таблицы TABLE_SCHEDULE_DOCTORS*/
-        db.execSQL("INSERT INTO " + TABLE_SCHEDULE_DOCTORS + " (" + COLUMN_SCHEDULE_DOCTORS_ID
-                + ", " + COLUMN_SCHEDULE_DOCTORS_DATETIME + ", " + COLUMN_SCHEDULE_IS_ORDER + ") " +
+        /*Заполнение таблицы TABLE_TICKETS_DOCTORS*/
+        db.execSQL("INSERT INTO " + TABLE_TICKETS_DOCTORS + " (" + COLUMN_TICKET_DOCTORS_ID
+                + ", " + COLUMN_TICKET_DOCTORS_DATETIME + ", " + COLUMN_TICKET_IS_ORDER + ") " +
                 " VALUES ('1','25 ноября 08:10','1'),('1','24 ноября 08:00','0'),('1','25 ноября 07:00','1')," +
                 "('1','25 ноября 08:20','0'),('1','25 ноября 09:30','0'),('1','25 ноября 10:10','0')" +
                 ",('1','25 ноября 10:50','0'),('1','26 ноября 11:10','0'),('1','26 ноября 11:40','0')" +

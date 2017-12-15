@@ -14,7 +14,7 @@ public class MenuDoctorsActivity extends AppCompatActivity {
 
     Button signToMe;
     Button shankTickets;
-    Button resultDiagnosis;
+ //   Button resultDiagnosis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +37,15 @@ public class MenuDoctorsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        resultDiagnosis = (Button) findViewById(R.id.resultDiagnosis);
-        resultDiagnosis.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MenuDoctorsActivity.this, ResultDiagnosisActivity.class);
-                startActivity(intent);
-            }
-        });
+//
+//        resultDiagnosis = (Button) findViewById(R.id.resultDiagnosis);
+//        resultDiagnosis.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MenuDoctorsActivity.this, ResultDiagnosisActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     @Override

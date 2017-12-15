@@ -87,10 +87,10 @@ public class DatabaseHelperMethods extends DatabaseHelper {
             contentValues.put(COLUMN_LOGIN_PATIENT, login);
             contentValues.put(COLUMN_PASSWORD_PATIENT, password);
             contentValues.put(COLUMN_FNAME_PATIENT, fname);
-            contentValues.put(COLUMN_LNAME, lname);
-            contentValues.put(COLUMN_PNAME, pname);
-            contentValues.put(COLUMN_PHONE, email);
-            contentValues.put(COLUMN_ADDRESS, address);
+            contentValues.put(COLUMN_LNAME_PATIENT, lname);
+            contentValues.put(COLUMN_PNAME_PATIENT, pname);
+            contentValues.put(COLUMN_PHONE_PATIENT, email);
+            contentValues.put(COLUMN_ADDRESS_PATIENT, address);
             long result = db.insert(TABLE_PATIENTS, null, contentValues);
             if (result == -1)
                 return -1;
@@ -131,16 +131,16 @@ public class DatabaseHelperMethods extends DatabaseHelper {
         String ticket_id = res.getString(res.getColumnIndex(COLUMN_SIGN_UP_ID_TICKET));
         res.close();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_SCHEDULE_IS_ORDER, "0");
-        db.update(TABLE_SCHEDULE_DOCTORS, contentValues, COLUMN_SCHEDULE_ID + " = '" + ticket_id + "'",
+        contentValues.put(COLUMN_TICKET_IS_ORDER, "0");
+        db.update(TABLE_TICKETS_DOCTORS, contentValues, COLUMN_TICKET_ID + " = '" + ticket_id + "'",
                 null);
     }
 
     public void updateDataTicketPatientsOff(long idTicket) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_SCHEDULE_IS_ORDER, "1");
-        db.update(TABLE_SCHEDULE_DOCTORS, contentValues, COLUMN_SCHEDULE_ID + " = " + idTicket,
+        contentValues.put(COLUMN_TICKET_IS_ORDER, "1");
+        db.update(TABLE_TICKETS_DOCTORS, contentValues, COLUMN_TICKET_ID + " = " + idTicket,
                 null);
     }
 
@@ -164,10 +164,10 @@ public class DatabaseHelperMethods extends DatabaseHelper {
 
     public String getDateTime(long id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor b = db.rawQuery("select * from " + TABLE_SCHEDULE_DOCTORS +
-                " where " + COLUMN_SCHEDULE_ID + " = '" + id + "' ;", null);
+        Cursor b = db.rawQuery("select * from " + TABLE_TICKETS_DOCTORS +
+                " where " + COLUMN_TICKET_ID + " = '" + id + "' ;", null);
         b.moveToFirst();
-        String dateTime = b.getString(b.getColumnIndex(COLUMN_SCHEDULE_DOCTORS_DATETIME));
+        String dateTime = b.getString(b.getColumnIndex(COLUMN_TICKET_DOCTORS_DATETIME));
         b.close();
         return dateTime;
     }
@@ -184,17 +184,17 @@ public class DatabaseHelperMethods extends DatabaseHelper {
 
     public String getDateTimeSign(long id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor b = db.rawQuery("select * from " + TABLE_SIGN_UP_PATIENTS + ", " + TABLE_SCHEDULE_DOCTORS + " where " +
-                COLUMN_SIGN_UP_ID + " = '" + id + "' and " + COLUMN_SIGN_UP_ID_TICKET + " = " + COLUMN_SCHEDULE_ID + ";", null);
+        Cursor b = db.rawQuery("select * from " + TABLE_SIGN_UP_PATIENTS + ", " + TABLE_TICKETS_DOCTORS + " where " +
+                COLUMN_SIGN_UP_ID + " = '" + id + "' and " + COLUMN_SIGN_UP_ID_TICKET + " = " + COLUMN_TICKET_ID + ";", null);
         b.moveToFirst();
-        String dateTimeSign = b.getString(b.getColumnIndex(COLUMN_SCHEDULE_DOCTORS_DATETIME));
+        String dateTimeSign = b.getString(b.getColumnIndex(COLUMN_TICKET_DOCTORS_DATETIME));
         b.close();
         return dateTimeSign;
     }
 
     public String getLoginFromPhone(String phone) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor b = db.rawQuery("select * from " + TABLE_PATIENTS + " where " + COLUMN_PHONE + " == '" +
+        Cursor b = db.rawQuery("select * from " + TABLE_PATIENTS + " where " + COLUMN_PHONE_PATIENT + " == '" +
                 phone + "' ;", null);
         if (b.getCount() == 1) {
             b.moveToFirst();
@@ -209,7 +209,7 @@ public class DatabaseHelperMethods extends DatabaseHelper {
 
     public String getPasswordFromPhone(String phone) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor b = db.rawQuery("select * from " + TABLE_PATIENTS + " where " + COLUMN_PHONE + " == '" +
+        Cursor b = db.rawQuery("select * from " + TABLE_PATIENTS + " where " + COLUMN_PHONE_PATIENT + " == '" +
                 phone + "' ;", null);
         if (b.getCount() == 1) {
             b.moveToFirst();
@@ -238,25 +238,25 @@ public class DatabaseHelperMethods extends DatabaseHelper {
                 COLUMN_SIGN_UP_ID + " == '" + idTicket + "' and " + COLUMN_SIGN_UP_ID_PATIENTS + " == " + COLUMN_ID_PATIENT +
                 " ;", null);
         b.moveToFirst();
-        String lName = b.getString(b.getColumnIndex(COLUMN_LNAME));
+        String lName = b.getString(b.getColumnIndex(COLUMN_LNAME_PATIENT));
         b.close();
         return lName;
     }
 
     public String getTimeVisit(String idTicket) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor b = db.rawQuery("select * from " + TABLE_SIGN_UP_PATIENTS + ", " + TABLE_SCHEDULE_DOCTORS + " where " +
-                COLUMN_SIGN_UP_ID + " == '" + idTicket + "' and " + COLUMN_SIGN_UP_ID_TICKET + " == " + COLUMN_SCHEDULE_ID +
+        Cursor b = db.rawQuery("select * from " + TABLE_SIGN_UP_PATIENTS + ", " + TABLE_TICKETS_DOCTORS + " where " +
+                COLUMN_SIGN_UP_ID + " == '" + idTicket + "' and " + COLUMN_SIGN_UP_ID_TICKET + " == " + COLUMN_TICKET_ID +
                 " ;", null);
         b.moveToFirst();
-        String dateTime = b.getString(b.getColumnIndex(COLUMN_SCHEDULE_DOCTORS_DATETIME));
+        String dateTime = b.getString(b.getColumnIndex(COLUMN_TICKET_DOCTORS_DATETIME));
         b.close();
         return dateTime;
     }
 
     public String getIdPatient(long id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor b = db.rawQuery("select * from " + TABLE_SIGN_UP_PATIENTS + ", " + TABLE_SCHEDULE_DOCTORS + ", " +
+        Cursor b = db.rawQuery("select * from " + TABLE_SIGN_UP_PATIENTS + ", " + TABLE_TICKETS_DOCTORS + ", " +
                 TABLE_PATIENTS + " where " + COLUMN_SIGN_UP_ID + " == '" + id + "' and " + COLUMN_SIGN_UP_ID_PATIENTS +
                 " == " + COLUMN_ID_PATIENT + " ;", null);
         b.moveToFirst();
